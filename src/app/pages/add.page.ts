@@ -1,15 +1,20 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add',
   templateUrl: 'add.page.html',
+  standalone: true,
+  imports: [IonicModule, FormsModule],
   //styleUrls: ['add.page.scss'],
 })
 export class AddPage {
   title: string = '';
   subtitle: string = '';
   content: string = '';
+  category: string = '';
 
   constructor(private router: Router) {}
 
