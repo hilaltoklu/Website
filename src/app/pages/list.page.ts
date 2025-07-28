@@ -21,7 +21,7 @@ import {
   IonFabButton,
   IonIcon
 } from '@ionic/angular/standalone';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { add, heart } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 
@@ -49,7 +49,8 @@ import { addIcons } from 'ionicons';
     IonButton,
     IonFab,
     IonFabButton,
-    IonIcon
+    IonIcon,
+    RouterModule
   ]
 })
 export class ListPage {
@@ -72,26 +73,28 @@ export class ListPage {
     } else {
       this.articles = [
         {
-          title: 'Ionic Framework Nedir?',
-          subtitle: 'Mobil Uygulama Geliştirme',
+          id: 1,
+          title: 'Ionic Framework',
+          subtitle: 'Ionic Framework Nedir?',
           category: 'ion',
           content: 'Ionic, web teknolojilerini kullanarak hibrit mobil uygulamalar geliştirmek için kullanılan açık kaynaklı bir framework’tür.',
-          userName: 'Ahmet Yılmaz',
-          userPhoto: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+          userName: 'Ahmet Ahmet',
+          userPhoto: 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg',
           date: new Date(),
-          image: 'https://ionicframework.com/docs/img/demos/card-media.png',
-          likes: 15
+          image: 'https://miro.medium.com/v2/resize:fit:1200/1*nlhD6_U277a1s_VxSbH11g.jpeg',
+          likes: 1
         },
         {
-          title: 'Flutter ile Hızlı Başlangıç',
-          subtitle: 'Dart Programlama Dili',
+          id: 2,
+          title: 'Mobil Uygulama Geliştirme',
+          subtitle: 'Flutter Nedir?',
           category: 'flut',
           content: 'Flutter, Google tarafından geliştirilen ve tek bir kod tabanıyla hem iOS hem de Android için uygulamalar oluşturmanızı sağlayan bir UI toolkit’idir.',
           userName: 'Ayşe Kaya',
-          userPhoto: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+          userPhoto: 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214034-stock-illustration-default-avatar-profile-icon.jpg',
           date: new Date(),
-          image: 'https://ionicframework.com/docs/img/demos/card-media.png',
-          likes: 25
+          image: 'https://miro.medium.com/v2/resize:fit:1200/1*j_Vw_EmuO4Exd_PxhJtebw.png',
+          likes: 0
         }
       ];
       localStorage.setItem('articles', JSON.stringify(this.articles));
@@ -109,11 +112,4 @@ export class ListPage {
     this.router.navigate(['/add']);
   }
 
-  openArticle(article: any) {
-    this.router.navigate(['/article-detail'], {
-      queryParams: {
-        article: JSON.stringify(article)
-      }
-    });
-  }
 }

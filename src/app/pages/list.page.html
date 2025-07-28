@@ -22,7 +22,7 @@
   </ion-segment>
 
   <ion-list>
-    <ion-card *ngFor="let article of filteredArticles" (click)="openArticle(article)">
+    <ion-card *ngFor="let article of filteredArticles" [routerLink]="['/article', article.id]">
       <ion-card-header>
         <ion-card-title>{{ article.title }}</ion-card-title>
         <ion-card-subtitle>{{ article.subtitle }}</ion-card-subtitle>

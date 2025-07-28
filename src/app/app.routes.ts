@@ -14,6 +14,14 @@ export const routes: Routes = [
     redirectTo: 'list', // Direkt olarak list sayfasına yönlendir
     pathMatch: 'full',
   },
+
+  {
+    path: 'article/:id',
+    loadComponent: () => import('./pages/article.detail/article.detail.page').then( m => m.ArticleDetailPage)
+  },
+ 
+
+
 ];
 
 
