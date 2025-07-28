@@ -1,4 +1,31 @@
-<div *ngIf="article">
-  <h1>{{ article.title }}</h1>
-  <p>{{ article.content }}</p>
-</div>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detay Sayfası</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-card>
+    <ion-card-header>
+        <ion-card-title>{{ article.title }}</ion-card-title>
+        <ion-card-subtitle>{{ article.subtitle }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+          <ion-avatar style="width: 40px; height: 40px; margin-right: 10px;">
+          <img [src]="article.userPhoto">
+          </ion-avatar>
+          <ion-label>{{ article.userName }}</ion-label>
+        </div>
+        <p>{{ article.date | date:'short' }}</p>
+        <img [src]="article.image" style="width: 100%; margin: 10px 0;" />
+        <p>{{ article.content | slice:0:100 }}...</p>
+        <div style="display: flex; align-items: center;">
+          <ion-icon name="heart" style="margin-right: 5px;"></ion-icon>
+          <p>{{ article.likes }}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
