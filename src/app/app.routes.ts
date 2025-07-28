@@ -2,12 +2,16 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    path: 'add',
+    loadComponent: () => import('./pages/add.page').then((m) => m.AddPage),
+  },
+  {
+    path: 'list',
+    loadComponent: () => import('./pages/list.page').then((m) => m.ListPage),
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'list', // Direkt olarak list sayfasına yönlendir
     pathMatch: 'full',
   },
 ];
