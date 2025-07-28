@@ -96,7 +96,8 @@ export class ListPage {
           date: new Date(),
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*j_Vw_EmuO4Exd_PxhJtebw.png',
           version: Date.now(),
-          likes: 0
+          likes: 0,
+          isDeletable: true
         }
       ];
       localStorage.setItem('articles', JSON.stringify(this.articles));

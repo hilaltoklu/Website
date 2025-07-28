@@ -13,9 +13,30 @@
     <ion-input [(ngModel)]="title" placeholder="Makale başlığını girin"></ion-input>
   </ion-item>
 
+
+
+  <ion-item>
+    <ion-label position="stacked">Başlık</ion-label>
+    <ion-input [(ngModel)]="title" placeholder="Makale başlığını girin"></ion-input>
+  </ion-item>
+
   <ion-item>
     <ion-label position="stacked">Alt Başlık</ion-label>
     <ion-input [(ngModel)]="subtitle" placeholder="Alt başlığı girin"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Yazar Adı</ion-label>
+    <ion-input [(ngModel)]="author" placeholder="Yazar adını girin"></ion-input>
+  </ion-item>
+
+ 
+  <ion-item>
+    <ion-label position="stacked">Cinsiyet</ion-label>
+    <ion-select [(ngModel)]="gender">
+      <ion-select-option value="male">Erkek</ion-select-option>
+      <ion-select-option value="female">Kadın</ion-select-option>
+    </ion-select>
   </ion-item>
 
   <ion-item>

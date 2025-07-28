@@ -26,6 +26,9 @@
           <ion-icon name="heart" style="margin-right: 5px;"></ion-icon>
           <p>{{ article.likes }}</p>
         </div>
+        <ion-button *ngIf="article.isDeletable" color="danger" (click)="deleteArticle(article.title); $event.stopPropagation();">
+            Sil
+          </ion-button>
       </ion-card-content>
     </ion-card>
   </ion-list>
