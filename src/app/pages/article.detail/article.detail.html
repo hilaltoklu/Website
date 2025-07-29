@@ -21,14 +21,16 @@
         </div>
         <p>{{ article.date | date:'short' }}</p>
         <img [src]="article.image" style="width: 100%; margin: 10px 0;" />
-        <p>{{ article.content | slice:0:100 }}...</p>
+        <p>{{ article.content }}</p>
         <div style="display: flex; align-items: center;">
           <ion-icon name="heart" style="margin-right: 5px;"></ion-icon>
           <p>{{ article.likes }}</p>
         </div>
+       <!-- şimdilik silmeyi geçiyorum 
         <ion-button *ngIf="article.isDeletable" color="danger" (click)="deleteArticle(article.title); $event.stopPropagation();">
             Sil
           </ion-button>
+        -->  
       </ion-card-content>
     </ion-card>
   </ion-list>

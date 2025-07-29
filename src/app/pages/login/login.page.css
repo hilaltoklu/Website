@@ -1,0 +1,13 @@
+ion-input.custom-input {
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+ion-input.custom-input input {
+  color: black !important;          /* Girilen metin rengi */
+}
+
+ion-input.custom-input input::placeholder {
+  color: black !important;          /* Placeholder rengi */
+  opacity: 1 !important;
+}
