@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Makale Listeleme</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="category">
+    <ion-segment-button value="all">
+      <ion-label>Tüm Yazılar</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="ion">
+      <ion-label>İonic</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="flut">
+      <ion-label>Flutter</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="tek">
+      <ion-label>Teknoloji</ion-label>
+    </ion-segment-button>
+    
+  </ion-segment>
+
+  <ion-list>
+    <ion-card *ngFor="let article of filteredArticles" [routerLink]="['/article', article.id]">
+      <ion-card-header>
+        <ion-card-title>{{ article.title }}</ion-card-title>
+        <ion-card-subtitle>{{ article.subtitle }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+          <ion-avatar style="width: 40px; height: 40px; margin-right: 10px;">
+          <img [src]="article.userPhoto">
+          </ion-avatar>
+          <ion-label>{{ article.userName }}</ion-label>
+        </div>
+        <p>{{ article.date | date:'short' }}</p>
+        <img [src]="article.image" style="width: 100%; margin: 10px 0;" />
+        <p>{{ article.content | slice:0:100 }}...</p>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <ion-icon name="heart" style="margin-right: 5px;"></ion-icon>
+          <p>{{ article.likes }}</p>
+        </div>
+         
+        
+        </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <!-- Makale henüz yoksa gösterilecek mesaj -->
+  <div *ngIf="filteredArticles.length === 0" style="text-align: center; margin-top: 50px;">
+    <p>Henüz makale bulunmuyor.</p>
+    <ion-button (click)="goToAdd()">İlk Makaleyi Ekle</ion-button>
+  </div>
+
+  <!-- Floating Action Button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goToAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
