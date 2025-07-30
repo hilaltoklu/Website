@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicModule} from '@ionic/angular';
+import { IonicModule, AlertController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -10,31 +12,59 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginPage {
 
-  username: string = '';
-  password: string = '';
+  username: string = 'test';
+  password: string = 'test';
 
-   girisYap() {
-    localStorage.setItem('username', this.username);
-    localStorage.setItem('password', this.password);
+  constructor(
+    private alertController: AlertController,
+    private router: Router
+  ) { }
 
-    console.log('Kullanıcı bilgileri kaydedildi!');
-  }
-
-  constructor() { }
-
-
-  // Oturum açma sayfası yüklendiğinde, kullanıcı bilgilerini kontrol et
-  // Eğer kullanıcı bilgileri varsa, bu bilgileri form alanlarına doldur
   ngOnInit() {
-  const savedUsername = localStorage.getItem('username');
-  const savedPassword = localStorage.getItem('password');
-
-  if (savedUsername && savedPassword) {
-    this.username = savedUsername;
-    this.password = savedPassword;
+    // Örnek kullanıcı adı ve şifre oluştur
+    localStorage.setItem('user', 'test');
+    localStorage.setItem('pass', 'test');
   }
-}
 
+  async girisYap() {
+    // Güvenlik Uyarısı: Bu yöntem üretim ortamları için güvenli değildir.
+    // Gerçek bir uygulamada, bir kimlik doğrulama sunucusu kullanılmalıdır.
+    const savedUsername = localStorage.getItem('user');
+    const savedPassword = localStorage.getItem('pass');
 
+    if (!savedUsername || !savedPassword) {
+      const alert = await this.alertController.create({
+        header: 'Hata',
+        message: 'Kayıtlı kullanıcı bulunamadı.',
+        buttons: ['Tamam']
+      });
+      await alert.present();
+      return;
+    }
 
+    if (this.username === savedUsername && this.password === savedPassword) {
+      const alert = await this.alertController.create({
+        header: 'Giriş Başarılı',
+        message: 'Listeleme sayfasına yönlendiriliyorsunuz.',
+        buttons: [
+          {
+            text: 'Tamam',
+            handler: () => {
+              this.router.navigate(['/list']);
+            }
+          }
+        ]
+      });
+
+      await alert.present();
+    } else {
+      const alert = await this.alertController.create({
+        header: 'Giriş Başarısız',
+        message: 'Kullanıcı adı veya şifre hatalı.',
+        buttons: ['Tamam']
+      });
+
+      await alert.present();
+    }
+  }
 }

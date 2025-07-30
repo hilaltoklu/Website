@@ -6,23 +6,17 @@
 
 <ion-content class="ion-padding">
   <ion-item>
-    <ion-label position="floating">Kullanıcı Adı</ion-label>
-    <ion-input 
-    class="custom-input"
-    type="username" 
-    placeholder="Kullanıcı adınızı giriniz">
-  </ion-input>
+    <ion-label position="floating"></ion-label>
+        <ion-input type="username" placeholder="Kullanıcı adınızı giriniz"></ion-input>
+
   </ion-item>
   
   <ion-item>
-    <ion-label position="floating">Şifre</ion-label>
-<ion-input 
-    class="custom-input"
-    type="password" 
-    placeholder="Şifrenizi giriniz">
-  </ion-input>  </ion-item>
+    <ion-label position="floating"></ion-label>
+    <ion-input type="password" placeholder="Şifrenizi giriniz"></ion-input>
+  </ion-item>
 
-  <ion-button expand="block" class="ion-margin-top">Giriş Yap</ion-button>
+  <ion-button expand="block" class="ion-margin-top" (click)="girisYap()">Giriş Yap</ion-button>
 
   <ion-button expand="block" color="secondary" class="ion-margin-top">Kayıt Ol</ion-button>
 </ion-content>
