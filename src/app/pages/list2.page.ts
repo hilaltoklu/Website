@@ -10,6 +10,7 @@ import {
   IonSegmentButton, 
   IonLabel, 
   IonList, 
+  IonButtons,
   IonCard, 
   IonCardHeader, 
   IonCardTitle, 
@@ -27,7 +28,7 @@ import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-list2',
-  templateUrl: 'list.page.html',
+  templateUrl: 'list2.page.html',
   standalone: true,
   imports: [
     CommonModule,
@@ -36,6 +37,7 @@ import { addIcons } from 'ionicons';
     IonHeader, 
     IonTitle, 
     IonToolbar, 
+    IonButtons,
     IonSegment, 
     IonSegmentButton, 
     IonLabel, 
@@ -53,7 +55,7 @@ import { addIcons } from 'ionicons';
     RouterModule
   ]
 })
-export class ListPage {
+export class List2Page {
   category: string = 'all';
   articles: any[] = [];
 
@@ -83,7 +85,8 @@ export class ListPage {
           date: new Date(),
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*nlhD6_U277a1s_VxSbH11g.jpeg',
           version: Date.now(),
-          likes: 1
+          likes: 1,
+          isDeletable: true
         },
         {
           id: 2,

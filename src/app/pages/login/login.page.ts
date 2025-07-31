@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 })
 export class LoginPage {
 
-  username: string = 'test';
-  password: string = 'test';
+  username!: string;
+  password!: string;
 
   constructor(
     private alertController: AlertController,
@@ -21,41 +21,35 @@ export class LoginPage {
   ) { }
 
   ngOnInit() {
-    // Örnek kullanıcı adı ve şifre oluştur
-    localStorage.setItem('user', 'test');
-    localStorage.setItem('pass', 'test');
+    // For testing, you can pre-register a user.
+    // localStorage.setItem('test', 'test');
   }
 
   async girisYap() {
-    // Güvenlik Uyarısı: Bu yöntem üretim ortamları için güvenli değildir.
-    // Gerçek bir uygulamada, bir kimlik doğrulama sunucusu kullanılmalıdır.
-    const savedUsername = localStorage.getItem('user');
-    const savedPassword = localStorage.getItem('pass');
-
-    if (!savedUsername || !savedPassword) {
+    if (!this.username || !this.password) {
       const alert = await this.alertController.create({
         header: 'Hata',
-        message: 'Kayıtlı kullanıcı bulunamadı.',
+        message: 'Kullanıcı adı ve şifre alanları boş bırakılamaz.',
         buttons: ['Tamam']
       });
       await alert.present();
       return;
     }
 
-    if (this.username === savedUsername && this.password === savedPassword) {
+    const savedPassword = localStorage.getItem(this.username);
+
+    if (savedPassword && this.password === savedPassword) {
       const alert = await this.alertController.create({
         header: 'Giriş Başarılı',
-        message: 'Listeleme sayfasına yönlendiriliyorsunuz.',
         buttons: [
           {
             text: 'Tamam',
             handler: () => {
-              this.router.navigate(['/list']);
+              this.router.navigate(['/list2']);
             }
           }
         ]
       });
-
       await alert.present();
     } else {
       const alert = await this.alertController.create({
@@ -63,8 +57,11 @@ export class LoginPage {
         message: 'Kullanıcı adı veya şifre hatalı.',
         buttons: ['Tamam']
       });
-
       await alert.present();
     }
+  }
+
+  kayitOl() {
+    this.router.navigate(['/signup']);
   }
 }
