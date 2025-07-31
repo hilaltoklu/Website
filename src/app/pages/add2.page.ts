@@ -55,7 +55,7 @@ export class Add2Page {
     let articles = JSON.parse(localStorage.getItem('articles') || '[]');
     articles.push(newArticle);
     localStorage.setItem('articles', JSON.stringify(articles));
-
+    this.addArticle();
     // Sayfayı listeye yönlendiriyoruz
     this.router.navigate(['/list2']);
   }
