@@ -53,8 +53,14 @@ export class InterestsPage {
   }
 
   saveInterests() {
-    const selectedInterests = this.interests.filter(i => i.selected).map(i => i.name);
-    localStorage.setItem('user_interests', JSON.stringify(selectedInterests));
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) {
+      console.error('No current user found to save interests for.');
+      this.router.navigate(['/login']);
+      return;
+    }
+    const selectedInterests = this.interests.filter(i => i.selected).map(i => i.name.toLowerCase());
+    localStorage.setItem(`interests_${currentUser}`, JSON.stringify(selectedInterests));
     this.router.navigate(['/list2']);
-  }
+  }  
 }

@@ -39,6 +39,7 @@ export class LoginPage {
     const savedPassword = localStorage.getItem(this.username);
 
     if (savedPassword && this.password === savedPassword) {
+      localStorage.setItem('currentUser', this.username);
       const alert = await this.alertController.create({
         header: 'Giriş Başarılı',
         buttons: [

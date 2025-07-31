@@ -42,6 +42,8 @@ export class SignupPage {
       await alert.present();
     } else {
       localStorage.setItem(this.username, this.password);
+      localStorage.setItem('currentUser', this.username);
+
       const alert = await this.alertController.create({
         header: 'Başarılı',
         message: 'Kayıt işlemi başarılı.',

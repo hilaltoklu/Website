@@ -58,14 +58,45 @@ import { addIcons } from 'ionicons';
 export class List2Page {
   category: string = 'all';
   articles: any[] = [];
+  segments: { value: string, label: string }[] = [];
 
   constructor(private router: Router) {
     addIcons({ add, heart });
-    this.loadArticles();
   }
 
   ionViewWillEnter() {
+    this.loadUserInterests();
     this.loadArticles();
+  }
+
+  loadUserInterests() {
+    const defaultSegments = [
+      { value: 'all', label: 'Tüm Yazılar' },
+      { value: 'ionic', label: 'İonic' },
+      { value: 'flutter', label: 'Flutter' },
+      { value: 'teknoloji', label: 'Teknoloji' }
+    ];
+
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+      const interestsJson = localStorage.getItem(`interests_${currentUser}`);
+      if (interestsJson) {
+        const interests = JSON.parse(interestsJson);
+        if (interests.length > 0) {
+          const interestSegments = interests.map((interest: string) => ({
+            value: interest,
+            label: interest.charAt(0).toUpperCase() + interest.slice(1)
+          }));
+          this.segments = [{ value: 'all', label: 'Tüm Yazılar' }, ...interestSegments];
+        } else {
+          this.segments = defaultSegments;
+        }
+      } else {
+        this.segments = defaultSegments;
+      }
+    } else {
+      this.segments = defaultSegments;
+    }
   }
 
   loadArticles() {
@@ -78,7 +109,7 @@ export class List2Page {
           id: 1,
           title: 'Ionic Framework',
           subtitle: 'Ionic Framework Nedir?',
-          category: 'ion',
+          category: 'ionic',
           content: 'Ionic, web teknolojilerini kullanarak hibrit mobil uygulamalar geliştirmek için kullanılan açık kaynaklı bir framework’tür.',
           userName: 'Ahmet Ahmet',
           userPhoto: 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg',
@@ -92,7 +123,7 @@ export class List2Page {
           id: 2,
           title: 'Mobil Uygulama Geliştirme',
           subtitle: 'Flutter Nedir?',
-          category: 'flut',
+          category: 'flutter',
           content: 'Flutter, Google tarafından geliştirilen ve tek bir kod tabanıyla hem iOS hem de Android için uygulamalar oluşturmanızı sağlayan bir UI toolkit’idir.',
           userName: 'Ayşe Kaya',
           userPhoto: 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214034-stock-illustration-default-avatar-profile-icon.jpg',
@@ -115,7 +146,7 @@ export class List2Page {
   }
 
   goToAdd() {
-    this.router.navigate(['/add']);
+    this.router.navigate(['/add2']);
   }
 
 }

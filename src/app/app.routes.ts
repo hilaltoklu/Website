@@ -42,7 +42,10 @@ export const routes: Routes = [
     path: 'interests',
     loadComponent: () => import('./pages/interests/interests.page').then( m => m.InterestsPage)
   },
-
+  {
+    path: 'add2',
+    loadComponent: () => import('./pages/add2.page').then((m) => m.Add2Page),
+  },
 
 
 ];
