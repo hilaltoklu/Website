@@ -146,7 +146,11 @@ export class List2Page {
   }
 
   goToAdd() {
-    this.router.navigate(['/add2']);
+    this.router.navigate(['/add']);
+  }
+   logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/list']);
   }
 
 }

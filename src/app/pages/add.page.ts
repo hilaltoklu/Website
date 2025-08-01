@@ -27,6 +27,14 @@ export class AddPage {
     selectedCategory = 'Ionic';
   } else if (this.category === 'tek') {
     selectedCategory = 'Teknoloji';
+  } else if (this.category === 'art') {
+    selectedCategory = 'Sanat';
+  } else if (this.category === 'music') {
+    selectedCategory = 'Müzik';
+  } else if (this.category === 'science') {
+    selectedCategory = 'Bilim';
+  } else if (this.category === 'food') {
+    selectedCategory = 'Yemek';
   } else {
     selectedCategory = 'Tümü';
   } 
@@ -57,6 +65,11 @@ export class AddPage {
     localStorage.setItem('articles', JSON.stringify(articles));
 
     // Sayfayı listeye yönlendiriyoruz
-    this.router.navigate(['/list']);
+   if (localStorage.getItem('currentUser')) {
+      this.router.navigate(['/list2']);
+    } 
+    else {
+      this.router.navigate(['/list']);
+    }
   }
 }
