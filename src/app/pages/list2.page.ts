@@ -77,7 +77,7 @@ export class List2Page {
       { value: 'teknoloji', label: 'Teknoloji' }
     ];
 
-    const currentUser = localStorage.getItem('currentUser');
+    const currentUser = sessionStorage.getItem('currentUser');
     if (currentUser) {
       const interestsJson = localStorage.getItem(`interests_${currentUser}`);
       if (interestsJson) {

@@ -50,7 +50,15 @@
     <ion-textarea [(ngModel)]="content" rows="10" placeholder="Makale içeriğini girin"></ion-textarea>
   </ion-item>
 
-  <div style="padding: 20px;">
-    <ion-button expand="block" (click)="addArticle()">Makale Ekle</ion-button>
-  </div>
+  <div style="padding: 20px; display: flex; justify-content: center;">
+  <ion-button style="font-size: 14px; padding: 10px 20px;" (click)="addArticle()">Makale Ekle</ion-button>
+</div>
+
+<ion-button style="width: 50%;">Makale Ekle</ion-button>
+<ion-button style="float: right;">Giriş Yap</ion-button>
+<div style="display: flex; justify-content: flex-end;">
+  <ion-button style="width: auto;">Makale Ekle</ion-button>
+</div>
+
+
 </ion-content>

@@ -65,7 +65,7 @@ export class AddPage {
     localStorage.setItem('articles', JSON.stringify(articles));
 
     // Sayfayı listeye yönlendiriyoruz
-   if (localStorage.getItem('currentUser')) {
+   if (sessionStorage.getItem('currentUser')) {
       this.router.navigate(['/list2']);
     } 
     else {
