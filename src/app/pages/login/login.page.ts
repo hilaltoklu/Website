@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicModule, AlertController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { rocketOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +20,9 @@ export class LoginPage {
   constructor(
     private alertController: AlertController,
     private router: Router
-  ) { }
+  ) {
+    addIcons({ rocketOutline });
+  }
 
   ngOnInit() {
     // For testing, you can pre-register a user.
@@ -55,7 +59,7 @@ export class LoginPage {
     } else {
       const alert = await this.alertController.create({
         header: 'Giriş Başarısız',
-        message: 'Kullanıcı adı veya şifre hatalı.',
+        message: 'E-posta veya şifre hatalı.',
         buttons: ['Tamam']
       });
       await alert.present();

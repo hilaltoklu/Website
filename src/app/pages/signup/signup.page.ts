@@ -22,6 +22,8 @@ export class SignupPage {
   ) { }
 
   async kayitOl() {
+
+
     if (!this.username || !this.password) {
       const alert = await this.alertController.create({
         header: 'Hata',

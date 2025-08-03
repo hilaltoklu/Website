@@ -1,41 +1,51 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Giriş Yap</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-  <!-- Kullanıcı Adı Input -->
-  <ion-item style="width: 30%; margin: 0 auto; margin-bottom: 20px;">
-    <ion-label position="floating" style="font-size: 14px; color: #ffffff;">Kullanıcı Adı</ion-label>
-    <ion-input 
-      type="text" 
-      placeholder="Kullanıcı adınızı giriniz" 
-      [(ngModel)]="username" 
-      style="font-size: 13px; --placeholder-color: #ffffff; --color: #ffffff; --background: transparent; border: none; border-bottom: 1px solid #90e1ff; padding: 5px 0;">
-    </ion-input>
-  </ion-item>
-
-  <!-- Şifre Input -->
-  <ion-item style="width: 30%; margin: 0 auto;">
-    <ion-label position="floating" style="font-size: 14px; color: #ffffff;">Şifre</ion-label>
-    <ion-input 
-      type="password" 
-      placeholder="Şifrenizi giriniz" 
-      [(ngModel)]="password" 
-      style="font-size: 13px; --placeholder-color: #ffffff; --color: #ffffff; --background: transparent; border: none; border-bottom: 1px solid #90e1ff; padding: 5px 0;">
-    </ion-input>
-  </ion-item>
-
-  <!-- Kayıt Ol Butonu -->
-  <div class="signup-container">
-    <div class="signup-text">
-      <span style="color: #000000;">Henüz üye değil misiniz?</span>
+<ion-content class="login-content">
+  <div class="login-container">
+    <!-- Sol taraf için mavi arka plan -->
+    <div class="left-section">
+      <div class="left-content">
+        <div class="logo">
+          <ion-icon name="rocket-outline" size="large"></ion-icon>
+        </div>
+        <h1>Hoş Geldiniz</h1>
+      </div>
     </div>
-    <ion-button fill="outline" expand="block" color="secondary" (click)="kayitOl()">Kayıt Ol</ion-button>
+
+    <!-- Sağ taraf - Beyaz zemin -->
+    <div class="right-section">
+      <div class="login-form">
+        <h2>Hesabınıza Giriş Yapın</h2>
+
+        <form>
+          <div class="input-group">
+            <ion-input 
+              type="text" 
+              name="username"
+              placeholder="Kullanıcı Adınız" 
+              [(ngModel)]="username">
+            </ion-input>
+          </div>
+
+          <div class="input-group">
+            <ion-input 
+              type="password" 
+              placeholder="Şifreniz" 
+              [(ngModel)]="password"
+              name="password">
+            </ion-input>
+          </div>
+
+          <button type="button" class="login-btn" (click)="girisYap()">
+            Giriş Yap
+          </button>
+
+          <div class="signup-link">
+            <span>Hesabınız yok mu? </span>
+            <a href="#" (click)="kayitOl()">Kayıt Ol</a>
+          </div>
+
+
+        </form>
+      </div>
+    </div>
   </div>
-
- <ion-button fill="outline" style="float: right;" expand="block" color="secondary" class="ion-margin-top" (click)="kayitOl()">Kayıt Ol</ion-button>
-
-  <ion-button style="float: right;" class="ion-margin-top" (click)="girisYap()">Giriş Yap</ion-button>
 </ion-content>

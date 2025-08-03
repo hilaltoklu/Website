@@ -35,7 +35,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'signup',
+    path: 'kayitol',
     loadComponent: () => import('./pages/signup/signup.page').then( m => m.SignupPage)
   },
 {
