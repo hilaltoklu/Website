@@ -20,28 +20,8 @@ export class AddPage {
   constructor(private router: Router) {}
 
   addArticle() {
-    let selectedCategory = '';
-  if (this.category === 'flut') {
-    selectedCategory = 'Flutter';
-  } else if (this.category === 'ion') {
-    selectedCategory = 'Ionic';
-  } else if (this.category === 'tek') {
-    selectedCategory = 'Teknoloji';
-  } else if (this.category === 'art') {
-    selectedCategory = 'Sanat';
-  } else if (this.category === 'music') {
-    selectedCategory = 'Müzik';
-  } else if (this.category === 'science') {
-    selectedCategory = 'Bilim';
-  } else if (this.category === 'food') {
-    selectedCategory = 'Yemek';
-  } else {
-    selectedCategory = 'Tümü';
-  } 
-    
     const photoUrl = this.gender === 'female'
       ? 'https://w1.pngwing.com/pngs/386/684/png-transparent-face-icon-user-icon-design-user-profile-share-icon-avatar-black-and-white-silhouette-thumbnail.png'
-
       : 'https://w1.pngwing.com/pngs/386/684/png-transparent-face-icon-user-icon-design-user-profile-share-icon-avatar-black-and-white-silhouette-thumbnail.png';
 
     const newArticle = {
@@ -53,7 +33,7 @@ export class AddPage {
       content: this.content,
       date: new Date().toISOString(),
       likes: 0,
-      category: selectedCategory,
+      category: this.category,
       userPhoto: photoUrl,
       userName: this.author,
       image: 'https://www.example.com/article.jpg', // Örnek makale görseli
