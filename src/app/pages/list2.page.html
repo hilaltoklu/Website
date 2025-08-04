@@ -22,15 +22,15 @@
       </ion-card-header>
       <ion-card-content>
         <div style="display: flex; align-items: center; margin-bottom: 10px;">
-          <ion-avatar style="width: 40px; height: 40px; margin-right: 10px;">
-          <img [src]="article.userPhoto">
-          </ion-avatar>
-          <ion-label>{{ article.userName }}</ion-label>
-        </div>
+    <ion-avatar style="width: 40px; height: 40px; margin-right: 10px;">
+      <img [src]="article.userPhoto">
+    </ion-avatar>
+    <ion-label>{{ article.userName }}</ion-label>
+  </div>
         <p>{{ article.date | date:'short' }}</p>
-        <img [src]="article.image" style="width: 100%; height: 200px; object-fit: cover; margin: 10px 0;" />
+  <img [src]="article.image" style="width: 500px; height: 310px; object-fit: cover; margin: 10px 0;" />
         <p>{{ article.content | slice:0:100 }}...</p>
-        <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; ">
           <ion-icon name="heart" style="margin-right: 5px;"></ion-icon>
           <p>{{ article.likes }}</p>
         </div>

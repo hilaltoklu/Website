@@ -60,10 +60,10 @@
   <p>{{ article.date | date:'short' }}</p>
   <p>{{ article.content | slice:0:100 }}...</p>
   <img [src]="article.image" style="width: 500px; height: 310px; object-fit: cover; margin: 10px 0;" />
-  <div style="display: flex; align-items: center; justify-content: space-between;">
-    <ion-icon name="heart" style="margin-right: 5px;"></ion-icon>
-    <p>{{ article.likes }}</p>
-  </div>
+  <div style="display: flex; align-items: center;">
+          <ion-icon name="heart" style="margin-right: 5px;"></ion-icon>
+          <p>{{ article.likes }}</p>
+        </div>
 </ion-card-content>
     </ion-card>
   </ion-list>

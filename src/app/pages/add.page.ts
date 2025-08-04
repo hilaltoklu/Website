@@ -40,8 +40,9 @@ export class AddPage {
   } 
     
     const photoUrl = this.gender === 'female'
-      ? 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214034-stock-illustration-default-avatar-profile-icon.jpg'
-      : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg';
+      ? 'https://w1.pngwing.com/pngs/386/684/png-transparent-face-icon-user-icon-design-user-profile-share-icon-avatar-black-and-white-silhouette-thumbnail.png'
+
+      : 'https://w1.pngwing.com/pngs/386/684/png-transparent-face-icon-user-icon-design-user-profile-share-icon-avatar-black-and-white-silhouette-thumbnail.png';
 
     const newArticle = {
       author: this.author,

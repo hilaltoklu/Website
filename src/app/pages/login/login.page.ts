@@ -67,6 +67,6 @@ export class LoginPage {
   }
 
   kayitOl() {
-    this.router.navigate(['/signup']);
+    this.router.navigate(['/kayitol']);
   }
 }

@@ -70,10 +70,15 @@ export class ListPage {
 
   loadArticles() {
     const storedArticles = localStorage.getItem('articles');
+ 
+    const photoUrlFemale = 'https://w7.pngwing.com/pngs/417/181/png-transparent-computer-icons-icon-design-woman-woman-hat-people-monochrome-thumbnail.png';
+    const photoUrlMale = 'https://w1.pngwing.com/pngs/386/684/png-transparent-face-icon-user-icon-design-user-profile-share-icon-avatar-black-and-white-silhouette-thumbnail.png';
+
     if (storedArticles) {
       this.articles = JSON.parse(storedArticles);
     } else {
       this.articles = [
+        
         {
           id: 1,
           title: 'Ionic Framework',
@@ -81,7 +86,7 @@ export class ListPage {
           category: 'ion',
           content: 'Ionic, web teknolojilerini kullanarak hibrit mobil uygulamalar geliştirmek için kullanılan açık kaynaklı bir framework’tür.',
           userName: 'Ahmet Ahmet',
-          userPhoto: 'https://depositphotos.com/tr/photos/facebook-avatar.html?qview=29387653',
+          userPhoto: photoUrlMale,
           date: new Date(),
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*nlhD6_U277a1s_VxSbH11g.jpeg',
           version: Date.now(),
@@ -95,7 +100,7 @@ export class ListPage {
           category: 'flut',
           content: 'Flutter, Google tarafından geliştirilen ve tek bir kod tabanıyla hem iOS hem de Android için uygulamalar oluşturmanızı sağlayan bir UI toolkit’idir.',
           userName: 'Ayşe Kaya',
-          userPhoto: 'https://depositphotos.com/tr/photos/facebook-avatar.html?qview=29388097',
+          userPhoto: photoUrlFemale,
           date: new Date(),
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*j_Vw_EmuO4Exd_PxhJtebw.png',
           version: Date.now(),
@@ -109,7 +114,7 @@ export class ListPage {
           category: 'art',
           content: 'Renkler, insanların duygularını ifade etmenin güçlü bir yoludur. Bu makalede, farklı renklerin hangi duyguları çağrıştırdığına dair bir inceleme yapacağız.',
           userName: 'Elif Renktaş',
-          userPhoto: 'src/assets/female.jpg',
+          userPhoto: photoUrlFemale,
           date: new Date(),
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*nlhD6_U277a1s_VxSbH11g.jpeg',
           version: Date.now(),
@@ -123,7 +128,7 @@ export class ListPage {
           category: 'food',
           content: 'Bir tarif, sadece lezzet değil; aynı zamanda bir kültürün taşıyıcısıdır. Her bölge, kendi hikâyesini tabaklara döker. Yemek, geçmiş ile günümüz arasında köprü kurar."',
           userName: 'Mustafa Şef',
-          userPhoto: 'src/assets/male.jpg',
+          userPhoto: photoUrlMale,
           date: new Date(),
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*nlhD6_U277a1s_VxSbH11g.jpeg',
           version: Date.now(),
@@ -137,7 +142,7 @@ export class ListPage {
           category: 'music',
           content: 'Müzik, ruhun derinliklerine inen bir yolculuktur. Her nota, bir duyguyu ifade eder; her melodi, bir hikaye anlatır.',
           userName: 'Canan Nota',
-          userPhoto: 'src/assets/icon/female.png',
+          userPhoto: photoUrlFemale,
           date: new Date(),
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*nlhD6_U277a1s_VxSbH11g.jpeg',
           version: Date.now(),
@@ -151,7 +156,7 @@ export class ListPage {
           category: 'flut',
           content: 'Flutter sayesinde geliştiriciler bir kez yazar, her yerde çalıştırır. Platform bağımsız yapısı sayesinde uygulama geliştirme süreci hız kazanır. Bu da hem zamandan hem maliyetten tasarruf sağlar.',
           userName: 'Berkay Bey',
-          userPhoto: 'https://depositphotos.com/tr/photos/facebook-avatar.html?qview=29387653',
+          userPhoto: photoUrlMale,
           date: new Date(),
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*nlhD6_U277a1s_VxSbH11g.jpeg',
           version: Date.now(),
@@ -165,7 +170,7 @@ export class ListPage {
           category: 'science',
           content: 'Her bilimsel ilerleme bir “neden?” sorusuyla başlar. Bilim, bilinmeyeni merak edenlerin cesur yolculuğudur. Merak oldukça keşifler sonsuz olur.',
           userName: 'Dr. Bilge Işık',
-          userPhoto: 'src/assets/female.jpg',
+          userPhoto: photoUrlFemale,
           date: new Date(),
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*nlhD6_U277a1s_VxSbH11g.jpeg',
           version: Date.now(),

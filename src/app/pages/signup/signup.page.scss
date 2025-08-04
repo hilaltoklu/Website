@@ -1,0 +1,148 @@
+.login-content {
+  --background: #ffffff;
+  height: 100vh;
+  padding: 0;
+}
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Sol taraf - Mavi arka plan */
+.left-section {
+  flex: 1;
+  background-color: #3880ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: white;
+}
+
+.left-content {
+  text-align: center;
+  max-width: 400px;
+}
+.logo {
+  margin-bottom: 30px;
+}
+
+.logo ion-icon {
+  font-size: 50px;
+  color: white;
+}
+
+.left-content h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.left-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Sağ taraf - Beyaz zemin */
+.right-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: white;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+  font-weight: normal;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  
+  ion-input {
+    --background: #ffffff;
+    --border-radius: 6px;
+    --padding: 15px;
+    --color: #3880ff;
+    --placeholder-color: #000000;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
+}
+
+
+.login-btn {
+  width: 100%;
+  background-color: #3880ff;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.signup-link {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  
+  a {
+    color: #2C3E50;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Responsive tasarım */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+  
+  .left-section {
+    flex: none;
+    min-height: 300px;
+    padding: 30px 20px;
+  }
+  
+  .left-content h1 {
+    font-size: 24px;
+  }
+  
+  .left-content p {
+    font-size: 14px;
+  }
+  
+  .right-section {
+    flex: 1;
+    padding: 30px 20px;
+  }
+  
+  .login-form {
+    max-width: none;
+  }
+  
+  .login-form h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+}
