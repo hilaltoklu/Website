@@ -47,6 +47,7 @@ export class AddPage {
 
     // Sayfayı listeye yönlendiriyoruz
    if (sessionStorage.getItem('currentUser')) {
+
       this.router.navigate(['/list2']);
     } 
     else {

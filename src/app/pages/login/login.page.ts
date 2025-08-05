@@ -150,10 +150,7 @@ export class LoginPage {
     if (loginContent) {
       loginContent.classList.add('shake-animation');
       
-      // Animasyon bitince class'ı kaldır
-      setTimeout(() => {
-        loginContent.classList.remove('shake-animation');
-      }, 600);
+      
     }
   }
 

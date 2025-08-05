@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule, AlertController, ToastController } from '@ionic/angular';
+import { IonicModule, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import confetti from 'canvas-confetti';
 
@@ -106,16 +106,23 @@ export class SignupPage {
       });
 }
 
-
-  private triggerShakeAnimation() {
-    const loginContent = document.querySelector('ion-content');
-    if (loginContent) {
-      loginContent.classList.add('shake-animation');
-      
-      // Animasyon bitince class'ı kaldır
-      setTimeout(() => {
-        loginContent.classList.remove('shake-animation');
-      }, 600);
-    }
+private triggerShakeAnimation() {
+  const loginContent = document.querySelector('ion-content');
+  if (loginContent) {
+    // CSS'e bağımlı değil, direkt JavaScript ile animasyon
+    loginContent.animate([
+      { transform: 'translateX(0)' },    // Başlangıç
+      { transform: 'translateX(-5px)' }, // Sola
+      { transform: 'translateX(5px)' },  // Sağa
+      { transform: 'translateX(-5px)' }, // Sola
+      { transform: 'translateX(5px)' },  // Sağa
+      { transform: 'translateX(0)' }     // Bitiriş
+    ], {
+      duration: 600,                     // 0.6 saniye
+      easing: 'ease-in-out'             // Yumuşak geçiş
+    });
   }
+}
+
+
 }
