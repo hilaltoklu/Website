@@ -4,14 +4,8 @@
     <ion-buttons slot="end">
       <ion-button fill="outline" routerLink="/login">Giriş Yap</ion-button>
     </ion-buttons>
-  </ion-toolbar>
-</ion-header>
 
-
-
-
-<ion-content>
-  <ion-segment [(ngModel)]="category">
+     <ion-segment [(ngModel)]="category">
     <ion-segment-button value="all">
       <ion-label>Tüm Yazılar</ion-label>
     </ion-segment-button>
@@ -43,6 +37,15 @@
     </ion-segment-button>
     
   </ion-segment>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content>
+  
 
   <ion-list>
     <ion-card *ngFor="let article of filteredArticles" [routerLink]="['/article', article.id]">

@@ -1,4 +1,4 @@
-ion-card-content img {
+img[src] {
   height: 200px !important;
-  object-fit: cover !important;
+  object-fit: cover;
 }
