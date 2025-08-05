@@ -5,15 +5,16 @@
       <ion-button fill="outline" (click)="logout()">Çıkış Yap</ion-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="category">
+      <ion-segment-button *ngFor="let segment of segments" [value]="segment.value">
+        <ion-label>{{ segment.label }}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-segment [(ngModel)]="category">
-    <ion-segment-button *ngFor="let segment of segments" [value]="segment.value">
-      <ion-label>{{ segment.label }}</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-
   <ion-list>
     <ion-card *ngFor="let article of filteredArticles" [routerLink]="['/article', article.id]">
       <ion-card-header>

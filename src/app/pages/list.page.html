@@ -5,45 +5,43 @@
       <ion-button fill="outline" routerLink="/login">Giriş Yap</ion-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="category">
+      <ion-segment-button value="all">
+        <ion-label>Tüm Yazılar</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="art">
+        <ion-label>Sanat</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="music">
+        <ion-label>Müzik</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="food">
+        <ion-label>Yemek</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="science">
+        <ion-label>Bilim</ion-label>
+      </ion-segment-button>
+
+
+      <ion-segment-button value="ion">
+        <ion-label>İonic</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="flut">
+        <ion-label>Flutter</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="tek">
+        <ion-label>Teknoloji</ion-label>
+      </ion-segment-button>
+
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
-
-
-
 <ion-content>
-  <ion-segment [(ngModel)]="category">
-    <ion-segment-button value="all">
-      <ion-label>Tüm Yazılar</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="art">
-      <ion-label>Sanat</ion-label>
-    </ion-segment-button>
-
-    <ion-segment-button value="music">
-      <ion-label>Müzik</ion-label>
-    </ion-segment-button>
-
-    <ion-segment-button value="food">
-      <ion-label>Yemek</ion-label>
-    </ion-segment-button>
-
-    <ion-segment-button value="science">
-      <ion-label>Bilim</ion-label>
-    </ion-segment-button>
-
-
-    <ion-segment-button value="ion">
-      <ion-label>İonic</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="flut">
-      <ion-label>Flutter</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="tek">
-      <ion-label>Teknoloji</ion-label>
-    </ion-segment-button>
-    
-  </ion-segment>
-
   <ion-list>
     <ion-card *ngFor="let article of filteredArticles" [routerLink]="['/article', article.id]">
       <ion-card-header>
