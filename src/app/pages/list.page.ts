@@ -67,8 +67,38 @@ export class ListPage {
 
   ionViewWillEnter() {
     this.loadArticles();
+    this.migrateArticleCategories();
+
   }
 
+// localde tutulan makalelerin kategorilerini güncelle
+   migrateArticleCategories() {
+    const storedArticles = localStorage.getItem('articles');
+    if (storedArticles) {
+      let articles = JSON.parse(storedArticles);
+      const categoryMap: { [key: string]: string } = {
+        'ion': 'ionic',
+        'flutter': 'flutter',
+        'tek': 'teknoloji',
+        'art': 'sanat',
+        'music': 'müzik',
+        'food': 'yemek',
+        'science': 'bilim'
+      };
+
+      let needsUpdate = false;
+      articles.forEach((article: any) => {
+        if (categoryMap[article.category]) {
+          article.category = categoryMap[article.category];
+          needsUpdate = true;
+        }
+      });
+
+      if (needsUpdate) {
+        localStorage.setItem('articles', JSON.stringify(articles));
+      }
+    }
+  }
   loadArticles() {
     const storedArticles = localStorage.getItem('articles');
   const photoUrlFemale = 'https://w7.pngwing.com/pngs/417/181/png-transparent-computer-icons-icon-design-woman-woman-hat-people-monochrome-thumbnail.png';

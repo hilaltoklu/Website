@@ -20,40 +20,41 @@
         <ion-card 
           class="article-card" 
           *ngFor="let article of filteredArticles">
-
-          <ion-button fill="clear" class="options-button" (click)="openArticleOptions(article, $event)">
-            <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
-          </ion-button>
         
-          <div class="card-image" [routerLink]="['/article', article.id]">
+          <div class="card-image">
             <img [src]="article.image" alt="{{article.title}}" />
           </div>
           
-          <ion-card-header [routerLink]="['/article', article.id]">
-            <ion-card-title>{{ article.title }}</ion-card-title>
-            <ion-card-subtitle>{{ article.subtitle }}</ion-card-subtitle>
-          </ion-card-header>
+          
+          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          
+          <div (click)="goToArticle(article.id)" style="cursor: pointer;">
+            <ion-card-header>
+              <ion-card-title>{{ article.title }}</ion-card-title>
+              <ion-card-subtitle>{{ article.subtitle }}</ion-card-subtitle>
+            </ion-card-header>
 
-          <ion-card-content [routerLink]="['/article', article.id]">
-            <div class="author-section">
-              <ion-avatar class="author-avatar">
-                <img [src]="article.userPhoto" alt="{{article.userName}}">
-              </ion-avatar>
-              <div class="author-info">
-                <span class="author-name">{{ article.userName }}</span>
-                <span class="publish-date">{{ article.date | date:'short' }}</span>
+            <ion-card-content>
+              <div class="author-section">
+                <ion-avatar class="author-avatar">
+                  <img [src]="article.userPhoto" alt="{{article.userName}}">
+                </ion-avatar>
+                <div class="author-info">
+                  <span class="author-name">{{ article.userName }}</span>
+                  <span class="publish-date">{{ article.date | date:'short' }}</span>
+                </div>
               </div>
-            </div>
-            
-            <p class="article-preview">{{ article.content | slice:0:80 }}...</p>
-            
-            <div class="article-stats">
-              <div class="likes">
-                <ion-icon name="heart"></ion-icon>
-                <span>{{ article.likes }}</span>
+              
+              <p class="article-preview">{{ article.content | slice:0:80 }}...</p>
+              
+              <div class="article-stats">
+                <div class="likes">
+                  <ion-icon name="heart"></ion-icon>
+                  <span>{{ article.likes }}</span>
+                </div>
               </div>
-            </div>
-          </ion-card-content>
+            </ion-card-content>
+          </div>
         </ion-card>
     </div>
   

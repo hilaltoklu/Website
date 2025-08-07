@@ -60,23 +60,46 @@ ion-header {
 
 // Makale kartları
 .article-card {
-  position: relative;
   background-color: #ffffff51;
   width: 100%;
   max-width: 300px;
-  max-height: 400px; // Maksimum yükseklik sınırı
+  max-height: 400px;
   margin: 0;
   border-radius: 4px;
-    box-shadow: 0 2px 6px #007bff7a;
+  box-shadow: 0 2px 6px #007bff7a;
   transition: all 0.3s ease;
-  cursor: pointer;
-  overflow: hidden; // Ekstra güvenlik için
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative; // Menü konumlandırması için
   
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 16px #007AFF;
+  }
+}
+
+// Kart menüsü
+.card-menu {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  
+  ion-button {
+    --color: rgba(255, 255, 255, 0.9);
+    --background: rgba(0, 0, 0, 0.5);
+    --border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    
+    ion-icon {
+      font-size: 16px;
+    }
+    
+    &:hover {
+      --background: rgba(0, 0, 0, 0.7);
+    }
   }
 }
 
@@ -125,7 +148,7 @@ ion-card-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 0; // Flex içeriğinin taşmasını önler
+  min-height: 0;
 }
 
 // Yazar bölümü
@@ -138,14 +161,14 @@ ion-card-content {
     width: 32px;
     height: 32px;
     margin-right: 10px;
-    border-radius: 50%; // Tamamen yuvarlak
-    overflow: hidden; // Taşan kısımları gizle
+    border-radius: 50%;
+    overflow: hidden;
     
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 50%; // Resmi de yuvarlak yap
+      border-radius: 50%;
     }
   }
   
@@ -273,15 +296,7 @@ ion-card-content {
   }
 }
 
-
-
-
-// Kart seçenekleri butonu (modal için)
-.options-button {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  z-index: 10;
-  --color: white;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+.three-dots-icon {
+  font-size: 18px;
+  color: #666;
 }
