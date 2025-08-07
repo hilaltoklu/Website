@@ -19,19 +19,22 @@
 
         <ion-card 
           class="article-card" 
-          *ngFor="let article of filteredArticles" 
-          [routerLink]="['/article', article.id]">
+          *ngFor="let article of filteredArticles">
+
+          <ion-button fill="clear" class="options-button" (click)="openArticleOptions(article, $event)">
+            <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+          </ion-button>
         
-          <div class="card-image">
+          <div class="card-image" [routerLink]="['/article', article.id]">
             <img [src]="article.image" alt="{{article.title}}" />
           </div>
           
-          <ion-card-header>
+          <ion-card-header [routerLink]="['/article', article.id]">
             <ion-card-title>{{ article.title }}</ion-card-title>
             <ion-card-subtitle>{{ article.subtitle }}</ion-card-subtitle>
           </ion-card-header>
 
-          <ion-card-content>
+          <ion-card-content [routerLink]="['/article', article.id]">
             <div class="author-section">
               <ion-avatar class="author-avatar">
                 <img [src]="article.userPhoto" alt="{{article.userName}}">

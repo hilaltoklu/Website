@@ -29,6 +29,8 @@
     "@ionic/angular": "^8.0.0",
     "canvas-confetti": "^1.9.3",
     "ionicons": "^7.0.0",
+    "karma-puppeteer-launcher": "^1.0.4",
+    "puppeteer": "^24.16.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

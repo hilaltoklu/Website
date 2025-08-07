@@ -60,6 +60,7 @@ ion-header {
 
 // Makale kartları
 .article-card {
+  position: relative;
   background-color: #ffffff51;
   width: 100%;
   max-width: 300px;
@@ -275,3 +276,12 @@ ion-card-content {
 
 
 
+// Kart seçenekleri butonu (modal için)
+.options-button {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 10;
+  --color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}

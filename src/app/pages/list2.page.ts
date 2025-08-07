@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { 
   IonContent, 
   IonHeader, 
@@ -20,11 +21,11 @@ import {
   IonButton,
   IonFab,
   IonFabButton,
-  IonIcon
+  IonIcon,
+  ModalController
 } from '@ionic/angular/standalone';
 import { Router, RouterModule } from '@angular/router';
-import { add, heart } from 'ionicons/icons';
-import { addIcons } from 'ionicons';
+import { add, heart, ellipsisVertical } from 'ionicons/icons';import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-list2',
@@ -61,10 +62,10 @@ export class List2Page {
   articles: any[] = [];
   segments: { value: string, label: string }[] = [];
 
-  constructor(private router: Router) {
-    addIcons({ add, heart });
+  constructor( private router: Router, private modalCtrl: ModalController )
+  {
+    addIcons({ add, heart, ellipsisVertical });
   }
-
   ionViewWillEnter() {
     this.migrateArticleCategories();
     this.loadUserInterests();
@@ -84,7 +85,8 @@ export class List2Page {
         'art': 'sanat',
         'music': 'müzik',
         'food': 'yemek',
-        'science': 'bilim'
+        'science': 'bilim',
+        'yazilarim': 'yazilarim'
       };
 
       let needsUpdate = false;
@@ -111,7 +113,7 @@ export class List2Page {
       { value: 'yemek', label: 'Yemek' },
       { value: 'bilim', label: 'Bilim' }, 
       { value: 'müzik', label: 'Müzik' },
-
+      { value: 'yazilarim', label: 'Yazılarım' }
 
     ];
 
@@ -126,6 +128,7 @@ export class List2Page {
             label: interest.charAt(0).toUpperCase() + interest.slice(1)
           }));
           this.segments = [{ value: 'all', label: 'Tüm Yazılar' }, ...interestSegments];
+          this.segments.push({ value: 'yazilarim', label: 'Yazılarım' });
         } else {
           this.segments = defaultSegments;
         }
@@ -245,15 +248,35 @@ export class List2Page {
           version: Date.now(),
           likes: 1,
           isDeletable: true
+        },
+        {
+          id: 8,
+          title: 'yazi',
+          subtitle: 'Merak, öğrenmenin ilk adımıdır.',
+          category: 'yazi',
+          content: 'Her bilimsel ilerleme bir “neden?” sorusuyla başlar. Bilim, bilinmeyeni merak edenlerin cesur yolculuğudur. Merak oldukça keşifler sonsuz olur.',
+          userName: 'as',
+          userPhoto: photoUrlFemale,
+          date: new Date(),
+          image: 'https://cdn.oggito.com/images/full/2018/7/merak.jpg',
+          version: Date.now(),
+          likes: 1,
+          isDeletable: true
         }
+
       ];
       localStorage.setItem('articles', JSON.stringify(this.articles));
     }
   }
-
-  get filteredArticles() {
+get filteredArticles() {
+    const currentUser = localStorage.getItem('currentUser');
     if (this.category === 'all') {
       return this.articles;
+    } else if (this.category === 'yazilarim') {
+      if (currentUser) {
+        return this.articles.filter(article => article.userName === currentUser.valueOf);
+      }
+      return [];
     }
     return this.articles.filter(article => article.category === this.category);
   }
@@ -261,9 +284,12 @@ export class List2Page {
   goToAdd() {
     this.router.navigate(['/add']);
   }
-   logout() {
-    sessionStorage.removeItem('currentUser');
-    this.router.navigate(['/list']);
-  }
 
+  async openArticleOptions(article: any, event: Event) {
+    event.stopPropagation(); 
+    event.preventDefault(); 
+
+    console.log('Opening options for article:', article.title);
+    
+  }
 }
