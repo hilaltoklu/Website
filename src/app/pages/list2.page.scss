@@ -79,29 +79,6 @@ ion-header {
   }
 }
 
-// Kart menüsü
-.card-menu {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 10;
-  
-  ion-button {
-    --color: rgba(255, 255, 255, 0.9);
-    --background: rgba(0, 0, 0, 0.5);
-    --border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    
-    ion-icon {
-      font-size: 16px;
-    }
-    
-    &:hover {
-      --background: rgba(0, 0, 0, 0.7);
-    }
-  }
-}
 
 // Kart görseli
 .card-image {
@@ -295,8 +272,73 @@ ion-card-content {
     padding: 6px 14px 14px 14px;
   }
 }
+.card-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 
-.three-dots-icon {
-  font-size: 18px;
-  color: #666;
+.menu-button {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #000000;
+  font-size: 25px;
+}
+
+.menu-button:hover ion-icon {
+  color: #3880ff;
+  transform: scale(1.1);
+}
+
+// düzenle - sil menüsü
+// düzenle - sil menüsü
+.custom-action-list {
+  padding: 0;
+  background: #3a21b6 !important;
+}
+
+ion-list.custom-action-list ion-item.edit-item {
+  --background: white !important;
+  --color: #2 !important;
+  --border-color: #333333 !important;
+  font-weight: 500;
+  border-bottom: 1px solid #333333;
+}
+
+ion-list.custom-action-list ion-item.delete-item {
+  --background: white !important;
+  --color: #3a21b6 !important;
+  font-weight: 500;
+}
+
+ion-list.custom-action-list ion-item.edit-item:hover,
+ion-list.custom-action-list ion-item.edit-item.ion-activated {
+  --background: #3880ff !important;
+  --color: #ffffff !important;
+}
+
+ion-list.custom-action-list ion-item.delete-item:hover,
+ion-list.custom-action-list ion-item.delete-item.ion-activated {
+  --background: #3880ff !important;
+  --color: #ffffff !important;
+}
+
+ion-list.custom-action-list ion-item.edit-item ion-icon,
+ion-list.custom-action-list ion-item.delete-item ion-icon {
+  font-size: 20px !important;
+  color: #ffffff !important;
+}
+
+ion-list.custom-action-list ion-item.edit-item ion-label,
+ion-list.custom-action-list ion-item.delete-item ion-label {
+  color: #ffffff !important;
+}
+
+ion-list.custom-action-list ion-item.edit-item:hover ion-icon,
+ion-list.custom-action-list ion-item.edit-item:hover ion-label,
+ion-list.custom-action-list ion-item.delete-item:hover ion-icon,
+ion-list.custom-action-list ion-item.delete-item:hover ion-label {
+  color: #ffffff !important;
 }

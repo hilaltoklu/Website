@@ -20,19 +20,25 @@
         <ion-card 
           class="article-card" 
           *ngFor="let article of filteredArticles">
-        
+
+
           <div class="card-image">
             <img [src]="article.image" alt="{{article.title}}" />
           </div>
-          
-          
-          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
           
           <div (click)="goToArticle(article.id)" style="cursor: pointer;">
             <ion-card-header>
               <ion-card-title>{{ article.title }}</ion-card-title>
               <ion-card-subtitle>{{ article.subtitle }}</ion-card-subtitle>
             </ion-card-header>
+
+            
+          <div class="card-menu" *ngIf="category === 'yazilarim' && isUserArticle(article)">
+  <button class="menu-button" (click)="openMenu($event, article)">
+    <ion-icon name="ellipsis-vertical"></ion-icon>
+  </button>
+</div>
+
 
             <ion-card-content>
               <div class="author-section">

@@ -1,0 +1,93 @@
+// Sayfa arka planı beyaz
+ion-content {
+  --background: #ffffff;
+}
+
+// Header arka planı ionic mavisi
+ion-header {
+  ion-toolbar {
+    --background: #3880ff;
+    --color: #ffffff;
+    
+    ion-title {
+      color: #ffffff;
+      font-weight: 600;
+    }
+    
+    ion-button {
+      --color: #ffffff;
+      --color-hover: #ffffff;
+    }
+  }
+}
+
+// Form elemanları stilleri
+ion-item {
+  --background: #ffffff;
+  --color: #000000;
+  --border-color: #e0e0e0;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  
+  ion-label {
+    --color: #3880ff;
+    font-weight: 500;
+  }
+  
+  ion-input {
+    --color: #000000;
+    --placeholder-color: #666666;
+  }
+  
+  ion-textarea {
+    --color: #000000;
+    --placeholder-color: #666666;
+  }
+  
+  ion-select {
+    --color: #000000;
+    --placeholder-color: #666666;
+  }
+}
+
+// Ana güncelle butonu
+ion-button[expand="block"] {
+  --background: #3880ff;
+  --color: #ffffff;
+  --background-hover: #2968e6;
+  --background-activated: #2968e6;
+  --border-radius: 8px;
+  height: 48px;
+  font-weight: 600;
+  font-size: 16px;
+  
+  &:hover {
+    --background: #2968e6;
+  }
+}
+
+// Select popup stilleri
+.select-interface-option {
+  color: #000000 !important;
+}
+
+.alert-wrapper {
+  --background: #ffffff;
+  
+  .alert-title {
+    color: #000000 !important;
+  }
+  
+  .alert-radio-label {
+    color: #000000 !important;
+  }
+  
+  .alert-button {
+    color: #3880ff !important;
+  }
+}
+
+// Modal stilleri
+.modal-wrapper {
+  --background: #ffffff;
+}
