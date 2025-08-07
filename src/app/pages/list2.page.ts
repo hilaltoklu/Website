@@ -29,6 +29,7 @@ import { addIcons } from 'ionicons';
 @Component({
   selector: 'app-list2',
   templateUrl: 'list2.page.html',
+  styleUrls: ['list2.page.scss'],
   standalone: true,
   imports: [
     CommonModule,

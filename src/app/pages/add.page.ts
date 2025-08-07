@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-add',
   templateUrl: 'add.page.html',
+  styleUrls: ['add.page.scss'],
   standalone: true,
   imports: [IonicModule, FormsModule],
 })
@@ -36,7 +37,7 @@ export class AddPage {
       category: this.category,
       userPhoto: photoUrl,
       userName: this.author,
-      image: 'https://www.example.com/article.jpg', // Örnek makale görseli
+      image: 'https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg',
       isDeletable: true
     };
 
