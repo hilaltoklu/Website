@@ -68,8 +68,11 @@ export const routes: Routes = [
       data: LoadingResolver
     }
   },
- 
 
+  {
+    path: 'update',
+    loadComponent: () => import('./pages/updates/update.page').then( m => m.UpdatePage)
+  },
 
 ];
 

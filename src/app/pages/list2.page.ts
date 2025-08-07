@@ -66,6 +66,7 @@ export class List2Page {
   }
 
   ionViewWillEnter() {
+    this.migrateArticleCategories();
     this.loadUserInterests();
     this.loadArticles();
   }
@@ -109,7 +110,7 @@ export class List2Page {
       { value: 'sanat', label: 'Sanat' },
       { value: 'yemek', label: 'Yemek' },
       { value: 'bilim', label: 'Bilim' }, 
-      { value: 'müzik', label: 'Müzik' }
+      { value: 'müzik', label: 'Müzik' },
 
 
     ];
