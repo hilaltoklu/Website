@@ -151,7 +151,7 @@ export class List2Page {
           id: 1,
           title: 'Ionic Framework',
           subtitle: 'Ionic Framework Nedir?',
-          category: 'ionic',
+          category: 'ion',
           content: 'Ionic, web teknolojilerini kullanarak hibrit mobil uygulamalar geliştirmek için kullanılan açık kaynaklı bir framework’tür.',
           userName: 'Ahmet Ahmet',
           userPhoto: photoUrlMale,

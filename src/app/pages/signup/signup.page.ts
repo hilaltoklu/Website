@@ -29,8 +29,8 @@ export class SignupPage {
     if (!this.username || !this.password) {
       this.triggerShakeAnimation();
       const toast = await this.toastController.create({
-        header: 'Giriş Başarısız',
-        message: 'Kullanıcı adı ve şifre alanları boş bırakılamaz.',
+        header: 'Kayıt Başarısız',
+        message: 'Kullanıcı adı veya şifre alanları boş bırakılamaz.',
         duration: 0, // Manuel olarak kapatılacak
         position: 'middle',
         cssClass: 'fail-toast',
@@ -54,7 +54,7 @@ export class SignupPage {
 
       this.triggerShakeAnimation();
       const toast = await this.toastController.create({
-        header: 'Giriş Başarısız',
+        header: 'Kayıt Başarısız',
         message: 'Bu kullanıcı adı zaten kayıtlı.',
         duration: 0, // Manuel olarak kapatılacak
         position: 'middle',

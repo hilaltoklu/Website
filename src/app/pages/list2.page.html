@@ -53,13 +53,14 @@
           </ion-card-content>
         </ion-card>
     </div>
-  </div>
+  
   
   <!-- Makale henüz yoksa gösterilecek mesaj -->
   <div *ngIf="filteredArticles.length === 0" class="no-articles">
     <ion-icon name="document-outline" class="no-articles-icon"></ion-icon>
     <p>Henüz makale bulunmuyor.</p>
     <ion-button (click)="goToAdd()" color="primary">İlk Makaleyi Ekle</ion-button>
+  </div>
   </div>
 
   <!-- Floating Action Button -->
