@@ -17,6 +17,7 @@ export class AddPage {
   subtitle: string = '';
   content: string = '';
   category: string = '';
+  image: string = '';
 
   constructor(private router: Router) {}
 
@@ -24,7 +25,7 @@ export class AddPage {
     const photoUrl = this.gender === 'female'
       ? 'https://w1.pngwing.com/pngs/386/684/png-transparent-face-icon-user-icon-design-user-profile-share-icon-avatar-black-and-white-silhouette-thumbnail.png'
       : 'https://w1.pngwing.com/pngs/386/684/png-transparent-face-icon-user-icon-design-user-profile-share-icon-avatar-black-and-white-silhouette-thumbnail.png';
-
+    const imageUrl = this.image || 'https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg';
     // Oturum açmış kullanıcıyı al
     const currentUser = sessionStorage.getItem('currentUser') || localStorage.getItem('currentUser');
     
@@ -40,7 +41,7 @@ export class AddPage {
       category: this.category,
       userPhoto: photoUrl,
       userName: currentUser || this.author, // Kullanıcı adını da ekle
-      image: 'https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg',
+      image: imageUrl,
       isDeletable: true
     };
 
@@ -49,12 +50,8 @@ export class AddPage {
     articles.push(newArticle);
     localStorage.setItem('articles', JSON.stringify(articles));
 
-    // Sayfayı listeye yönlendiriyoruz
-   if (sessionStorage.getItem('currentUser')) {
+   
       this.router.navigate(['/list2']);
-    } 
-    else {
-      this.router.navigate(['/list']);
-    }
+    
   }
 }

@@ -45,9 +45,9 @@ export class InterestsPage {
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      header: 'Limit Reached',
-      message: 'You can select a maximum of 3 interests.',
-      buttons: ['OK']
+      header: 'Limit Aşıldı',
+      message: 'En fazla 3 ilgi alanı seçebilirsiniz.',
+      buttons: ['Tamam']
     });
     await alert.present();
   }
@@ -55,7 +55,7 @@ export class InterestsPage {
   saveInterests() {
     const currentUser = localStorage.getItem('currentUser');
     if (!currentUser) {
-      console.error('No current user found to save interests for.');
+      console.error('İlgi alanlarını kaydetmek için giriş gerekli. Lütfen giriş yapın.');
       this.router.navigate(['/login']);
       return;
     }

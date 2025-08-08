@@ -217,7 +217,7 @@ export class ListPage {
     return this.articles.filter(article => article.category === this.category);
   }
 
-  goToAdd() {
-    this.router.navigate(['/add']);
+  girisYap() {
+    this.router.navigate(['/login']);
   }
 }
