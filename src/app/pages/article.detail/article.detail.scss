@@ -270,3 +270,12 @@ ion-card-content {
     padding: 6px 14px 14px 14px;
   }
 }
+
+
+ion-icon[name="heart"] {
+  color: grey;
+}
+
+ion-icon[name="heart"].red {
+  color: red;
+}

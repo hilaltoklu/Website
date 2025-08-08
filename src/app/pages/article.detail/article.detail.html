@@ -18,8 +18,8 @@
         <p>{{ article.date | date:'short' }}</p>
   <img [src]="article.image" style="width: 500px; height: 310px; object-fit: cover; margin: 10px 0;" />
         <p>{{ article.content }}</p>
-        <div style="display: flex; align-items: center;">
-          <ion-icon name="heart" style="margin-right: 5px;"></ion-icon>
+        <div style="display: flex; align-items: center; cursor: pointer;" (click)="likeArticle()">
+          <ion-icon name="heart" [class.red]="isLiked" style="margin-right: 5px;"></ion-icon>
           <p>{{ article.likes }}</p>
         </div>
        <!-- şimdilik silmeyi geçiyorum 
