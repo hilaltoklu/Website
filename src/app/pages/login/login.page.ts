@@ -54,36 +54,50 @@ export class LoginPage {
      await toast.present();
       return;
     }
+    const userDataString = localStorage.getItem(this.username);
 
-    const savedPassword = localStorage.getItem(this.username);
 
-    if (savedPassword && this.password === savedPassword) {
-      sessionStorage.setItem('currentUser', this.username);
-      
-      // Konfeti animasyonunu başlat
-      this.showConfetti();
-      
-      // Custom toast göster
-      const toast = await this.toastController.create({
-        header: 'Başarılı',
-        message: '🎉 Giriş Başarılı',
-        duration: 0, // Manuel olarak kapatılacak
-        position: 'middle',
-        cssClass: 'success-toast',
-        buttons: [
-          {
-            text: 'TAMAM',
-            role: 'cancel',
-            side: 'end',
-            handler: () => {
-              this.router.navigate(['/list2']);
+if (userDataString) {
+      const userData = JSON.parse(userDataString);
+      if (this.password === userData.password) {
+        sessionStorage.setItem('currentUser', this.username);
+        
+        // Konfeti animasyonunu başlat
+        this.showConfetti();
+        
+        // Custom toast göster
+        const toast = await this.toastController.create({
+          header: 'Başarılı',
+          message: '🎉 Giriş Başarılı',
+          duration: 0, // Manuel olarak kapatılacak
+          position: 'middle',
+          cssClass: 'success-toast',
+          buttons: [
+            {
+              text: 'TAMAM',
+              role: 'cancel',
+              side: 'end',
+              handler: () => {
+                this.router.navigate(['/list2']);
+              }
             }
-          }
-        ]
-      });
-      
-      await toast.present();
-    } else {
+          ]
+        });
+        
+        await toast.present();
+      } else {
+        this.triggerShakeAnimation();
+        const toast = await this.toastController.create({
+          header: 'Giriş Başarısız',
+          message: 'Kullanıcı adı veya şifre hatalı.',
+          duration: 0,
+          position: 'middle',
+          cssClass: 'fail-toast',
+          buttons: [{ text: 'TAMAM', role: 'cancel', handler: () => this.router.navigate(['/login']) }]
+        });
+        await toast.present();
+      }
+    }  else {
 
       this.triggerShakeAnimation();
 
