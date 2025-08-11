@@ -261,6 +261,7 @@ export class List2Page {
   }
    logout() {
     sessionStorage.removeItem('currentUser');
+    localStorage.removeItem('currentUser');
     this.router.navigate(['/list']);
   }
 
