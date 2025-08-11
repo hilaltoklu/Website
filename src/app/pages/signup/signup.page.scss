@@ -215,3 +215,24 @@
 .shake-animation {
   animation: strongShake 0.6s ease-in-out;
 }
+
+
+.custom-select .gender-select {
+  position: relative;
+
+
+.custom-select .gender-select::after {
+  content: "▼";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #010000;
+  pointer-events: none;
+}
+
+.gender-select {
+  --placeholder-opacity: 1;
+}
+
+}

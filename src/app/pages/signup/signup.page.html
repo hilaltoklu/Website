@@ -35,8 +35,25 @@
               name="password">
             </ion-input>
           </div>
+          
+          
+          
+          <div class="input-group custom-select">
+  <ion-select 
+    [(ngModel)]="gender" 
+    name="gender" 
+    placeholder="Cinsiyet Seçiniz"
+    interface="popover"
+    class="gender-select"
+    style="--placeholder-color: #666; --color: #404040;">
+    <ion-select-option value="female" style="color: #404040;">Kadın</ion-select-option>
+    <ion-select-option value="male" style="color: #404040;">Erkek</ion-select-option>
+  </ion-select>
+</div>
+          
 
-          <button type="button" class="login-btn" (click)="kayitOl()">
+
+<button type="button" class="login-btn" (click)="kayitOl()">
             Kayıt Ol
           </button>
 

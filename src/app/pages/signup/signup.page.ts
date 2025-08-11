@@ -16,6 +16,7 @@ export class SignupPage {
 
   username!: string;
   password!: string;
+  gender!: string;
 
   constructor(
     private toastController: ToastController,
@@ -26,11 +27,11 @@ export class SignupPage {
   async kayitOl() {
 
 
-    if (!this.username || !this.password) {
+    if (!this.username || !this.password || !this.gender) {
       this.triggerShakeAnimation();
       const toast = await this.toastController.create({
         header: 'Kayıt Başarısız',
-        message: 'Kullanıcı adı veya şifre alanları boş bırakılamaz.',
+        message: 'Tüm alanları doldurduğunuzdan emin olun.',
         duration: 0, // Manuel olarak kapatılacak
         position: 'middle',
         cssClass: 'fail-toast',
@@ -73,7 +74,11 @@ export class SignupPage {
       });
       await toast.present();
     } else {
-      localStorage.setItem(this.username, this.password);
+      const userData = {
+        password: this.password,
+        gender: this.gender
+      };
+      localStorage.setItem(this.username, JSON.stringify(userData));
       localStorage.setItem('currentUser', this.username);
       sessionStorage.setItem('currentUser', this.username);
       this.showConfetti();
