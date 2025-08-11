@@ -118,7 +118,7 @@ export class ListPage {
           date: new Date(),
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*nlhD6_U277a1s_VxSbH11g.jpeg',
           version: Date.now(),
-          likes: 1,
+          likes: 0,
           isDeletable: true
         },
         {
@@ -146,7 +146,7 @@ export class ListPage {
           date: new Date(),
           image: 'https://www.designpoolpatterns.com/wp-content/uploads/2023/09/Color_Wheel-01-1-scaled.jpg',
           version: Date.now(),
-          likes: 1,
+          likes: 0,
           isDeletable: true
         },
         {
@@ -160,7 +160,7 @@ export class ListPage {
           date: new Date(),
           image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
           version: Date.now(),
-          likes: 1,
+          likes: 0,
           isDeletable: true
         },
         {
@@ -174,7 +174,7 @@ export class ListPage {
           date: new Date(),
           image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop',
           version: Date.now(),
-          likes: 1,
+          likes: 0,
           isDeletable: true
         },
         {
@@ -188,7 +188,7 @@ export class ListPage {
           date: new Date(),
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*j_Vw_EmuO4Exd_PxhJtebw.png',
           version: Date.now(),
-          likes: 1,
+          likes: 0,
           isDeletable: true
         },
         {
@@ -202,7 +202,7 @@ export class ListPage {
           date: new Date(),
           image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=300&fit=crop',
           version: Date.now(),
-          likes: 1,
+          likes: 0,
           isDeletable: true
         }
       ];

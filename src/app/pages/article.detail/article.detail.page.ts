@@ -81,7 +81,6 @@ export class ArticleDetailPage implements OnInit {
 
   likeArticle() {
     if (!this.currentUser) {
-      // Handle case where user is not logged in, maybe redirect to login
       this.router.navigate(['/login']);
       return;
     }

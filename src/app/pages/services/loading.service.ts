@@ -13,7 +13,7 @@ export class LoadingService {
   async showLoading() {
     this.loading = await this.loadingController.create({
       message: 'Lütfen bekleyin...',
-      duration: 2000
+      duration: 100
     });
     await this.loading.present();
   }

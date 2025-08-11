@@ -15,7 +15,7 @@ export class LoadingResolver implements Resolve<any> {
       setTimeout(() => {
         this.loadingService.hideLoading();
         resolve(true);
-      }, 2000);
+      }, 100);
     });
   }
 }

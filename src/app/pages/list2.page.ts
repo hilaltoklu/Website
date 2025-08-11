@@ -125,7 +125,7 @@ export class List2Page {
 
     const currentUser = sessionStorage.getItem('currentUser');
     if (currentUser) {
-      const interestsJson = localStorage.getItem(`interests_${currentUser}`);
+      const interestsJson = sessionStorage.getItem(`interests_${currentUser}`);
       if (interestsJson) {
         const interests = JSON.parse(interestsJson);
         if (interests.length > 0) {

@@ -50,6 +50,7 @@ export class SignupPage {
     }
 
     const existingUser = localStorage.getItem(this.username);
+
     if (existingUser) {
 
       this.triggerShakeAnimation();
@@ -74,7 +75,8 @@ export class SignupPage {
     } else {
       localStorage.setItem(this.username, this.password);
       localStorage.setItem('currentUser', this.username);
-            this.showConfetti();
+      sessionStorage.setItem('currentUser', this.username);
+      this.showConfetti();
 
       const toast = await this.toastController.create({
         header: 'Başarılı',

@@ -60,7 +60,7 @@ export class InterestsPage {
       return;
     }
     const selectedInterests = this.interests.filter(i => i.selected).map(i => i.name.toLowerCase());
-    localStorage.setItem(`interests_${currentUser}`, JSON.stringify(selectedInterests));
+    sessionStorage.setItem(`interests_${currentUser}`, JSON.stringify(selectedInterests));
     this.router.navigate(['/list2']);
   }  
 }
