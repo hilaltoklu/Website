@@ -12,6 +12,7 @@ import {
   IonList, 
   IonButtons,
   IonCard, 
+  IonItem,
   IonCardHeader, 
   IonCardTitle, 
   IonCardSubtitle, 
@@ -22,10 +23,10 @@ import {
   IonFabButton,
   IonIcon,
   IonMenuButton,
-  IonRouterOutlet 
+  IonRouterOutlet
 } from '@ionic/angular/standalone';
 import { Router, RouterModule } from '@angular/router';
-import { add, heart, documentOutline } from 'ionicons/icons';
+import { add, heart, documentOutline, addCircleOutline, personCircleOutline, languageOutline, moonOutline, informationCircleOutline, logOutOutline, home } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { MenuComponent } from './menu.bilesen/menu.bilesen';
 
@@ -52,11 +53,14 @@ import { MenuComponent } from './menu.bilesen/menu.bilesen';
     IonCardSubtitle, 
     IonCardContent,
     IonAvatar,
+    IonItem,
+    IonContent,
     IonButton,
     IonFab,
     IonFabButton,
     IonIcon,
     IonMenuButton,
+    IonRouterOutlet,
     RouterModule,
     MenuComponent,
     IonRouterOutlet
@@ -67,7 +71,18 @@ export class ListPage {
   articles: any[] = [];
 
   constructor(private router: Router) {
-    addIcons({ add, heart, documentOutline });
+    addIcons({ 
+      add, 
+      heart, 
+      documentOutline, 
+      addCircleOutline, 
+      personCircleOutline, 
+      languageOutline, 
+      moonOutline, 
+      informationCircleOutline, 
+      logOutOutline,
+      home 
+    });
     this.loadArticles();
   }
 
