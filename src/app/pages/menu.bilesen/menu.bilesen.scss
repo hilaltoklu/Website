@@ -1,0 +1,57 @@
+ion-menu {
+  --width: 280px;
+  --background: #ffffff;      // Menü arka planı beyaz
+  --color: #2563eb;          // Menü yazı rengi mavi
+  z-index: 9999 !important;
+}
+
+// Menu'nun tüm content alanını beyaz yap
+ion-menu ion-content {
+  --background: #ffffff;      // Content arka planı beyaz
+  --color: #2563eb;
+}
+
+// List container'ını da beyaz yap
+ion-menu ion-list {
+  background: #ffffff;        // List arka planı beyaz
+  padding: 0;
+  margin: 0;
+}
+
+ion-item {
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  --background: #ffffff;      // Item arka planı beyaz
+  --color: #2563eb;          // Item yazı rengi mavi
+  --border-color: #e5e7eb;   // Çizgi rengi açık gri
+  
+  ion-icon {
+    margin-right: 16px;
+    color: #2563eb;          // İkonlar mavi
+    background-color: transparent;
+  }
+  
+  ion-label {
+    font-weight: 500;
+    color: #494949;          // Label yazıları mavi
+  }
+  
+  // Hover efekti
+  &:hover {
+    --background: #eff6ff;   // Hover'da açık mavi
+  }
+}
+
+ion-toolbar {
+  --background: #2563eb;     // Başlık arka planı mavi
+  --color: #ffffff;          // Başlık yazısı beyaz
+}
+
+// Menu'nun content üzerine çıkmasını engelle
+:host {
+  pointer-events: none;
+}
+
+ion-menu {
+  pointer-events: auto;
+}

@@ -20,11 +20,14 @@ import {
   IonButton,
   IonFab,
   IonFabButton,
-  IonIcon
+  IonIcon,
+  IonMenuButton,
+  IonRouterOutlet 
 } from '@ionic/angular/standalone';
 import { Router, RouterModule } from '@angular/router';
 import { add, heart, documentOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
+import { MenuComponent } from './menu.bilesen/menu.bilesen';
 
 @Component({
   selector: 'app-list',
@@ -53,7 +56,10 @@ import { addIcons } from 'ionicons';
     IonFab,
     IonFabButton,
     IonIcon,
-    RouterModule
+    IonMenuButton,
+    RouterModule,
+    MenuComponent,
+    IonRouterOutlet
   ]
 })
 export class ListPage {

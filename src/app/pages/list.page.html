@@ -1,89 +1,94 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button fill="outline" routerLink="/login">Giriş Yap</ion-button>
-    </ion-buttons>
+<!-- Menu component'i çağırıyoruz -->
+<app-menu></app-menu>
 
-    <ion-segment [(ngModel)]="category">
-      <ion-segment-button value="all">
-        <ion-label>Tüm Yazılar</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="art">
-        <ion-label>Sanat</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="music">
-        <ion-label>Müzik</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="food">
-        <ion-label>Yemek</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="science">
-        <ion-label>Bilim</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="ion">
-        <ion-label>İonic</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="flutter">
-        <ion-label>Flutter</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="tek">
-        <ion-label>Teknoloji</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-</ion-header>
+<!-- Ana içerik ion-router-outlet ile sarılmalı -->
+<ion-router-outlet id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <!-- Menu button sol tarafta ekleniyor -->
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
 
-<ion-content>
-  <div class="content-container">
-    <div class="articles-wrapper" *ngIf="filteredArticles.length > 0">
-      <ion-card 
-        class="article-card" 
-        *ngFor="let article of filteredArticles" 
-        [routerLink]="['/article', article.id]">
-        
-        <div class="card-image">
-          <img [src]="article.image" alt="{{article.title}}" />
-        </div>
-        
-        <ion-card-header>
-          <ion-card-title>{{ article.title }}</ion-card-title>
-          <ion-card-subtitle>{{ article.subtitle }}</ion-card-subtitle>
-        </ion-card-header>
-        
-        <ion-card-content>
-          <div class="author-section">
-            <ion-avatar class="author-avatar">
-              <img [src]="article.userPhoto" alt="{{article.userName}}">
-            </ion-avatar>
-            <div class="author-info">
-              <span class="author-name">{{ article.userName }}</span>
-              <span class="publish-date">{{ article.date | date:'short' }}</span>
-            </div>
+      <ion-buttons slot="end">
+        <ion-button fill="outline" routerLink="/login">Giriş Yap</ion-button>
+      </ion-buttons>
+
+      <ion-segment [(ngModel)]="category">
+        <ion-segment-button value="all">
+          <ion-label>Tüm Yazılar</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="art">
+          <ion-label>Sanat</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="music">
+          <ion-label>Müzik</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="food">
+          <ion-label>Yemek</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="science">
+          <ion-label>Bilim</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="ion">
+          <ion-label>İonic</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="flutter">
+          <ion-label>Flutter</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="tek">
+          <ion-label>Teknoloji</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div class="content-container">
+      <div class="articles-wrapper" *ngIf="filteredArticles.length > 0">
+        <ion-card 
+          class="article-card" 
+          *ngFor="let article of filteredArticles" 
+          [routerLink]="['/article', article.id]">
+          
+          <div class="card-image">
+            <img [src]="article.image" alt="{{article.title}}" />
           </div>
           
-          <p class="article-preview">{{ article.content | slice:0:80 }}...</p>
+          <ion-card-header>
+            <ion-card-title>{{ article.title }}</ion-card-title>
+            <ion-card-subtitle>{{ article.subtitle }}</ion-card-subtitle>
+          </ion-card-header>
           
-          <div class="article-stats">
-            <div class="likes">
-              <ion-icon name="heart"></ion-icon>
-              <span>{{ article.likes }}</span>
+          <ion-card-content>
+            <div class="author-section">
+              <ion-avatar class="author-avatar">
+                <img [src]="article.userPhoto" alt="{{article.userName}}">
+              </ion-avatar>
+              <div class="author-info">
+                <span class="author-name">{{ article.userName }}</span>
+                <span class="publish-date">{{ article.date | date:'short' }}</span>
+              </div>
             </div>
-          </div>
-        </ion-card-content>
-      </ion-card>
+            
+            <p class="article-preview">{{ article.content | slice:0:80 }}...</p>
+            
+            <div class="article-stats">
+              <div class="likes">
+                <ion-icon name="heart"></ion-icon>
+                <span>{{ article.likes }}</span>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <!-- Makale henüz yoksa gösterilecek mesaj -->
+      <div *ngIf="filteredArticles.length === 0" class="no-articles">
+        <ion-icon name="document-outline" class="no-articles-icon"></ion-icon>
+        <p>Henüz makale bulunmuyor.</p>
+        <ion-button (click)="girisYap()" color="primary">İlk Makaleyi Ekle</ion-button>
+      </div>
     </div>
-
-    <!-- Makale henüz yoksa gösterilecek mesaj -->
-    <div *ngIf="filteredArticles.length === 0" class="no-articles">
-      <ion-icon name="document-outline" class="no-articles-icon"></ion-icon>
-      <p>Henüz makale bulunmuyor.</p>
-      <ion-button (click)="girisYap()" color="primary">İlk Makaleyi Ekle</ion-button>
-    </div>
-  </div>
-
- 
-</ion-content>
-
-
-
-
+  </ion-content>
+</ion-router-outlet>
