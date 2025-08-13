@@ -1,34 +1,34 @@
 //toolbar için
 ion-header {
-  background-color: white;
+  background-color: var(--toolbar-background);
   
   ion-toolbar {
-    background-color: white;
-    color: #333333;
-    --background: white;
-    --color: #333333;
+    background-color: var(--toolbar-background);
+    color: var(--toolbar-text);
+    --background: var(--toolbar-background);
+    --color: var(--toolbar-text);
     
     ion-title {
-      color: #333333;
+      color: var(--text-primary);
       font-weight: 600;
     }
     
     ion-button {
-      --color: #007AFF;
+      --color: var(--button-primary);
       --background: transparent;
-      --background-hover: rgba(0, 122, 255, 0.1);
+      --background-hover: var(--segment-button-active);
     }
   }
   
   ion-segment {
-    background-color: white;
-    --background: white;
+    background-color: var(--segment-background);
+    --background: var(--segment-background);
     
     ion-segment-button {
-      --color: #666666;
-      --color-checked: #007AFF;
-      --background: white;
-      --background-checked: rgba(0, 122, 255, 0.1);
+      --color: var(--text-secondary);
+      --color-checked: var(--button-primary);
+      --background: var(--segment-background);
+      --background-checked: var(--segment-button-active);
       --border-radius: 8px;
       font-size: 14px;
       
@@ -41,12 +41,19 @@ ion-header {
 
 // Ana container
 .content-container {
+  background-color: var(--background-primary);
   padding: 20px;
   display: flex;
   justify-content: center;
   min-height: 100%;
 }
 
+// Ion-content için tema desteği
+ion-content {
+  --background: var(--background-primary) !important;
+  background-color: var(--background-primary) !important;
+  color: var(--text-primary);
+}
 
 // Makale wrapper'ı
 .articles-wrapper {
@@ -60,25 +67,25 @@ ion-header {
 
 // Makale kartları
 .article-card {
-  background-color: #ffffff51;
+  background-color: var(--card-background);
   width: 100%;
   max-width: 300px;
   max-height: 400px;
   margin: 0;
   border-radius: 4px;
-  box-shadow: 0 2px 6px #007bff7a;
+  box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative; // Menü konumlandırması için
+  border: 1px solid var(--border-color);
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px #007AFF;
+    box-shadow: 0 4px 16px var(--button-primary);
   }
 }
-
 
 // Kart görseli
 .card-image {
@@ -102,24 +109,27 @@ ion-header {
 // Kart başlığı
 ion-card-header {
   padding: 12px 16px 8px 16px;
-  background-color: #ffffff;
+  background-color: var(--card-background);
+  
   ion-card-title {
     font-size: 16px;
     font-weight: 600;
     line-height: 1.4;
     margin-bottom: 4px;
-    color: var(--ion-color-light);
+    color: var(--text-primary);
   }
   
   ion-card-subtitle {
     font-size: 14px;
-    color: #0f01017a;
+    color: var(--text-secondary);
     line-height: 1.3;
   }
 }
 
 // Kart içeriği
 ion-card-content {
+  background-color: var(--card-background);
+  color: var(--text-primary);
   padding: 8px 16px 16px 16px;
   flex: 1;
   display: flex;
@@ -140,6 +150,7 @@ ion-card-content {
     margin-right: 10px;
     border-radius: 50%;
     overflow: hidden;
+    border: 2px solid var(--border-color);
     
     img {
       width: 100%;
@@ -156,13 +167,13 @@ ion-card-content {
     .author-name {
       font-size: 13px;
       font-weight: 500;
-      color: var(--ion-color-light);
+      color: var(--text-primary);
       line-height: 1.2;
     }
     
     .publish-date {
       font-size: 11px;
-      color: var(--ion-color-medium);
+      color: var(--text-secondary);
       line-height: 1.2;
     }
   }
@@ -171,7 +182,7 @@ ion-card-content {
 // Makale önizlemesi
 .article-preview {
   font-size: 13px;
-  color: var(--ion-color-step-600);
+  color: var(--text-secondary);
   line-height: 1.4;
   margin-bottom: 12px;
 }
@@ -188,12 +199,12 @@ ion-card-content {
     
     ion-icon {
       font-size: 16px;
-      color: var(--ion-color-danger);
+      color: var(--danger-color);
     }
     
     span {
       font-size: 13px;
-      color: var(--ion-color-medium);
+      color: var(--text-secondary);
       font-weight: 500;
     }
   }
@@ -207,17 +218,24 @@ ion-card-content {
   justify-content: center;
   text-align: center;
   padding: 40px 20px;
+  background-color: var(--background-primary);
   
   .no-articles-icon {
     font-size: 64px;
-    color: var(--ion-color-medium);
+    color: var(--text-tertiary);
     margin-bottom: 16px;
   }
   
   p {
     font-size: 18px;
-    color: var(--ion-color-medium);
+    color: var(--text-secondary);
     margin-bottom: 24px;
+  }
+  
+  ion-button {
+    --background: var(--button-primary);
+    --color: white;
+    --background-hover: var(--button-primary-hover);
   }
 }
   
@@ -272,6 +290,7 @@ ion-card-content {
     padding: 6px 14px 14px 14px;
   }
 }
+
 .card-menu {
   position: absolute;
   top: 10px;
@@ -283,57 +302,56 @@ ion-card-content {
   border: none;
   padding: 4px;
   cursor: pointer;
-  color: #000000;
+  color: var(--text-primary);
   font-size: 25px;
+  
+  &:hover ion-icon {
+    color: var(--button-primary);
+    transform: scale(1.1);
+  }
 }
 
-.menu-button:hover ion-icon {
-  color: #3880ff;
-  transform: scale(1.1);
-}
-
-// düzenle - sil menüsü
 // düzenle - sil menüsü
 .custom-action-list {
   padding: 0;
-  background: #3a21b6 !important;
+  background: var(--card-background) !important;
 }
 
 ion-list.custom-action-list ion-item.edit-item {
-  --background: white !important;
-  --color: #2 !important;
-  --border-color: #333333 !important;
+  --background: var(--card-background) !important;
+  --color: var(--text-primary) !important;
+  --border-color: var(--border-color) !important;
   font-weight: 500;
-  border-bottom: 1px solid #333333;
+  border-bottom: 1px solid var(--border-color);
 }
 
 ion-list.custom-action-list ion-item.delete-item {
-  --background: white !important;
-  --color: #3a21b6 !important;
+  --background: var(--card-background) !important;
+  --color: var(--text-primary) !important;
   font-weight: 500;
 }
 
 ion-list.custom-action-list ion-item.edit-item:hover,
 ion-list.custom-action-list ion-item.edit-item.ion-activated {
-  --background: #3880ff !important;
+  --background: var(--button-primary) !important;
   --color: #ffffff !important;
 }
 
 ion-list.custom-action-list ion-item.delete-item:hover,
 ion-list.custom-action-list ion-item.delete-item.ion-activated {
-  --background: #3880ff !important;
+  --background: var(--button-primary) !important;
   --color: #ffffff !important;
 }
 
 ion-list.custom-action-list ion-item.edit-item ion-icon,
 ion-list.custom-action-list ion-item.delete-item ion-icon {
   font-size: 20px !important;
-  color: #ffffff !important;
+  color: var(--text-primary) !important;
 }
 
 ion-list.custom-action-list ion-item.edit-item ion-label,
 ion-list.custom-action-list ion-item.delete-item ion-label {
-  color: #ffffff !important;
+  color: var(--text-primary) !important;
 }
 
 ion-list.custom-action-list ion-item.edit-item:hover ion-icon,
@@ -341,4 +359,91 @@ ion-list.custom-action-list ion-item.edit-item:hover ion-label,
 ion-list.custom-action-list ion-item.delete-item:hover ion-icon,
 ion-list.custom-action-list ion-item.delete-item:hover ion-label {
   color: #ffffff !important;
+}
+
+// Özel tema geçişleri
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+// Koyu tema için özel ayarlamalar
+body.dark-theme {
+  .article-card {
+    &:hover {
+      box-shadow: 0 4px 16px rgba(76, 141, 255, 0.3);
+    }
+  }
+  
+  .author-avatar {
+    border-color: var(--border-color) !important;
+  }
+  
+  .menu-button {
+    color: var(--text-primary) !important;
+  }
+}
+
+// Floating Action Button stilleri
+ion-fab {
+  ion-fab-button {
+    --background: var(--button-primary);
+    --color: white;
+    --background-hover: var(--button-primary-hover);
+    --background-activated: var(--button-primary-hover);
+    --box-shadow: 0 4px 16px rgba(56, 128, 255, 0.3);
+    width: 56px;
+    height: 56px;
+    
+    &:hover {
+      --box-shadow: 0 6px 20px rgba(56, 128, 255, 0.4);
+      transform: scale(1.05);
+    }
+    
+    ion-icon {
+      font-size: 24px;
+    }
+  }
+  
+  // FAB konumlandırması - daha yukarıda olsun
+  &[vertical="bottom"] {
+    bottom: 80px !important; // Normal 16px yerine 80px
+  }
+  
+  &[horizontal="end"] {
+    right: 16px !important;
+  }
+}
+
+// Koyu tema için FAB stilleri
+body.dark-theme {
+  ion-fab ion-fab-button {
+    --background: var(--button-primary);
+    --box-shadow: 0 4px 16px rgba(76, 141, 255, 0.4);
+    
+    &:hover {
+      --box-shadow: 0 6px 20px rgba(76, 141, 255, 0.5);
+    }
+  }
+}
+
+// Açık tema için özel ayarlamalar
+body.light-theme {
+  .article-card {
+    &:hover {
+      box-shadow: 0 4px 16px rgba(56, 128, 255, 0.3);
+    }
+  }
+  
+  .menu-button {
+    color: var(--text-primary) !important;
+  }
+  
+  ion-fab ion-fab-button {
+    --background: var(--button-primary);
+    --box-shadow: 0 4px 16px rgba(56, 128, 255, 0.3);
+    
+    &:hover {
+      --box-shadow: 0 6px 20px rgba(56, 128, 255, 0.4);
+    }
+  }
 }

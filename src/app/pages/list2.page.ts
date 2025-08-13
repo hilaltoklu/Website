@@ -22,13 +22,17 @@ import {
   IonFab,
   IonFabButton,
   IonIcon,
+  IonMenuButton,
+  IonRouterOutlet,
   PopoverController,
   ModalController
 } from '@ionic/angular/standalone';
 import { Router, RouterModule } from '@angular/router';
-import { add, heart, ellipsisVertical, createOutline, trashOutline } from 'ionicons/icons';
+import { add, heart, ellipsisVertical, createOutline, trashOutline, documentOutline, home, contrast, sunny } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { UpdatePage } from 'src/app/pages/updates/update.page';
+import { MenuComponent } from './menu.bilesen/menu.bilesen';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-list2',
@@ -58,7 +62,10 @@ import { UpdatePage } from 'src/app/pages/updates/update.page';
     IonFab,
     IonFabButton,
     IonIcon,
-    RouterModule
+    IonMenuButton,
+    IonRouterOutlet,
+    RouterModule,
+    MenuComponent
   ]
 })
 export class List2Page {
@@ -69,15 +76,33 @@ export class List2Page {
   constructor(
     private router: Router,
     private popoverController: PopoverController,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private themeService: ThemeService
   ) {
-    addIcons({ add, heart, ellipsisVertical, createOutline, trashOutline });
+    addIcons({ 
+      add, 
+      heart, 
+      ellipsisVertical, 
+      createOutline, 
+      trashOutline, 
+      documentOutline,
+      home,
+      contrast,
+      sunny
+    });
   }
 
   ionViewWillEnter() {
     this.migrateArticleCategories();
     this.loadUserInterests();
     this.loadArticles();
+  }
+
+  // Test tema butonu
+  testTheme() {
+    console.log('Theme test button clicked');
+    this.themeService.debugCurrentTheme();
+    this.themeService.toggleTheme();
   }
 
   // localde tutulan makalelerin kategorilerini güncelle
