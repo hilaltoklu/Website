@@ -1,112 +1,249 @@
 .login-content {
-  --background: #ffffff;
+  --background: var(--background-primary);
   height: 100vh;
   padding: 0;
+  background-color: var(--background-primary);
 }
 
 .login-container {
   display: flex;
   height: 100vh;
   font-family: Arial, sans-serif;
+  background-color: var(--background-primary);
 }
 
-/* Sol taraf - Mavi arka plan */
+/* Sol taraf - Mavi arka plan (her zaman aynı) */
 .left-section {
   flex: 1;
-  background-color: #3880ff;
+  background: linear-gradient(135deg, var(--button-primary) 0%, var(--button-primary-hover) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px;
   color: white;
+  position: relative;
+
+  // Subtle pattern overlay for visual depth
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
 }
 
 .left-content {
   text-align: center;
   max-width: 400px;
-}
-.logo {
-  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
 }
 
-.logo ion-icon {
-  font-size: 50px;
-  color: white;
+.logo {
+  margin-bottom: 30px;
+
+  ion-icon {
+    font-size: 50px;
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
 }
 
 .left-content h1 {
   font-size: 32px;
   margin-bottom: 20px;
-  font-weight: normal;
+  font-weight: 300;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.left-content h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .left-content p {
   font-size: 16px;
   line-height: 1.6;
   opacity: 0.9;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-/* Sağ taraf - Beyaz zemin */
+/* Sağ taraf - Tema uyumlu arka plan */
 .right-section {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px;
-  background-color: white;
+  background-color: var(--background-primary);
+  border-left: 1px solid var(--border-color);
 }
 
 .login-form {
   width: 100%;
   max-width: 400px;
+  background-color: var(--card-background);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
 }
 
 .login-form h2 {
   font-size: 28px;
   margin-bottom: 30px;
-  color: #333;
+  color: var(--text-primary);
   text-align: center;
-  font-weight: normal;
+  font-weight: 600;
+}
+
+body.light-theme .login-form h2 {
+  color: var(--ion-color-tint) !important; 
 }
 
 .input-group {
   margin-bottom: 20px;
-  
+
   ion-input {
-    --background: #ffffff;
-    --border-radius: 6px;
+    --background: var(--input-background);
+    --border-radius: 8px;
     --padding: 15px;
-    --color: #3880ff;
-    --placeholder-color: #000000;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    --color: var(--text-primary);
+    --placeholder-color: var(--text-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus,
+    &.ion-focused {
+      border-color: var(--button-primary);
+      box-shadow: 0 0 0 3px rgba(56, 128, 255, 0.1);
+    }
   }
 }
 
+// Custom input styling - Açık gri çerçeveler
+.custom-input {
+  --background: var(--input-background);
+  --border-radius: 8px;
+  --padding: 15px;
+  --color: var(--text-primary);
+  --placeholder-color: var(--text-secondary);
+  border: 2px solid #e5e7eb !important; // Çok açık gri
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus,
+  &.ion-focused {
+    border-color: var(--ion-color-tint) !important; 
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1) !important;
+  }
+
+  &:hover {
+    border-color: #d1d5db !important; // Hover'da biraz koyu gri
+  }
+}
+
+.custom-select-input {
+  --background: var(--input-background);
+  --color: var(--text-primary);
+  --placeholder-color: var(--text-secondary);
+  --placeholder-opacity: 1;
+  border: 2px solid #e5e7eb !important; // Çok açık gri
+  border-radius: 8px;
+  padding: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus,
+  &.ion-focused {
+    border-color: var(--ion-color-tint) !important; 
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1) !important;
+  }
+
+  &:hover {
+    border-color: #d1d5db !important; // Hover'da biraz koyu gri
+  }
+}
+
+// Custom select styling
+.custom-select {
+  position: relative;
+
+  .gender-select {
+    --background: var(--input-background);
+    --color: var(--text-primary);
+    --placeholder-color: var(--text-secondary);
+    --placeholder-opacity: 1;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus,
+    &.ion-focused {
+      border-color: var(--button-primary);
+      box-shadow: 0 0 0 3px rgba(56, 128, 255, 0.1);
+    }
+
+    // Select options styling
+    ion-select-option {
+      --color: var(--text-primary);
+      --background: var(--card-background);
+    }
+  }
+}
 
 .login-btn {
   width: 100%;
-  background-color: #3880ff;
+  background: linear-gradient(135deg, var(--button-primary) 0%, var(--button-primary-hover) 100%);
   color: white;
   border: none;
   padding: 15px;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
   margin-bottom: 20px;
   font-family: Arial, sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(56, 128, 255, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(56, 128, 255, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 .signup-link {
   text-align: center;
   font-size: 14px;
-  color: #666;
-  
+  color: var(--text-secondary);
+
+  span {
+    color: var(--text-secondary);
+  }
+
   a {
-    color: #2C3E50;
+    color: var(--button-primary);
     text-decoration: none;
-    
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
     &:hover {
+      color: var(--button-primary-hover);
       text-decoration: underline;
     }
   }
@@ -117,51 +254,55 @@
   .login-container {
     flex-direction: column;
   }
-  
+
   .left-section {
     flex: none;
-    min-height: 300px;
+    min-height: 250px;
     padding: 30px 20px;
   }
-  
+
   .left-content h1 {
     font-size: 24px;
   }
-  
+
+  .left-content h2 {
+    font-size: 16px;
+  }
+
   .left-content p {
     font-size: 14px;
   }
-  
+
   .right-section {
     flex: 1;
     padding: 30px 20px;
+    border-left: none;
+    border-top: 1px solid var(--border-color);
   }
-  
+
   .login-form {
     max-width: none;
+    padding: 20px;
   }
-  
+
   .login-form h2 {
     font-size: 24px;
     margin-bottom: 25px;
   }
 }
 
-
-///// kutlama efekti için : 
-/// 
-// Toast stilleri kullna 
+// Toast stilleri - Başarılı kayıt
 :host ::ng-deep .success-toast {
-  --background: #2d2d2d !important;
+  --background: var(--success-color) !important;
   --color: #ffffff !important;
   --border-radius: 16px !important;
-  --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
-  
+  --box-shadow: 0 8px 32px rgba(40, 167, 69, 0.3) !important;
+
   .toast-wrapper {
-    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%) !important;
-    border: 1px solid #404040;
+    background: linear-gradient(135deg, var(--success-color) 0%, #20c997 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    
+
     .toast-message {
       font-size: 18px !important;
       font-weight: 600 !important;
@@ -169,24 +310,60 @@
       color: #ffffff !important;
       padding: 8px 0 !important;
     }
-    
+
     .toast-button {
-      --color: #4ecdc4 !important;
-      --background: transparent !important;
+      --color: #ffffff !important;
+      --background: rgba(255, 255, 255, 0.2) !important;
       font-weight: 700 !important;
       font-size: 14px !important;
       letter-spacing: 0.5px !important;
       border-radius: 8px !important;
       margin: 0 8px 8px 0 !important;
-      
+
       &:hover {
-        --background: rgba(78, 205, 196, 0.1) !important;
+        --background: rgba(255, 255, 255, 0.3) !important;
       }
     }
   }
 }
 
-// confetti animasyonu
+// Toast stilleri - Hata
+:host ::ng-deep .fail-toast {
+  --background: var(--danger-color) !important;
+  --color: #ffffff !important;
+  --border-radius: 16px !important;
+  --box-shadow: 0 8px 32px rgba(220, 53, 69, 0.3) !important;
+
+  .toast-wrapper {
+    background: linear-gradient(135deg, var(--danger-color) 0%, #e74c3c 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+
+    .toast-message {
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      text-align: center !important;
+      color: #ffffff !important;
+      padding: 8px 0 !important;
+    }
+
+    .toast-button {
+      --color: #ffffff !important;
+      --background: rgba(255, 255, 255, 0.2) !important;
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      letter-spacing: 0.5px !important;
+      border-radius: 8px !important;
+      margin: 0 8px 8px 0 !important;
+
+      &:hover {
+        --background: rgba(255, 255, 255, 0.3) !important;
+      }
+    }
+  }
+}
+
+// Confetti animasyonu
 @keyframes slideInScale {
   0% {
     transform: translateY(-50px) scale(0.8);
@@ -202,10 +379,7 @@
   animation: slideInScale 0.3s ease-out !important;
 }
 
-
-
 // Shake animasyonu
-
 @keyframes strongShake {
   0%, 100% { transform: translateX(0); }
   10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
@@ -216,23 +390,109 @@
   animation: strongShake 0.6s ease-in-out;
 }
 
-
-.custom-select .gender-select {
-  position: relative;
-
-
-.custom-select .gender-select::after {
-  content: "▼";
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #010000;
-  pointer-events: none;
+// Smooth tema geçişleri
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.gender-select {
-  --placeholder-opacity: 1;
+// Koyu tema için özel ayarlamalar
+body.dark-theme {
+  .login-btn {
+    box-shadow: 0 4px 12px rgba(76, 141, 255, 0.4);
+
+    &:hover {
+      box-shadow: 0 6px 20px rgba(76, 141, 255, 0.5);
+    }
+  }
+
+  .login-form {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  // Select popover styling for dark theme
+  .select-interface-popover {
+    --background: var(--card-background);
+    --color: var(--text-primary);
+  }
 }
 
+/* ------- GENEL Select Popover Varsayılanları ------- */
+:host ::ng-deep .select-interface-popover {
+  --background: var(--card-background);
+  --color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+
+  .select-interface-option {
+    --background: var(--card-background);
+    --color: var(--text-primary);
+
+    &:hover {
+      --background: var(--menu-item-hover);
+    }
+
+    &.select-interface-option-selected {
+      /* Not: Açık tema bunu override ediyor */
+      --background: var(--button-primary);
+      --color: white;
+    }
+  }
+}
+
+/* ====== AÇIK TEMA: Ion Select Popover düzeltmeleri ====== */
+body.light-theme :host ::ng-deep .select-interface-popover {
+  --background: #ffffff !important;
+  --color: #111827 !important;
+  --ion-background-color: #ffffff !important; /* üst-alt şeritleri beyazlar */
+  --ion-text-color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 10px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08) !important;
+}
+
+/* Popover içi yüzeyleri de beyazla */
+body.light-theme :host ::ng-deep .select-interface-popover ion-content,
+body.light-theme :host ::ng-deep .select-interface-popover ion-list {
+  --background: #ffffff !important;
+  background: #ffffff !important;
+  --ion-item-background: #ffffff !important;
+}
+
+/* Normal option görünümü */
+body.light-theme :host ::ng-deep .select-interface-popover .select-interface-option {
+  --background: #ffffff !important;
+  --color: #111827 !important;
+  border-radius: 6px;
+  margin: 2px 8px;
+}
+
+/* Hover: koyu mor yerine açık gri */
+body.light-theme :host ::ng-deep .select-interface-popover .select-interface-option:hover {
+  --background: #f3f4f6 !important; /* açık gri */
+}
+
+/* Seçili option: koyu yerine soft highlight */
+body.light-theme :host ::ng-deep .select-interface-popover
+  .select-interface-option.select-interface-option-selected {
+  --background: #eef2ff !important; /* çok açık lila/mavi */
+  --color: #111827 !important;
+  font-weight: 600;
+}
+
+/* Seçim kutusunun kendisi (kapalıyken) */
+body.light-theme .custom-select-input,
+body.light-theme .custom-select .gender-select {
+  --background: #ffffff;
+  --color: #111827;
+  border: 2px solid #e5e7eb !important;
+}
+
+/* Focus/hover kenarlığı soft kalsın */
+body.light-theme .custom-select-input:focus,
+body.light-theme .custom-select-input.ion-focused,
+body.light-theme .custom-select .gender-select:focus,
+body.light-theme .custom-select .gender-select.ion-focused {
+  border-color: var(--ion-color-tint) !important;
+  box-shadow: 0 0 0 3px rgba(236,72,153,.1) !important;
 }

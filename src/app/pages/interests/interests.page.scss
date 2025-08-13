@@ -1,5 +1,19 @@
-text {
-  font-size: 16px;
-  color: #333;
-  padding: 16px;
+/* Karanlık modda SEÇİLEN öğeye beyaz çerçeve */
+body.dark-theme .interests-container ion-item.selected::part(native) {
+  border: 1.5px solid #ffffff;   /* beyaz çerçeve */
+  border-radius: 8px;            /* köşeleri yuvarla (istersen) */
+}
+
+/* Çift çizgiyi önlemek için item’ın default iç çizgilerini kapat */
+body.dark-theme .interests-container ion-item {
+  --inner-border-width: 0;
+  --border-color: transparent;
+}
+
+/* İstersen mavi vurgu da kalsın */
+body.dark-theme .interests-container ion-item.selected {
+  --background: rgba(99,102,241,0.15); /* soft mavi arka plan */
+  border-left: 4px solid #6366f1;      /* sol vurgu (isteğe bağlı) */
+  /* küçük bir “lift” efekti istersen: */
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.08);
 }

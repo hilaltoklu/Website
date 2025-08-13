@@ -1,142 +1,133 @@
+/* ================== MENU GENEL ================== */
 ion-menu {
   --width: 280px;
-  --background: #ffffff;
-  --color: #2563eb;
+  --background: var(--menu-bg, #ffffff);
+  --color: var(--menu-color, #2563eb);
   z-index: 9999 !important;
 }
 
-// Menu'nun tüm content alanını beyaz yap
 ion-menu ion-content {
-  --background: #ffffff;
-  --color: #2563eb;
+  --background: var(--menu-bg, #ffffff);
+  --color: var(--menu-color, #2563eb);
 }
 
-// List container'ını da beyaz yap
 ion-menu ion-list {
-  background: #ffffff;
+  background: var(--menu-bg, #ffffff);
   padding: 0;
   margin: 0;
 }
 
+/* ================== MENU ITEM ================== */
 ion-item {
   --padding-start: 16px;
   --inner-padding-end: 16px;
-  --background: #ffffff;
-  --color: #2563eb;
+  --background: var(--item-bg, #ffffff);
+  --color: var(--item-color, #2563eb);
   --border-color: #e5e7eb;
-  margin-bottom: 4px;
+  margin: 4px 8px;
   border-radius: 8px;
-  margin-left: 8px;
-  margin-right: 8px;
   transition: all 0.3s ease;
-  
+
   ion-icon {
     margin-right: 16px;
-    color: #2563eb;
+    color: var(--icon-color, #2563eb);
     background-color: transparent;
     font-size: 20px;
     width: 20px;
     height: 20px;
+    transition: all 0.3s ease;
   }
-  
+
   ion-label {
     font-weight: 500;
-    color: #374151;
+    color: var(--label-color, #374151);
     font-size: 15px;
+    transition: all 0.3s ease;
   }
-  
-  // Hover efekti
+
   &:hover {
-    --background: #eff6ff;
+    --background: var(--hover-bg, #eff6ff);
     transform: translateX(4px);
-    
+
     ion-icon {
-      color: #1d4ed8;
+      color: var(--hover-icon, #1d4ed8);
       transform: scale(1.1);
     }
-    
+
     ion-label {
-      color: #1d4ed8;
+      color: var(--hover-label, #1d4ed8);
       font-weight: 600;
     }
   }
 
-  // Active/pressed efekti
   &:active {
-    --background: #dbeafe;
+    --background: var(--active-bg, #dbeafe);
     transform: scale(0.98);
   }
 }
 
-// Specific icon colors for different menu items
-ion-item:nth-child(1) ion-icon { color: #659ef8; } 
-ion-item:nth-child(4) ion-icon { color: #659ef8; } 
-ion-item:nth-child(3) ion-icon { color: #659ef8; } 
-ion-item:nth-child(2) ion-icon { color: #659ef8; } 
+/* Özel ikon renkleri */
+ion-item:nth-child(1) ion-icon,
+ion-item:nth-child(2) ion-icon,
+ion-item:nth-child(3) ion-icon,
+ion-item:nth-child(4) ion-icon {
+  color: var(--icon-color, #659ef8);
+}
 
-
+/* ================== TOOLBAR ================== */
 ion-toolbar {
-  --background: #2563eb;
-  --color: #ffffff;
-  
+  --background: var(--toolbar-bg, #2563eb);
+  --color: var(--toolbar-color, #ffffff);
+
   ion-title {
     font-weight: 600;
     font-size: 18px;
   }
 }
 
-// Menu'nun content üzerine çıkmasını engelle
-:host {
-  pointer-events: none;
-}
-
-ion-menu {
-  pointer-events: auto;
-}
-
-                                  // Alert stilleri için global düzenlemeler
+/* ================== ALERT ================== */
 :global(.alert-wrapper) {
-  --background: #ffffff !important;
+  --background: var(--menu-bg, #ffffff) !important;
   border-radius: 12px !important;
-  
+
   .alert-head {
     padding-bottom: 8px !important;
-    
+
     .alert-title {
-      color: #374151 !important;
+      color: var(--label-color, #374151) !important;
       font-weight: 600 !important;
       font-size: 18px !important;
     }
   }
-  
+
   .alert-message {
     color: #6b7280 !important;
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  
+
   .alert-radio-group {
     .alert-radio-label {
-      color: #374151 !important;
+      color: var(--label-color, #374151) !important;
       font-size: 15px !important;
     }
-    
+
     .alert-radio-icon {
       border-color: #d1d5db !important;
-      
+
       &.alert-radio-icon-checked {
         border-color: #2563eb !important;
         background-color: #2563eb !important;
       }
     }
   }
-  
+
   .alert-button-group {
     .alert-button {
       color: #2563eb !important;
       font-weight: 600 !important;
       font-size: 14px !important;
-      
+
       &.alert-button-role-cancel {
         color: #6b7280 !important;
       }
@@ -144,25 +135,304 @@ ion-menu {
   }
 }
 
-// Responsive design
+/* ================== RESPONSIVE ================== */
 @media (max-width: 768px) {
   ion-menu {
     --width: 260px;
   }
-  
+
   ion-item {
     --padding-start: 12px;
     --inner-padding-end: 12px;
     margin-left: 4px;
     margin-right: 4px;
-    
+
     ion-icon {
       margin-right: 12px;
       font-size: 18px;
     }
-    
+
     ion-label {
       font-size: 14px;
+    }
+  }
+}
+
+/* ================== KARKALIK MOD - KAPSAMLI ÇÖZÜM ================== */
+body.dark-theme {
+  /* CSS değişkenleri - ana renk paleti */
+  --menu-bg: #1f2937 !important;
+  --menu-color: #ffffff !important;
+  --item-bg: #1f2937 !important;
+  --item-color: #ffffff !important;
+  --icon-color: #93c5fd !important;
+  --label-color: #ffffff !important;
+  --hover-bg: #374151 !important;
+  --hover-icon: #bfdbfe !important;
+  --hover-label: #bfdbfe !important;
+  --active-bg: #1e40af !important;
+  --toolbar-bg: #1f2937 !important;
+  --toolbar-color: #f8fafc !important;
+
+  /* ================== MENU ANA CONTAINER - GÜÇLÜ OVERRIDE ================== */
+  ion-menu,
+  ion-menu.md,
+  ion-menu.ios {
+    --background: #1f2937 !important;
+    --color: #ffffff !important;
+    background: #1f2937 !important;
+    color: #ffffff !important;
+  }
+
+  /* Menü içeriği ve Shadow DOM parçaları - TÜM VARİANTLAR */
+  ion-menu ion-content,
+  ion-menu ion-content.md,
+  ion-menu ion-content.ios,
+  ion-menu ion-content::part(background),
+  ion-menu ion-content::part(scroll),
+  ion-menu ion-content::part(fixed) {
+    --background: #1f2937 !important;
+    background: #1f2937 !important;
+    color: #ffffff !important;
+  }
+
+  /* Liste container - TÜM PLATFORM VARİANTLARI */
+  ion-menu ion-list,
+  ion-menu ion-list.md,
+  ion-menu ion-list.ios,
+  ion-menu ion-list::part(container) {
+    background: #1f2937 !important;
+    --background: #1f2937 !important;
+    color: #ffffff !important;
+  }
+
+  /* ================== MENU ITEMS - SÜPER GÜÇLÜ ================== */
+  ion-menu ion-item,
+  ion-menu ion-item.md,
+  ion-menu ion-item.ios,
+  ion-menu ion-item.item-fill-solid,
+  ion-menu ion-item.item-fill-outline,
+  ion-menu ion-item.item-fill-clear {
+    --background: #1f2937 !important;
+    --color: #ffffff !important;
+    --border-color: rgba(255, 255, 255, 0.12) !important;
+    --inner-border-width: 0 !important;
+    background: #1f2937 !important;
+    color: #ffffff !important;
+
+    /* Shadow DOM native part - TÜM VARİANTLAR */
+    &::part(native) {
+      background: #1f2937 !important;
+      color: #ffffff !important;
+    }
+
+    /* İçerik wrapper'ları */
+    .item-inner,
+    .item-wrapper,
+    .item-content {
+      color: #ffffff !important;
+      background: #1f2937 !important;
+    }
+
+    /* Native wrapper */
+    .item-native {
+      color: #ffffff !important;
+      background: #1f2937 !important;
+    }
+  }
+
+  /* ================== TEXT VE İKONLAR - SÜPER GÜÇLÜ ================== */
+  ion-menu ion-item ion-label,
+  ion-menu ion-item ion-label.md,
+  ion-menu ion-item ion-label.ios {
+    color: #ffffff !important;
+    
+    /* Tüm label class kombinasyonları */
+    &.sc-ion-label-md-h,
+    &.sc-ion-label-ios-h,
+    &.sc-ion-label-md-s,
+    &.sc-ion-label-ios-s {
+      color: #ffffff !important;
+    }
+  }
+
+  /* Tüm label sınıflarını zorla override et */
+  ion-menu .sc-ion-label-md-h,
+  ion-menu .sc-ion-label-ios-h,
+  ion-menu .sc-ion-label-md-s,
+  ion-menu .sc-ion-label-ios-s {
+    color: #ffffff !important;
+  }
+
+  ion-menu ion-item ion-icon,
+  ion-menu ion-item ion-icon.md,
+  ion-menu ion-item ion-icon.ios {
+    color: #93c5fd !important;
+  }
+
+  ion-menu ion-item ion-note,
+  ion-menu ion-item ion-note.md,
+  ion-menu ion-item ion-note.ios {
+    color: #e2e8f0 !important;
+  }
+
+  /* ================== HOVER VE AKTİF DURUMLAR - GÜÇLENDİRİLMİŞ ================== */
+  ion-menu ion-item:hover,
+  ion-menu ion-item.ion-activated {
+    --background: #374151 !important;
+    background: #374151 !important;
+
+    &::part(native) {
+      background: #374151 !important;
+    }
+
+    .item-inner,
+    .item-native {
+      background: #374151 !important;
+    }
+
+    ion-icon {
+      color: #bfdbfe !important;
+    }
+
+    ion-label {
+      color: #bfdbfe !important;
+    }
+  }
+
+  ion-menu ion-item:active,
+  ion-menu ion-item.ion-focused {
+    --background: #1e40af !important;
+    background: #1e40af !important;
+
+    &::part(native) {
+      background: #1e40af !important;
+    }
+
+    .item-inner,
+    .item-native {
+      background: #1e40af !important;
+    }
+  }
+
+  /* ================== AYRAÇLAR VE BÖLÜCÜLER ================== */
+  ion-menu ion-item-divider {
+    --background: transparent !important;
+    --color: #ffffff !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+
+    &::part(native) {
+      background: transparent !important;
+      color: #ffffff !important;
+    }
+
+    ion-label {
+      color: #ffffff !important;
+    }
+  }
+
+  /* ================== TOOLBAR ================== */
+  ion-menu ion-toolbar {
+    --background: #1f2937 !important;
+    --color: #f8fafc !important;
+
+    ion-title {
+      color: #f8fafc !important;
+    }
+  }
+
+  /* ================== EK SHADOW DOM ÇÖZÜMLERI - SÜPER GÜÇLÜ ================== */
+  /* Content scroll wrapper */
+  ion-menu .menu-content-open,
+  ion-menu .menu-content,
+  ion-menu .content-area {
+    background: #1f2937 !important;
+  }
+
+  /* İç wrapper elemanları */
+  ion-menu .content-inner,
+  ion-menu .menu-inner,
+  ion-menu .scroll-content {
+    background: #1f2937 !important;
+  }
+
+  /* Global class ile ekstra destek */
+  ion-menu.app-menu {
+    --background: #1f2937 !important;
+    
+    ion-content {
+      --background: #1f2937 !important;
+    }
+    
+    ion-item {
+      --color: #ffffff !important;
+      
+      ion-label,
+      ion-icon,
+      ion-note {
+        color: #ffffff !important;
+      }
+    }
+  }
+
+  /* ================== EN GÜÇLÜ OVERRIDE - BEYAZ ALANLAR İÇİN ================== */
+  /* Herhangi bir beyaz kalan element için */
+  ion-menu *,
+  ion-menu *::before,
+  ion-menu *::after {
+    &[style*="color: rgb(0, 0, 0)"],
+    &[style*="color: black"],
+    &[style*="color: #000"],
+    &[style*="color:#000"] {
+      color: #ffffff !important;
+    }
+    
+    &[style*="background: rgb(255, 255, 255)"],
+    &[style*="background: white"],
+    &[style*="background: #fff"],
+    &[style*="background:#fff"],
+    &[style*="background-color: rgb(255, 255, 255)"],
+    &[style*="background-color: white"],
+    &[style*="background-color: #fff"],
+    &[style*="background-color:#fff"] {
+      background: #1f2937 !important;
+      background-color: #1f2937 !important;
+    }
+  }
+
+  /* EN SON ÇARENİN OVERRIDE'I */
+  ion-menu {
+    * {
+      background-color: #1f2937 !important;
+    }
+    
+    ion-item * {
+      color: #ffffff !important;
+    }
+    
+    ion-icon {
+      color: #93c5fd !important;
+    }
+  }
+
+  /* Platform spesifik fix'ler */
+  .platform-ios ion-menu,
+  .platform-md ion-menu {
+    --background: #1f2937 !important;
+    background: #1f2937 !important;
+    
+    ion-content {
+      --background: #1f2937 !important;
+      background: #1f2937 !important;
+    }
+    
+    ion-item {
+      --background: #1f2937 !important;
+      background: #1f2937 !important;
+      --color: #ffffff !important;
+      color: #ffffff !important;
     }
   }
 }

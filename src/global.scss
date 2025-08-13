@@ -238,3 +238,173 @@ body {
     transition: none !important;
   }
 }
+/* =========================
+   SADECE AÇIK TEMA (light)
+   ion-select popover düzeltmeleri
+   ========================= */
+body.light-theme ion-popover.select-popover::part(content) {
+  /* Popover kabı */
+  --background: #ffffff;
+  --ion-background-color: #ffffff; /* üst-alt şeritleri beyazlar */
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+body.light-theme ion-select-popover,
+body.light-theme ion-select-popover ion-content,
+body.light-theme ion-select-popover ion-list {
+  /* İç yüzeylerin hepsi beyaz */
+  --background: #ffffff;
+  background: #ffffff;
+  --ion-background-color: #ffffff;
+}
+
+body.light-theme ion-select-popover ion-item {
+  /* Option satırı */
+  --background: #ffffff;
+  --color: #111827;
+  border-radius: 6px;
+  margin: 2px 8px;
+}
+
+body.light-theme ion-select-popover ion-item:hover {
+  /* Hover rengi: açık gri (mor değil) */
+  --background: #f3f4f6;
+}
+
+body.light-theme ion-select-popover ion-item[aria-selected="true"] {
+  /* Seçili option: soft highlight */
+  --background: #eef2ff;  /* çok açık lila/mavi */
+  --color: #111827;
+  font-weight: 600;
+}
+
+/* Kapalıyken görünen select kutusu; sadece görünüş */
+body.light-theme .custom-select-input,
+body.light-theme .custom-select .gender-select {
+  --background: #ffffff;
+  --color: #111827;
+  border: 2px solid #e5e7eb !important;
+}
+
+body.light-theme .custom-select-input:focus,
+body.light-theme .custom-select-input.ion-focused,
+body.light-theme .custom-select .gender-select:focus,
+body.light-theme .custom-select .gender-select.ion-focused {
+  border-color: #ec4899 !important;
+  box-shadow: 0 0 0 3px rgba(236,72,153,.1) !important;
+}
+
+/* =========================
+   Koyu tema için "dokunma"
+   (İstersen görünümü netleştir)
+   ========================= */
+body.dark-theme ion-popover.select-popover::part(content) {
+  /* İstersen koyu temada da netleştir; kaldırmak serbest */
+  --background: var(--card-background);
+  --ion-background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+body.dark-theme ion-select-popover,
+body.dark-theme ion-select-popover ion-content,
+body.dark-theme ion-select-popover ion-list {
+  --background: var(--card-background);
+  background: var(--card-background);
+  --ion-background-color: var(--card-background);
+}
+
+body.dark-theme ion-select-popover ion-item {
+  --background: var(--card-background);
+  --color: var(--text-primary);
+}
+
+
+/* ===============================
+   ion-select metin & placeholder renkleri
+   =============================== */
+
+/* Açık tema */
+body.light-theme ion-select,
+body.light-theme .custom-select-input,
+body.light-theme .custom-select .gender-select {
+  --color: #111827 !important;              /* seçili değer rengi (kapalıyken) */
+  --placeholder-color: #6b7280 !important;  /* placeholder rengi */
+}
+
+/* Koyu tema */
+body.dark-theme ion-select,
+body.dark-theme .custom-select-input,
+body.dark-theme .custom-select .gender-select {
+  --color: #ffffff !important;              /* seçili değer rengi */
+  --placeholder-color: #9ca3af !important;  /* placeholder rengi (açık gri) */
+}
+/* Kapalı ion-select görünümü – yazı/placeholder renkleri (LIGHT) */
+body.light-theme ion-select::part(text) {
+  color: #000000 !important;   /* seçili değer */
+  opacity: 1 !important;
+}
+
+body.light-theme ion-select::part(placeholder) {
+  color: #6b7280 !important;   /* placeholder */
+  opacity: 1 !important;
+}
+
+/* İkon (ok) rengi de açık temada uyumlu olsun */
+body.light-theme ion-select::part(icon) {
+  color: #6b7280 !important;
+}
+
+/* Koyu tema için istersen netleştir */
+body.dark-theme ion-select::part(text) { color: #ffffff !important; }
+body.dark-theme ion-select::part(placeholder) { color: #9ca3af !important; }
+body.dark-theme ion-select::part(icon) { color: #9ca3af !important; }
+/* =========== Focus ring ve highlight'ı MAVİ yap (LIGHT THEME) =========== */
+:root {
+  --focus-ring: #3880ff;
+  --focus-ring-shadow: rgba(56,128,255,.15);
+}
+
+/* input + select kutusu focus mavi */
+body.light-theme .custom-input:focus,
+body.light-theme .custom-input.ion-focused,
+body.light-theme .custom-select-input:focus,
+body.light-theme .custom-select-input.ion-focused,
+body.light-theme .custom-select .gender-select:focus,
+body.light-theme .custom-select .gender-select.ion-focused {
+  border-color: var(--focus-ring) !important;
+  box-shadow: 0 0 0 3px var(--focus-ring-shadow) !important;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+/* ion-select'in kendi highlight (alt çizgi/çerçeve) rengi */
+body.light-theme ion-select {
+  --highlight-color: var(--focus-ring) !important;
+  --highlight-color-focused: var(--focus-ring) !important;
+  /* tamamen kapatmak istersen:
+     --highlight-height: 0;
+  */
+}
+
+/* ion-item içinde kullanıyorsan ekstra güvence */
+body.light-theme ion-item.item-has-focus {
+  --highlight-color-focused: var(--focus-ring) !important;
+}
+
+/* =========== DARK THEME eşleşen ayarlar (opsiyonel) =========== */
+body.dark-theme .custom-input:focus,
+body.dark-theme .custom-input.ion-focused,
+body.dark-theme .custom-select-input:focus,
+body.dark-theme .custom-select-input.ion-focused,
+body.dark-theme .custom-select .gender-select:focus,
+body.dark-theme .custom-select .gender-select.ion-focused {
+  border-color: #4c8dff !important;
+  box-shadow: 0 0 0 3px rgba(76,141,255,.2) !important;
+}
+body.dark-theme ion-select {
+  --highlight-color: #4c8dff !important;
+  --highlight-color-focused: #4c8dff !important;
+}
