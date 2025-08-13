@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { rocketOutline } from 'ionicons/icons';
 import confetti from 'canvas-confetti';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginPage {
   constructor(
     private alertController: AlertController,
     private toastController: ToastController,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     addIcons({ rocketOutline });
   }
@@ -60,7 +62,7 @@ export class LoginPage {
 if (userDataString) {
       const userData = JSON.parse(userDataString);
       if (this.password === userData.password) {
-        sessionStorage.setItem('currentUser', this.username);
+        this.authService.login(this.username);
         
         // Konfeti animasyonunu başlat
         this.showConfetti();

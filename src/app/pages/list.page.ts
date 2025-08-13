@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from 'src/app/pages/services/auth.service';
+import { Observable } from 'rxjs';
 import { 
   IonContent, 
   IonHeader, 
@@ -70,11 +72,14 @@ import { ThemeService } from './services/theme.service';
 export class ListPage {
   category: string = 'all';
   articles: any[] = [];
+  isLoggedIn$: Observable<string | null>;
 
   constructor(
     private router: Router,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private authService: AuthService
   ) {
+    this.isLoggedIn$ = this.authService.currentUserObservable$;
     addIcons({ 
       add, 
       heart, 
@@ -251,7 +256,12 @@ export class ListPage {
     return this.articles.filter(article => article.category === this.category);
   }
 
-  girisYap() {
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+
+  login() {
     this.router.navigate(['/login']);
   }
 }

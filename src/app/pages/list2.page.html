@@ -11,7 +11,8 @@
       </ion-buttons>
 
       <ion-buttons slot="end">
-        <ion-button fill="outline" (click)="logout()">Çıkış Yap</ion-button>
+        <ion-button fill="outline" (click)="logout()" *ngIf="isLoggedIn$ | async">Çıkış Yap</ion-button>
+        <ion-button fill="outline" (click)="login()" *ngIf="!(isLoggedIn$ | async)">Giriş Yap</ion-button>
       </ion-buttons>
       
       <ion-segment [(ngModel)]="category">

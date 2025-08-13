@@ -11,7 +11,8 @@
       </ion-buttons>
 
       <ion-buttons slot="end">
-        <ion-button fill="outline" routerLink="/login">Giriş Yap</ion-button>
+        <ion-button fill="outline" (click)="logout()" *ngIf="isLoggedIn$ | async">Çıkış Yap</ion-button>
+        <ion-button fill="outline" (click)="login()" *ngIf="!(isLoggedIn$ | async)">Giriş Yap</ion-button>
       </ion-buttons>
 
       <ion-segment [(ngModel)]="category">
@@ -87,7 +88,7 @@
       <div *ngIf="filteredArticles.length === 0" class="no-articles">
         <ion-icon name="document-outline" class="no-articles-icon"></ion-icon>
         <p>Henüz makale bulunmuyor.</p>
-        <ion-button (click)="girisYap()" color="primary">İlk Makaleyi Ekle</ion-button>
+        <ion-button (click)="login()" color="primary">İlk Makaleyi Ekle</ion-button>
       </div>
     </div>
   </ion-content>

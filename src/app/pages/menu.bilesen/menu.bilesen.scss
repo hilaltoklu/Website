@@ -69,8 +69,8 @@ ion-item {
 /* Özel ikon renkleri */
 ion-item:nth-child(1) ion-icon,
 ion-item:nth-child(2) ion-icon,
-ion-item:nth-child(3) ion-icon,
-ion-item:nth-child(4) ion-icon {
+ion-item:nth-child(3) ion-icon
+{
   color: var(--icon-color, #659ef8);
 }
 

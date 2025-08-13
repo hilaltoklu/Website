@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { Observable } from 'rxjs';
 import { 
   IonContent, 
   IonHeader, 
@@ -72,13 +74,16 @@ export class List2Page {
   category: string = 'all';
   articles: any[] = [];
   segments: { value: string, label: string }[] = [];
+  isLoggedIn$: Observable<string | null>;
 
   constructor(
     private router: Router,
     private popoverController: PopoverController,
     private modalController: ModalController,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private authService: AuthService
   ) {
+    this.isLoggedIn$ = this.authService.currentUserObservable$;
     addIcons({ 
       add, 
       heart, 
@@ -292,8 +297,12 @@ export class List2Page {
   }
 
   logout() {
-    sessionStorage.removeItem('currentUser');
+    this.authService.logout();
     this.router.navigate(['/list']);
+  }
+
+  login() {
+    this.router.navigate(['/login']);
   }
 }
 

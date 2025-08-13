@@ -31,7 +31,8 @@ import {
   phonePortrait
 } from 'ionicons/icons';
 import { ThemeService, ThemeType } from '../services/theme.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -58,13 +59,16 @@ export class MenuComponent implements OnInit, OnDestroy {
   private themeSubscription?: Subscription;
   currentTheme: ThemeType = 'light';
   isDarkMode: boolean = false;
+  isLoggedIn$: Observable<string | null>;
 
   constructor(
     private router: Router,
     private alertController: AlertController,
     private menuController: MenuController,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private authService: AuthService
   ) {
+    this.isLoggedIn$ = this.authService.currentUserObservable$;
     addIcons({ 
       home, 
       person, 
@@ -98,7 +102,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   async showUserInfo() {
     this.menuController.close();
     
-    const currentUser = sessionStorage.getItem('currentUser');
+    const currentUser = this.authService.getCurrentUserValue();
     if (!currentUser) {
       await this.showLoginRequiredAlert('kullanıcı bilgilerini görüntülemek');
       return;
@@ -149,7 +153,7 @@ export class MenuComponent implements OnInit, OnDestroy {
         {
           text: 'Çıkış Yap ve Yeni Hesap Oluştur',
           handler: () => {
-            sessionStorage.removeItem('currentUser');
+            this.authService.logout();
             this.router.navigate(['/kayitol']);
           }
         }
@@ -161,8 +165,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   async showFavorites() {
     this.menuController.close();
     
-    const currentUser = sessionStorage.getItem('currentUser');
-    if (!currentUser) {
+    if (!this.authService.isLoggedIn()) {
       await this.showLoginRequiredAlert('favori yazılarınızı görmek');
       return;
     }
