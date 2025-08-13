@@ -169,21 +169,9 @@ export class MenuComponent implements OnInit, OnDestroy {
       await this.showLoginRequiredAlert('favori yazılarınızı görmek');
       return;
     }
+    this.router.navigate(['/favorites']);
 
-    const alert = await this.alertController.create({
-      header: 'Favori Yazılarım',
-      message: `
-        <div style="text-align: center; padding: 20px;">
-          <ion-icon name="heart-outline" style="font-size: 48px; color: var(--danger-color); margin-bottom: 10px;"></ion-icon>
-          <p style="color: var(--text-secondary); margin-top: 10px;">
-            Favori sistem henüz aktif değil.<br>
-            Yakında sevdiğiniz yazıları favorilere ekleyebileceksiniz!
-          </p>
-        </div>
-      `,
-      buttons: ['Tamam']
-    });
-    await alert.present();
+   
   }
 
   async showLanguageOptions() {

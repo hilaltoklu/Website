@@ -15,10 +15,6 @@
     <ion-list>
       
       <ng-container *ngIf="isLoggedIn$ | async">
-        <ion-item button (click)="showUserInfo()">
-          <ion-icon name="person" slot="start"></ion-icon>
-          <ion-label>Kullanıcı Bilgileri</ion-label>
-        </ion-item>
         
         <ion-item button (click)="showFavorites()">
           <ion-icon name="heart" slot="start"></ion-icon>

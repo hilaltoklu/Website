@@ -74,6 +74,13 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/updates/update.page').then( m => m.UpdatePage)
   },
 
+  {
+    path: 'favorites',
+    loadComponent: () => import('src/app/pages/favorites/favorites.page').then( m => m.FavoritesPage),
+    resolve: {
+      data: LoadingResolver
+    }
+  },
 ];
 
 

@@ -65,17 +65,18 @@ ion-content {
   width: 100%;
 }
 
-// Makale kartları
+// Makale kartları - DÜZELTME: Sabit yükseklik kaldırıldı
 .article-card {
   background-color: var(--card-background);
   width: 100%;
   max-width: 300px;
-  max-height: 400px;
+  min-height: 400px; // Minimum yükseklik
+  // max-height: 400px; <- Bu satır kaldırıldı
   margin: 0;
   border-radius: 4px;
   box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
-  overflow: hidden;
+  overflow: visible; // hidden yerine visible
   display: flex;
   flex-direction: column;
   position: relative; // Menü konumlandırması için
@@ -93,6 +94,7 @@ ion-content {
   height: 160px;
   overflow: hidden;
   border-radius: 4px 4px 0 0;
+  flex-shrink: 0; // Görselin küçülmesini engelle
   
   img {
     width: 100%;
@@ -110,6 +112,7 @@ ion-content {
 ion-card-header {
   padding: 12px 16px 8px 16px;
   background-color: var(--card-background);
+  flex-shrink: 0; // Başlığın küçülmesini engelle
   
   ion-card-title {
     font-size: 16px;
@@ -117,25 +120,35 @@ ion-card-header {
     line-height: 1.4;
     margin-bottom: 4px;
     color: var(--text-primary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2; // Maksimum 2 satır
+    line-clamp: 2; // Standart özellik
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   
   ion-card-subtitle {
     font-size: 14px;
     color: var(--text-secondary);
     line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; // Maksimum 2 satır
+    line-clamp: 2; // Standart özellik
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
-// Kart içeriği
+// Kart içeriği - DÜZELTME: Flex özellikleri düzenlendi
 ion-card-content {
   background-color: var(--card-background);
   color: var(--text-primary);
   padding: 8px 16px 16px 16px;
-  flex: 1;
+  flex: 1; // Kalan alanı kaplasın
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 0;
+  min-height: 120px; // Minimum yükseklik garantisi
 }
 
 // Yazar bölümü
@@ -143,6 +156,7 @@ ion-card-content {
   display: flex;
   align-items: center;
   margin-bottom: 12px;
+  flex-shrink: 0; // Küçülmesin
   
   .author-avatar {
     width: 32px;
@@ -151,6 +165,7 @@ ion-card-content {
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid var(--border-color);
+    flex-shrink: 0;
     
     img {
       width: 100%;
@@ -163,12 +178,16 @@ ion-card-content {
   .author-info {
     display: flex;
     flex-direction: column;
+    flex: 1;
     
     .author-name {
       font-size: 13px;
       font-weight: 500;
       color: var(--text-primary);
       line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     
     .publish-date {
@@ -179,18 +198,28 @@ ion-card-content {
   }
 }
 
-// Makale önizlemesi
+// Makale önizlemesi - DÜZELTME: Flex grow eklendi
 .article-preview {
   font-size: 13px;
   color: var(--text-secondary);
   line-height: 1.4;
   margin-bottom: 12px;
+  flex: 1; // Kalan alanı kaplasın
+  display: -webkit-box;
+  -webkit-line-clamp: 3; // Maksimum 3 satır
+  line-clamp: 3; // Standart özellik
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-// Makale istatistikleri
+// Makale istatistikleri - DÜZELTME: Her zaman alt kısımda görünsün
 .article-stats {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  margin-top: auto; // Her zaman en alta yasla
+  flex-shrink: 0; // Küçülmesin
+  padding-top: 8px; // Üstten biraz boşluk
   
   .likes {
     display: flex;
@@ -200,6 +229,7 @@ ion-card-content {
     ion-icon {
       font-size: 16px;
       color: var(--danger-color);
+      flex-shrink: 0;
     }
     
     span {
@@ -252,6 +282,7 @@ ion-card-content {
   
   .article-card {
     max-width: 100%;
+    min-height: 380px; // Mobilde daha küçük minimum yükseklik
   }
   
   .card-image {
@@ -268,6 +299,10 @@ ion-card-content {
   .articles-wrapper {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+  
+  .article-card {
+    min-height: 360px; // Daha küçük mobil minimum yükseklik
   }
   
   .card-image {
@@ -288,6 +323,7 @@ ion-card-content {
   
   ion-card-content {
     padding: 6px 14px 14px 14px;
+    min-height: 110px;
   }
 }
 
@@ -295,6 +331,7 @@ ion-card-content {
   position: absolute;
   top: 10px;
   right: 10px;
+  z-index: 5; // Menü her zaman üstte görünsün
 }
 
 .menu-button {
