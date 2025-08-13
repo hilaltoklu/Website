@@ -1,42 +1,5 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+// Theme Variables - src/theme/theme-variables.scss
 
-/* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
-
-/* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
-
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
-
-/* Custom Theme Variables */
 :root {
   // Light Theme Variables
   --background-primary: #ffffff;
@@ -154,7 +117,7 @@ body.light-theme {
   --info-color: #17a2b8;
 }
 
-// Global content background override
+// Global aplikasyon stilleri tema değişkenlerini kullanacak şekilde
 ion-content {
   --background: var(--background-primary) !important;
   color: var(--text-primary);
@@ -219,17 +182,6 @@ ion-menu {
 // Smooth transitions
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-// Global smooth transitions for theme changes
-html, body {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-// Ensure proper text color inheritance
-body {
-  color: var(--text-primary);
-  background-color: var(--background-primary);
 }
 
 // Prefers reduced motion accessibility

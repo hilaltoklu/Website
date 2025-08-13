@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { 
   IonMenu,
@@ -10,6 +10,9 @@ import {
   IonItem,
   IonIcon,
   IonLabel,
+  IonNote,
+  IonButtons,
+  IonButton,
   AlertController,
   MenuController
 } from '@ionic/angular/standalone';
@@ -22,8 +25,13 @@ import {
   add, 
   heart, 
   language, 
-  contrast 
+  contrast,
+  sunny,
+  moon,
+  phonePortrait
 } from 'ionicons/icons';
+import { ThemeService, ThemeType } from '../services/theme.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -40,15 +48,22 @@ import {
     IonList,
     IonItem,
     IonIcon,
-    IonLabel
+    IonLabel,
+    IonNote,
+    IonButtons,
+    IonButton
   ]
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit, OnDestroy {
+  private themeSubscription?: Subscription;
+  currentTheme: ThemeType = 'light';
+  isDarkMode: boolean = false;
 
   constructor(
     private router: Router,
     private alertController: AlertController,
-    private menuController: MenuController
+    private menuController: MenuController,
+    private themeService: ThemeService
   ) {
     addIcons({ 
       home, 
@@ -57,18 +72,27 @@ export class MenuComponent {
       add,
       heart,
       language,
-      contrast
+      contrast,
+      sunny,
+      moon,
+      phonePortrait
     });
   }
 
-  navigateToList() {
-    this.menuController.close();
-    this.router.navigate(['/list']);
+  ngOnInit() {
+    this.themeSubscription = this.themeService.theme$.subscribe(theme => {
+      this.currentTheme = theme;
+    });
+
+    this.themeService.isDarkMode$.subscribe(isDark => {
+      this.isDarkMode = isDark;
+    });
   }
 
-  navigateToLogin() {
-    this.menuController.close();
-    this.router.navigate(['/login']);
+  ngOnDestroy() {
+    if (this.themeSubscription) {
+      this.themeSubscription.unsubscribe();
+    }
   }
 
   async showUserInfo() {
@@ -91,7 +115,7 @@ export class MenuComponent {
           <div style="text-align: left; padding: 10px;">
             <p><strong>Kullanıcı Adı:</strong> ${currentUser}</p>
             <p><strong>Cinsiyet:</strong> ${genderText}</p>
-            <p style="margin-top: 15px; font-size: 12px; color: #666;">
+            <p style="margin-top: 15px; font-size: 12px; color: var(--text-secondary);">
               Bilgilerinizi değiştirmek için hesabınızı yeniden oluşturmanız gerekir.
             </p>
           </div>
@@ -143,13 +167,12 @@ export class MenuComponent {
       return;
     }
 
-    // Basit favori sistem gösterimi (gerçek implementasyon için daha gelişmiş olabilir)
     const alert = await this.alertController.create({
       header: 'Favori Yazılarım',
       message: `
         <div style="text-align: center; padding: 20px;">
-          <ion-icon name="heart-outline" style="font-size: 48px; color: #ff6b6b; margin-bottom: 10px;"></ion-icon>
-          <p style="color: #666; margin-top: 10px;">
+          <ion-icon name="heart-outline" style="font-size: 48px; color: var(--danger-color); margin-bottom: 10px;"></ion-icon>
+          <p style="color: var(--text-secondary); margin-top: 10px;">
             Favori sistem henüz aktif değil.<br>
             Yakında sevdiğiniz yazıları favorilere ekleyebileceksiniz!
           </p>
@@ -220,28 +243,29 @@ export class MenuComponent {
   async showThemeOptions() {
     this.menuController.close();
     
+    this.themeService.debugCurrentTheme();
+    
+    const currentTheme = this.themeService.getCurrentTheme();
+    
     const alert = await this.alertController.create({
       header: 'Tema Seçenekleri',
+      message: 'Uygulamanın görünümünü değiştirin:',
       inputs: [
         {
           name: 'theme',
           type: 'radio',
-          label: 'Açık Tema (Light)',
+          label: 'Açık Tema',
           value: 'light',
-          checked: true
+          checked: currentTheme === 'light'
         },
         {
           name: 'theme',
           type: 'radio',
-          label: 'Koyu Tema (Dark)',
-          value: 'dark'
+          label: 'Koyu Tema',
+          value: 'dark',
+          checked: currentTheme === 'dark'
         },
-        {
-          name: 'theme',
-          type: 'radio',
-          label: 'Sistem Ayarı',
-          value: 'auto'
-        }
+        
       ],
       buttons: [
         {
@@ -250,8 +274,8 @@ export class MenuComponent {
         },
         {
           text: 'Uygula',
-          handler: (data) => {
-            this.applyTheme(data);
+          handler: (selectedTheme: ThemeType) => {
+            this.applyTheme(selectedTheme);
           }
         }
       ]
@@ -259,45 +283,34 @@ export class MenuComponent {
     await alert.present();
   }
 
-  async applyTheme(theme: string) {
+  async applyTheme(theme: ThemeType) {
     const themeNames: { [key: string]: string } = {
       'light': 'Açık Tema',
       'dark': 'Koyu Tema',
       'auto': 'Sistem Ayarı'
     };
 
-    // Tema tercihi kaydet
-    localStorage.setItem('selectedTheme', theme);
+    this.themeService.setTheme(theme);
 
     const alert = await this.alertController.create({
-      header: 'Tema Değiştirildi',
-      message: `${themeNames[theme]} başarıyla uygulandı. Tam işlevsellik yakında eklenecek.`,
-      buttons: ['Tamam']
+      header: 'Tema Uygulandı',
+      message: `${themeNames[theme]} başarıyla uygulandı!`,
+      buttons: ['Harika!']
     });
     await alert.present();
   }
 
-  async showAbout() {
-    this.menuController.close();
-    
-    const alert = await this.alertController.create({
-      header: 'Hakkında',
-      message: `
-        <div style="text-align: center; padding: 10px;">
-          <h3 style="color: #3880ff; margin-bottom: 10px;">Makale Uygulaması</h3>
-          <p style="font-size: 14px; color: #666; line-height: 1.4;">
-            <strong>Sürüm:</strong> 1.0.0<br>
-            <strong>Geliştirici:</strong> İonic & Angular<br>
-            <strong>Açıklama:</strong> Makalelerinizi paylaşabileceğiniz modern bir platform.
-          </p>
-          <p style="font-size: 12px; color: #999; margin-top: 15px;">
-            © 2025 Tüm hakları saklıdır.
-          </p>
-        </div>
-      `,
-      buttons: ['Tamam']
-    });
-    await alert.present();
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
+
+  getThemeDisplayName(): string {
+    const themeNames: { [key: string]: string } = {
+      'light': 'Açık',
+      'dark': 'Koyu', 
+      'auto': 'Sistem'
+    };
+    return themeNames[this.currentTheme] || 'Bilinmiyor';
   }
 
   private async showLoginRequiredAlert(action: string) {

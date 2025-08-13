@@ -26,9 +26,10 @@ import {
   IonRouterOutlet
 } from '@ionic/angular/standalone';
 import { Router, RouterModule } from '@angular/router';
-import { add, heart, documentOutline, addCircleOutline, personCircleOutline, languageOutline, moonOutline, informationCircleOutline, logOutOutline, home } from 'ionicons/icons';
+import { add, heart, documentOutline, addCircleOutline, personCircleOutline, languageOutline, moonOutline, informationCircleOutline, logOutOutline, home, contrast, sunny } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { MenuComponent } from './menu.bilesen/menu.bilesen';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-list',
@@ -70,7 +71,10 @@ export class ListPage {
   category: string = 'all';
   articles: any[] = [];
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private themeService: ThemeService
+  ) {
     addIcons({ 
       add, 
       heart, 
@@ -81,7 +85,9 @@ export class ListPage {
       moonOutline, 
       informationCircleOutline, 
       logOutOutline,
-      home 
+      home,
+      contrast,
+      sunny
     });
     this.loadArticles();
   }
@@ -89,11 +95,17 @@ export class ListPage {
   ionViewWillEnter() {
     this.loadArticles();
     this.migrateArticleCategories();
-
   }
 
-// localde tutulan makalelerin kategorilerini güncelle
-   migrateArticleCategories() {
+  // Test tema butonu
+  testTheme() {
+    console.log('Theme test button clicked');
+    this.themeService.debugCurrentTheme();
+    this.themeService.toggleTheme();
+  }
+
+  // localde tutulan makalelerin kategorilerini güncelle
+  migrateArticleCategories() {
     const storedArticles = localStorage.getItem('articles');
     if (storedArticles) {
       let articles = JSON.parse(storedArticles);
@@ -120,9 +132,10 @@ export class ListPage {
       }
     }
   }
+
   loadArticles() {
     const storedArticles = localStorage.getItem('articles');
-  const photoUrlFemale = 'https://w7.pngwing.com/pngs/417/181/png-transparent-computer-icons-icon-design-woman-woman-hat-people-monochrome-thumbnail.png';
+    const photoUrlFemale = 'https://w7.pngwing.com/pngs/417/181/png-transparent-computer-icons-icon-design-woman-woman-hat-people-monochrome-thumbnail.png';
     const photoUrlMale = 'https://w1.pngwing.com/pngs/386/684/png-transparent-face-icon-user-icon-design-user-profile-share-icon-avatar-black-and-white-silhouette-thumbnail.png';
     if (storedArticles) {
       this.articles = JSON.parse(storedArticles);
