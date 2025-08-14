@@ -13,6 +13,7 @@ import { IonicModule } from '@ionic/angular';
 })
 export class UserInfoEditModalPage implements OnInit {
   @Input() userData: any;
+  showPassword : boolean = false;
 
   constructor(private modalController: ModalController) { }
 
@@ -25,5 +26,9 @@ export class UserInfoEditModalPage implements OnInit {
 
   saveChanges() {
     this.modalController.dismiss(this.userData);
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 }

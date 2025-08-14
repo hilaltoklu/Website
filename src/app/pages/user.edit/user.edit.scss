@@ -1,0 +1,24 @@
+.password-toggle-btn {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  
+  .password-emoji {
+    font-size: 24px; // Adjust size as needed
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  
+  &:active .password-emoji {
+    transform: scale(0.9); // Add a slight press effect
+  }
+}
+
+// Theme colors (light/dark)
+.password-toggle-btn {
+  color: var(--ion-text-color); // Use Ionic's theme variable
+  // Optional hover effect
+  opacity: 0.3;
+  &:hover {
+    opacity: 0.5;
+  }
+}

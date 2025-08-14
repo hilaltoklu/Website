@@ -13,10 +13,28 @@
       <ion-label position="floating">Kullanıcı Adı</ion-label>
       <ion-input [(ngModel)]="userData.username" name="username"></ion-input>
     </ion-item>
+    
     <ion-item>
       <ion-label position="floating">Şifre</ion-label>
-      <ion-input type="password" [(ngModel)]="userData.password" name="password"></ion-input>
+      <ion-input 
+        [type]="showPassword ? 'text' : 'password'" 
+        [(ngModel)]="userData.password" 
+        name="password">
+      </ion-input>
+
+      
+      <ion-button 
+        fill="clear" 
+        slot="end" 
+        color="dark"
+        (click)="togglePasswordVisibility()"
+        class="password-toggle-btn">
+        <span class="password-emoji">{{ showPassword ? '🔓' : '🔒' }}</span>
+      </ion-button>
+
+
     </ion-item>
+    
     <ion-item>
       <ion-label>Cinsiyet</ion-label>
       <ion-select [(ngModel)]="userData.gender" name="gender">
