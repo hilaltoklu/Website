@@ -19,6 +19,19 @@ export class AuthService {
     this.currentUser$.next(username);
   }
 
+  updateUser(oldUsername: string, newUsername: string, newUserData: any) {
+    // Local storage'ı güncelle
+    localStorage.setItem(newUsername, JSON.stringify(newUserData));
+
+    // Eğer kullanıcı adı değiştiyse, eski kaydı sil
+    if (oldUsername !== newUsername) {
+      localStorage.removeItem(oldUsername);
+    }
+
+    // Session storage'ı ve BehaviorSubject'i güncelle
+    this.login(newUsername);
+  }
+
   logout() {
     sessionStorage.removeItem('currentUser');
     this.currentUser$.next(null);

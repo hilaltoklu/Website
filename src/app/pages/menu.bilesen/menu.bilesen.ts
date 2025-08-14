@@ -14,10 +14,12 @@ import {
   IonButtons,
   IonButton,
   AlertController,
-  MenuController
+  MenuController,
+  ModalController
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
+import { UserInfoEditModalPage } from 'src/app/pages/user.edit/user.edit';
 import { 
   home, 
   person, 
@@ -52,7 +54,8 @@ import { AuthService } from '../services/auth.service';
     IonLabel,
     IonNote,
     IonButtons,
-    IonButton
+    IonButton,
+    UserInfoEditModalPage
   ]
 })
 export class MenuComponent implements OnInit, OnDestroy {
@@ -66,7 +69,8 @@ export class MenuComponent implements OnInit, OnDestroy {
     private alertController: AlertController,
     private menuController: MenuController,
     private themeService: ThemeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private modalController: ModalController
   ) {
     this.isLoggedIn$ = this.authService.currentUserObservable$;
     addIcons({ 
@@ -101,65 +105,46 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   async showUserInfo() {
     this.menuController.close();
-    
+  
     const currentUser = this.authService.getCurrentUserValue();
     if (!currentUser) {
-      await this.showLoginRequiredAlert('kullanıcı bilgilerini görüntülemek');
+      await this.showLoginRequiredAlert('kullanıcı bilgilerini düzenlemek');
       return;
     }
-
+  
     const userDataString = localStorage.getItem(currentUser);
-    if (userDataString) {
-      const userData = JSON.parse(userDataString);
-      const genderText = userData.gender === 'female' ? 'Kadın' : 'Erkek';
-      
+    if (!userDataString) {
       const alert = await this.alertController.create({
-        header: 'Kullanıcı Bilgileri',
-        message: `
-          <div style="text-align: left; padding: 10px;">
-            <p><strong>Kullanıcı Adı:</strong> ${currentUser}</p>
-            <p><strong>Cinsiyet:</strong> ${genderText}</p>
-            <p style="margin-top: 15px; font-size: 12px; color: var(--text-secondary);">
-              Bilgilerinizi değiştirmek için hesabınızı yeniden oluşturmanız gerekir.
-            </p>
-          </div>
-        `,
-        buttons: [
-          {
-            text: 'Tamam',
-            role: 'cancel'
-          },
-          {
-            text: 'Bilgileri Değiştir',
-            handler: () => {
-              this.showChangeUserInfoOptions();
-            }
-          }
-        ]
+        header: 'Hata',
+        message: 'Kullanıcı verileri bulunamadı.',
+        buttons: ['Tamam']
       });
       await alert.present();
+      return;
     }
-  }
-
-  async showChangeUserInfoOptions() {
-    const alert = await this.alertController.create({
-      header: 'Bilgileri Değiştir',
-      message: 'Kullanıcı bilgilerinizi değiştirmek için mevcut hesabınızdan çıkış yapıp yeni bir hesap oluşturmanız gerekir.',
-      buttons: [
-        {
-          text: 'İptal',
-          role: 'cancel'
-        },
-        {
-          text: 'Çıkış Yap ve Yeni Hesap Oluştur',
-          handler: () => {
-            this.authService.logout();
-            this.router.navigate(['/kayitol']);
-          }
-        }
-      ]
+  
+    const userData = JSON.parse(userDataString);
+    userData.username = currentUser;
+  
+    const modal = await this.modalController.create({
+      component: UserInfoEditModalPage,
+      componentProps: {
+        userData: userData
+      }
     });
-    await alert.present();
+  
+    await modal.present();
+  
+    const { data } = await modal.onWillDismiss();
+    if (data) {
+      const oldUsername = this.authService.getCurrentUserValue();
+      if (!oldUsername) return;
+      
+      const updatedUserData = { ...data };
+      delete updatedUserData.username; // a new password is not required
+      
+      this.authService.updateUser(oldUsername, data.username, updatedUserData);
+    }
   }
 
   async showFavorites() {
