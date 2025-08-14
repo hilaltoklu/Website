@@ -1,5 +1,3 @@
-
-
 <ion-content>
 
   <ion-list>
@@ -8,25 +6,27 @@
         <ion-card-title>{{ article.title }}</ion-card-title>
         <ion-card-subtitle>{{ article.subtitle }}</ion-card-subtitle>
       </ion-card-header>
+
       <ion-card-content>
         <div style="display: flex; align-items: center; margin-bottom: 10px;">
           <ion-avatar style="width: 40px; height: 40px; margin-right: 10px;">
-          <img [src]="article.userPhoto">
+            <img [src]="article.userPhoto">
           </ion-avatar>
-          <ion-label>{{ article.userName }}</ion-label>
+          <ion-label>{{ article.userName }}</ion-label> <!-- Changed from author to userName -->
         </div>
-        <p>{{ article.date | date:'short' }}</p>
-  <img [src]="article.image" style="width: 500px; height: 310px; object-fit: cover; margin: 10px 0;" />
-        <p>{{ article.content }}</p>
+        
+        <p>{{ article.date | date:'short' }}</p> <!-- Added date -->
+        
+        <img [src]="article.image" style="width: 500px; height: 310px; object-fit: cover; margin: 10px 0;" />
+        
+        <p>{{ article.content }}</p> <!-- Added content -->
+
         <div style="display: flex; align-items: center; cursor: pointer;" (click)="likeArticle()">
           <ion-icon name="heart" [class.red]="isLiked" style="margin-right: 5px;"></ion-icon>
           <p>{{ article.likes }}</p>
         </div>
-       <!-- şimdilik silmeyi geçiyorum 
-        <ion-button *ngIf="article.isDeletable" color="danger" (click)="deleteArticle(article.title); $event.stopPropagation();">
-            Sil
-          </ion-button>
-        -->  
       </ion-card-content>
     </ion-card>
   </ion-list>
+
+</ion-content>

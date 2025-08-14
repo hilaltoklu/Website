@@ -1,0 +1,359 @@
+//toolbar için
+ion-header {
+  background-color: var(--toolbar-background);
+  
+  ion-toolbar {
+    background-color: var(--toolbar-background);
+    color: var(--toolbar-text);
+    --background: var(--toolbar-background);
+    --color: var(--toolbar-text);
+    
+    ion-title {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    ion-back-button {
+      --color: var(--button-primary);
+      --background: transparent;
+    }
+  }
+}
+
+// Ana container
+.content-container {
+  background-color: var(--background-primary);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+}
+
+// Ion-content için tema desteği
+ion-content {
+  --background: var(--background-primary) !important;
+  background-color: var(--background-primary) !important;
+  color: var(--text-primary);
+}
+
+// Makale wrapper'ı
+.articles-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
+  gap: 16px;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+// Makale kartları - BÜYÜTÜLDÜ
+.article-card {
+  background-color: var(--card-background);
+  width: 100%;
+  max-width: 300px;
+  min-height: 260px; // 240px'den 260px'e çıkarıldı (3 satır için)
+  max-height: 280px; // 260px'dan 280px'e çıkarıldı
+  margin: 0;
+  border-radius: 4px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px var(--button-primary);
+  }
+}
+
+// Kart görseli - ORTA BOY
+.card-image {
+  width: 100%;
+  height: 100px; // 80px'den 100px'e çıkarıldı
+  overflow: hidden;
+  border-radius: 4px 4px 0 0;
+  flex-shrink: 0;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+// Kart başlığı - ORTA PADDING
+ion-card-header {
+  padding: 8px 12px 4px 12px; // Padding'i biraz artırdım
+  background-color: var(--card-background);
+  flex-shrink: 0;
+  
+  ion-card-title {
+    font-size: 15px; // 14px'den 15px'e çıkarıldı
+    font-weight: 600;
+    line-height: 1.3; // 1.2'den 1.3'e çıkarıldı
+    margin-bottom: 2px; // 1px'den 2px'e çıkarıldı
+    color: var(--text-primary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2; // 1'den 2'ye çıkarıldı
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  ion-card-subtitle {
+    font-size: 13px; // 12px'den 13px'e çıkarıldı
+    color: var(--text-secondary);
+    line-height: 1.2; // 1.1'den 1.2'ye çıkarıldı
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// Kart içeriği - BÜYÜTÜLDÜ
+ion-card-content {
+  background-color: var(--card-background);
+  color: var(--text-primary);
+  padding: 6px 12px 10px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 85px; // 70px'den 85px'e çıkarıldı (3 satır için)
+  max-height: 105px; // 90px'den 105px'e çıkarıldı
+}
+
+// Yazar bölümü - ORTA BOY
+.author-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px; // 4px'den 6px'e çıkarıldı
+  flex-shrink: 0;
+  
+  .author-avatar {
+    width: 26px; // 24px'den 26px'e çıkarıldı
+    height: 26px;
+    margin-right: 7px; // 6px'den 7px'e çıkarıldı
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+  
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    
+    .author-name {
+      font-size: 12px; // 11px'den 12px'e çıkarıldı
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.2; // 1.1'den 1.2'ye çıkarıldı
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .publish-date {
+      font-size: 10px; // 9px'den 10px'e çıkarıldı
+      color: var(--text-secondary);
+      line-height: 1.2; // 1.1'den 1.2'ye çıkarıldı
+    }
+  }
+}
+
+// Makale önizlemesi - 3 SATIR
+.article-preview {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.3;
+  margin-bottom: 6px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; // 2'den 3'e çıkarıldı
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Makale istatistikleri - ORTA
+.article-stats {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: auto;
+  flex-shrink: 0;
+  padding-top: 4px; // 2px'den 4px'e çıkarıldı
+  
+  .likes {
+    display: flex;
+    align-items: center;
+    gap: 3px; // 2px'den 3px'e çıkarıldı
+    
+    ion-icon {
+      font-size: 13px; // 12px'den 13px'e çıkarıldı
+      color: var(--danger-color);
+      flex-shrink: 0;
+    }
+    
+    span {
+      font-size: 12px; // 11px'den 12px'e çıkarıldı
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+  }
+}
+
+// Makale yok mesajı
+.no-articles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--background-primary);
+  
+  .no-articles-icon {
+    font-size: 80px;
+    color: var(--text-tertiary);
+    margin-bottom: 20px;
+    opacity: 0.6;
+  }
+  
+  p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  
+  .subtitle {
+    font-size: 14px !important;
+    color: var(--text-tertiary) !important;
+    margin-bottom: 0 !important;
+    font-weight: 400 !important;
+  }
+}
+
+// Tablet görünümü
+@media (max-width: 768px) {
+  .content-container {
+    padding: 16px;
+  }
+  
+  .articles-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+  }
+  
+  .article-card {
+    max-width: 100%;
+    min-height: 240px; // 220px'den 240px'e çıkarıldı
+    max-height: 260px; // 240px'dan 260px'e çıkarıldı
+  }
+  
+  .card-image {
+    height: 85px; // 70px'den 85px'e çıkarıldı
+  }
+}
+
+// Mobil görünümü
+@media (max-width: 480px) {
+  .content-container {
+    padding: 12px;
+  }
+  
+  .articles-wrapper {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .article-card {
+    min-height: 220px; // 200px'den 220px'e çıkarıldı
+    max-height: 240px; // 220px'den 240px'e çıkarıldı
+  }
+  
+  .card-image {
+    height: 75px; // 60px'den 75px'e çıkarıldı
+  }
+  
+  ion-card-header {
+    padding: 6px 10px 3px 10px; // Biraz artırdım
+    
+    ion-card-title {
+      font-size: 14px; // 13px'den 14px'e çıkarıldı
+    }
+    
+    ion-card-subtitle {
+      font-size: 12px; // 11px'den 12px'e çıkarıldı
+    }
+  }
+  
+  ion-card-content {
+    padding: 4px 10px 8px 10px;
+    min-height: 70px; // 60px'den 70px'e çıkarıldı (3 satır için)
+    max-height: 85px; // 70px'den 85px'e çıkarıldı
+  }
+  
+  .no-articles {
+    padding: 40px 20px;
+    
+    .no-articles-icon {
+      font-size: 64px;
+    }
+    
+    p {
+      font-size: 16px;
+    }
+    
+    .subtitle {
+      font-size: 13px !important;
+    }
+  }
+}
+
+// Özel tema geçişleri
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+// Koyu tema için özel ayarlamalar
+body.dark-theme {
+  .article-card {
+    &:hover {
+      box-shadow: 0 4px 16px rgba(76, 141, 255, 0.3);
+    }
+  }
+  
+  .author-avatar {
+    border-color: var(--border-color) !important;
+  }
+}
+
+// Açık tema için özel ayarlamalar
+body.light-theme {
+  .article-card {
+    &:hover {
+      box-shadow: 0 4px 16px rgba(56, 128, 255, 0.3);
+    }
+  }
+}

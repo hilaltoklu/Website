@@ -16,7 +16,8 @@ import {
   IonCardContent,
   IonAvatar,
   IonButtons,
-  IonBackButton
+  IonBackButton,
+  IonIcon
 } from '@ionic/angular/standalone';
 import { AuthService } from '../services/auth.service';
 
@@ -41,7 +42,8 @@ import { AuthService } from '../services/auth.service';
     IonCardContent,
     IonAvatar,
     IonButtons,
-    IonBackButton
+    IonBackButton,
+    IonIcon
   ],
 })
 export class FavoritesPage implements OnInit {

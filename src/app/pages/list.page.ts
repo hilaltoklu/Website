@@ -256,6 +256,7 @@ export class ListPage {
     return this.articles.filter(article => article.category === this.category);
   }
 
+    
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);

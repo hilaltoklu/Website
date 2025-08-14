@@ -1,37 +1,59 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/list"></ion-back-button>
+      <ion-back-button defaultHref="/list2"></ion-back-button>
     </ion-buttons>
     <ion-title>Favorilerim</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div *ngIf="favoritedArticles.length > 0; else noFavorites">
-    <ion-list>
-      <ion-card *ngFor="let article of favoritedArticles" (click)="navigateToDetail(article.id)">
+  <div class="content-container">
+    <div class="articles-wrapper" *ngIf="favoritedArticles.length > 0">
+      <ion-card 
+        class="article-card" 
+        *ngFor="let article of favoritedArticles" 
+        (click)="navigateToDetail(article.id)">
+        
+        <div class="card-image">
+          <img [src]="article.image || 'https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg'" 
+               [alt]="article.title" />
+        </div>
+        
         <ion-card-header>
-          <ion-item lines="none">
-            <ion-avatar slot="start">
-              <img [src]="article.authorGender === 'female' ? 'assets/female.jpg' : 'assets/male.jpg'" />
-            </ion-avatar>
-            <ion-label>
-              <ion-card-title>{{ article.title }}</ion-card-title>
-              <ion-card-subtitle>{{ article.author }}</ion-card-subtitle>
-            </ion-label>
-          </ion-item>
+          <ion-card-title>{{ article.title }}</ion-card-title>
+          <ion-card-subtitle>{{ article.subtitle }}</ion-card-subtitle>
         </ion-card-header>
+        
         <ion-card-content>
-          {{ article.content.substring(0, 100) }}...
+          <div class="author-section">
+            <ion-avatar class="author-avatar">
+              <img [src]="article.userPhoto || 'https://w1.pngwing.com/pngs/386/684/png-transparent-face-icon-user-icon-design-user-profile-share-icon-avatar-black-and-white-silhouette-thumbnail.png'" 
+                   [alt]="article.userName || article.author">
+            </ion-avatar>
+            <div class="author-info">
+              <span class="author-name">{{ article.userName || article.author }}</span>
+              <span class="publish-date">{{ article.date | date:'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+          </div>
+          
+          <p class="article-preview">{{ article.content | slice:0:80 }}...</p>
+          
+          <div class="article-stats">
+            <div class="likes">
+              <ion-icon name="heart" style="color: #dc3545;"></ion-icon>
+              <span>{{ article.likes || 0 }}</span>
+            </div>
+          </div>
         </ion-card-content>
       </ion-card>
-    </ion-list>
-  </div>
-
-  <ng-template #noFavorites>
-    <div style="text-align: center; margin-top: 50px;">
-      <p>Henüz favori makaleniz bulunmuyor.</p>
     </div>
-  </ng-template>
+
+    <!-- Makale henüz yoksa gösterilecek mesaj -->
+    <div *ngIf="favoritedArticles.length === 0" class="no-articles">
+      <ion-icon name="heart-dislike-outline" class="no-articles-icon"></ion-icon>
+      <p>Henüz favori makaleniz bulunmuyor.</p>
+      <p class="subtitle">Makaleleri beğenmeye başlayın ve burada görün!</p>
+    </div>
+  </div>
 </ion-content>

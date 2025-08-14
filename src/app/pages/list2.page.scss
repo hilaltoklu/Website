@@ -65,21 +65,21 @@ ion-content {
   width: 100%;
 }
 
-// Makale kartları - DÜZELTME: Sabit yükseklik kaldırıldı
+// Makale kartları - KISA BOY
 .article-card {
   background-color: var(--card-background);
   width: 100%;
   max-width: 300px;
-  min-height: 400px; // Minimum yükseklik
-  // max-height: 400px; <- Bu satır kaldırıldı
+  min-height: 280px; // 400px'den 280px'e düşürüldü
+  max-height: 300px; // Maksimum yükseklik eklendi
   margin: 0;
   border-radius: 4px;
   box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
-  overflow: visible; // hidden yerine visible
+  overflow: hidden; // visible'dan hidden'a değiştirildi
   display: flex;
   flex-direction: column;
-  position: relative; // Menü konumlandırması için
+  position: relative;
   border: 1px solid var(--border-color);
   
   &:hover {
@@ -88,13 +88,13 @@ ion-content {
   }
 }
 
-// Kart görseli
+// Kart görseli - KÜÇÜLTÜLDÜ
 .card-image {
   width: 100%;
-  height: 160px;
+  height: 100px; // 160px'den 100px'e düşürüldü
   overflow: hidden;
   border-radius: 4px 4px 0 0;
-  flex-shrink: 0; // Görselin küçülmesini engelle
+  flex-shrink: 0;
   
   img {
     width: 100%;
@@ -108,63 +108,64 @@ ion-content {
   }
 }
 
-// Kart başlığı
+// Kart başlığı - KÜÇÜLTÜLDÜ
 ion-card-header {
-  padding: 12px 16px 8px 16px;
+  padding: 8px 12px 4px 12px; // Padding azaltıldı
   background-color: var(--card-background);
-  flex-shrink: 0; // Başlığın küçülmesini engelle
+  flex-shrink: 0;
   
   ion-card-title {
-    font-size: 16px;
+    font-size: 15px; // 16px'den 15px'e düşürüldü
     font-weight: 600;
-    line-height: 1.4;
-    margin-bottom: 4px;
+    line-height: 1.3; // 1.4'ten 1.3'e düşürüldü
+    margin-bottom: 2px; // 4px'den 2px'e düşürüldü
     color: var(--text-primary);
     display: -webkit-box;
-    -webkit-line-clamp: 2; // Maksimum 2 satır
-    line-clamp: 2; // Standart özellik
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
   
   ion-card-subtitle {
-    font-size: 14px;
+    font-size: 13px; // 14px'den 13px'e düşürüldü
     color: var(--text-secondary);
-    line-height: 1.3;
+    line-height: 1.2; // 1.3'ten 1.2'ye düşürüldü
     display: -webkit-box;
-    -webkit-line-clamp: 2; // Maksimum 2 satır
-    line-clamp: 2; // Standart özellik
+    -webkit-line-clamp: 1; // 2'den 1'e düşürüldü
+    line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 }
 
-// Kart içeriği - DÜZELTME: Flex özellikleri düzenlendi
+// Kart içeriği - KÜÇÜLTÜLDÜ
 ion-card-content {
   background-color: var(--card-background);
   color: var(--text-primary);
-  padding: 8px 16px 16px 16px;
-  flex: 1; // Kalan alanı kaplasın
+  padding: 6px 12px 10px 12px; // Padding azaltıldı
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 120px; // Minimum yükseklik garantisi
+  min-height: 100px; // 120px'den 100px'e düşürüldü
+  max-height: 120px; // Maksimum yükseklik eklendi
 }
 
-// Yazar bölümü
+// Yazar bölümü - KÜÇÜLTÜLDÜ
 .author-section {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
-  flex-shrink: 0; // Küçülmesin
+  margin-bottom: 8px; // 12px'den 8px'e düşürüldü
+  flex-shrink: 0;
   
   .author-avatar {
-    width: 32px;
-    height: 32px;
-    margin-right: 10px;
+    width: 26px; // 32px'den 26px'e düşürüldü
+    height: 26px;
+    margin-right: 7px; // 10px'den 7px'e düşürüldü
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid var(--border-color);
+    border: 1px solid var(--border-color); // 2px'den 1px'e düşürüldü
     flex-shrink: 0;
     
     img {
@@ -181,7 +182,7 @@ ion-card-content {
     flex: 1;
     
     .author-name {
-      font-size: 13px;
+      font-size: 12px; // 13px'den 12px'e düşürüldü
       font-weight: 500;
       color: var(--text-primary);
       line-height: 1.2;
@@ -191,49 +192,49 @@ ion-card-content {
     }
     
     .publish-date {
-      font-size: 11px;
+      font-size: 10px; // 11px'den 10px'e düşürüldü
       color: var(--text-secondary);
       line-height: 1.2;
     }
   }
 }
 
-// Makale önizlemesi - DÜZELTME: Flex grow eklendi
+// Makale önizlemesi - 3 SATIR + 1 SATIR BOŞLUK
 .article-preview {
-  font-size: 13px;
+  font-size: 12px; // 13px'den 12px'e düşürüldü
   color: var(--text-secondary);
-  line-height: 1.4;
-  margin-bottom: 12px;
-  flex: 1; // Kalan alanı kaplasın
+  line-height: 1.3; // 1.4'ten 1.3'e düşürüldü
+  margin-bottom: 16px; // 12px'den 16px'e artırıldı (1 satır boşluk için)
+  flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 3; // Maksimum 3 satır
-  line-clamp: 3; // Standart özellik
+  -webkit-line-clamp: 3; // 3 satır
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-// Makale istatistikleri - DÜZELTME: Her zaman alt kısımda görünsün
+// Makale istatistikleri - KÜÇÜLTÜLDÜ
 .article-stats {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: auto; // Her zaman en alta yasla
-  flex-shrink: 0; // Küçülmesin
-  padding-top: 8px; // Üstten biraz boşluk
+  margin-top: auto;
+  flex-shrink: 0;
+  padding-top: 4px; // 8px'den 4px'e düşürüldü
   
   .likes {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px; // 4px'den 3px'e düşürüldü
     
     ion-icon {
-      font-size: 16px;
+      font-size: 13px; // 16px'den 13px'e düşürüldü
       color: var(--danger-color);
       flex-shrink: 0;
     }
     
     span {
-      font-size: 13px;
+      font-size: 12px; // 13px'den 12px'e düşürüldü
       color: var(--text-secondary);
       font-weight: 500;
     }
@@ -282,11 +283,12 @@ ion-card-content {
   
   .article-card {
     max-width: 100%;
-    min-height: 380px; // Mobilde daha küçük minimum yükseklik
+    min-height: 260px; // 380px'den 260px'e düşürüldü
+    max-height: 280px; // Maksimum yükseklik eklendi
   }
   
   .card-image {
-    height: 140px;
+    height: 85px; // 140px'den 85px'e düşürüldü
   }
 }
 
@@ -302,28 +304,30 @@ ion-card-content {
   }
   
   .article-card {
-    min-height: 360px; // Daha küçük mobil minimum yükseklik
+    min-height: 240px; // 360px'den 240px'e düşürüldü
+    max-height: 260px; // Maksimum yükseklik eklendi
   }
   
   .card-image {
-    height: 120px;
+    height: 75px; // 120px'den 75px'e düşürüldü
   }
   
   ion-card-header {
-    padding: 10px 14px 6px 14px;
+    padding: 6px 10px 3px 10px; // Padding azaltıldı
     
     ion-card-title {
-      font-size: 15px;
+      font-size: 14px; // 15px'den 14px'e düşürüldü
     }
     
     ion-card-subtitle {
-      font-size: 13px;
+      font-size: 12px; // 13px'den 12px'e düşürüldü
     }
   }
   
   ion-card-content {
-    padding: 6px 14px 14px 14px;
-    min-height: 110px;
+    padding: 4px 10px 8px 10px; // Padding azaltıldı
+    min-height: 85px; // 110px'den 85px'e düşürüldü
+    max-height: 100px; // Maksimum yükseklik eklendi
   }
 }
 
@@ -331,7 +335,7 @@ ion-card-content {
   position: absolute;
   top: 10px;
   right: 10px;
-  z-index: 5; // Menü her zaman üstte görünsün
+  z-index: 5;
 }
 
 .menu-button {
@@ -340,7 +344,7 @@ ion-card-content {
   padding: 4px;
   cursor: pointer;
   color: var(--text-primary);
-  font-size: 25px;
+  font-size: 20px; // 25px'den 20px'e düşürüldü
   
   &:hover ion-icon {
     color: var(--button-primary);

@@ -11,7 +11,6 @@
       </ion-buttons>
 
       <ion-buttons slot="end">
-        <ion-button fill="outline" (click)="logout()" *ngIf="isLoggedIn$ | async">Çıkış Yap</ion-button>
         <ion-button fill="outline" (click)="login()" *ngIf="!(isLoggedIn$ | async)">Giriş Yap</ion-button>
       </ion-buttons>
 
@@ -77,7 +76,7 @@
             <div class="article-stats">
               <div class="likes">
                 <ion-icon name="heart"></ion-icon>
-                <span>{{ article.likes }}</span>
+                <span>{{article.likes || 0}}</span>
               </div>
             </div>
           </ion-card-content>
