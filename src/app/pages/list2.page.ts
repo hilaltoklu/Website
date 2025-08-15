@@ -78,6 +78,17 @@ export class List2Page {
   segments: { value: string, label: string }[] = [];
   isLoggedIn$: Observable<string | null>;
 
+  // Kategori eşleme tablosu - çeviri anahtarından gerçek kategori değerine
+  private categoryMapping: { [key: string]: string } = {
+    'CATEGORIES.ART': 'sanat',
+    'CATEGORIES.TECHNOLOGY': 'teknoloji', 
+    'CATEGORIES.MUSIC': 'müzik',
+    'CATEGORIES.FLUTTER': 'flutter',
+    'CATEGORIES.FOOD': 'yemek',
+    'CATEGORIES.IONIC': 'ionic',
+    'CATEGORIES.SCIENCE': 'bilim'
+  };
+
   constructor(
     private router: Router,
     private popoverController: PopoverController,
@@ -149,20 +160,31 @@ export class List2Page {
       const interestsJson = sessionStorage.getItem(`interests_${currentUser}`);
       if (interestsJson) {
         let interests = JSON.parse(interestsJson);
+        
+        // Küçük harfli kategorileri büyük harfli çeviri anahtarlarına çevir
         const interestMap: { [key: string]: string } = {
-          'sanat': 'CATEGORIES.ART',
-          'teknoloji': 'CATEGORIES.TECHNOLOGY',
-          'müzik': 'CATEGORIES.MUSIC',
-          'flutter': 'CATEGORIES.FLUTTER',
-          'yemek': 'CATEGORIES.FOOD',
-          'ionic': 'CATEGORIES.IONIC',
-          'bilim': 'CATEGORIES.SCIENCE'
+          
+          // Küçük harfli çeviri anahtarlarını da destekle
+          'categories.art': 'CATEGORIES.ART',
+          'categories.technology': 'CATEGORIES.TECHNOLOGY', 
+          'categories.music': 'CATEGORIES.MUSIC',
+          'categories.flutter': 'CATEGORIES.FLUTTER',
+          'categories.food': 'CATEGORIES.FOOD',
+          'categories.ionic': 'CATEGORIES.IONIC',
+          'categories.science': 'CATEGORIES.SCIENCE'
         };
 
-        const needsMigration = interests.some((interest: string) => interestMap[interest]);
+        const needsMigration = interests.some((interest: string) => 
+          interestMap[interest.toLowerCase()] || !interest.startsWith('CATEGORIES.')
+        );
+        
         if (needsMigration) {
-          const migratedInterests = interests.map((interest: string) => interestMap[interest] || interest);
+          const migratedInterests = interests.map((interest: string) => {
+            const lowerInterest = interest.toLowerCase();
+            return interestMap[lowerInterest] || interestMap[interest] || interest.toUpperCase();
+          });
           sessionStorage.setItem(`interests_${currentUser}`, JSON.stringify(migratedInterests));
+          console.log('Migrated interests:', migratedInterests);
         }
       }
     }
@@ -177,6 +199,11 @@ export class List2Page {
       label: this.translate.instant(`CATEGORIES.${key}`)
     }));
   
+    // Çeviri değişikliklerini dinle ve segmentleri güncelle
+    this.translate.onLangChange.subscribe(() => {
+      this.updateSegmentLabels();
+    });
+
     this.translate.get(['LIST2.ALL_ARTICLES2', 'LIST2.MY_ARTICLE']).subscribe(translations => {
       const allArticlesLabel = translations['LIST2.ALL_ARTICLES2'];
       const myArticlesLabel = translations['LIST2.MY_ARTICLE'];
@@ -218,6 +245,20 @@ export class List2Page {
     });
   }
 
+  // Segment etiketlerini güncelle (dil değiştiğinde)
+  private updateSegmentLabels() {
+    this.segments = this.segments.map(segment => ({
+      ...segment,
+      label: segment.value.startsWith('CATEGORIES.') || segment.value === 'all' || segment.value === 'yazilarim' 
+        ? this.translate.instant(
+            segment.value === 'all' ? 'LIST2.ALL_ARTICLES2' :
+            segment.value === 'yazilarim' ? 'LIST2.MY_ARTICLE' :
+            segment.value
+          )
+        : segment.label
+    }));
+  }
+
   loadArticles() {
     const storedArticles = localStorage.getItem('articles');
     const photoUrlFemale = 'https://w7.pngwing.com/pngs/417/181/png-transparent-computer-icons-icon-design-woman-woman-hat-people-monochrome-thumbnail.png';
@@ -257,7 +298,9 @@ export class List2Page {
         currentUser && article.author === currentUser
       );
     } else {
-      return this.articles.filter(article => article.category === this.category);
+      // Çeviri anahtarını gerçek kategori değerine çevir
+      const actualCategory = this.categoryMapping[this.category] || this.category;
+      return this.articles.filter(article => article.category === actualCategory);
     }
   }
 

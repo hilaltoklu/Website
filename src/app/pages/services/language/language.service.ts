@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class LanguageService {
   private readonly STORAGE_KEY = 'selected-language';
   private readonly DEFAULT_LANGUAGE = 'tr';
