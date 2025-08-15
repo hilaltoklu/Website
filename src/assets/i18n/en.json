@@ -1,3 +1,146 @@
 {
-  "greeting": "Hello"
+    "MENU": 
+    {
+        "TITLE": "Menu",
+        "USER_INFO": "User Informations",
+        "FAVORITES": "My Favorites",
+        "THEME_SETTINGS": "Theme Settings",
+        "LANGUAGE": "Language Options",
+        "CURRENT_THEME" : "Current Theme" 
+    },
+    
+    "LIST" : 
+    {
+        "LOGIN" : "Log In",
+        "ALL_ARTICLES" : "All Articles",
+        "ART": "Art",
+        "MUSIC" : "Music",
+        "FOOD" : "Food",
+        "SCIENCE" : "Science",
+        "TECHNOLOGY" : "Technology",
+        "IONIC" : "Ionic",
+        "FLUTTER" : "Flutter",
+        "FIRST_ARTICLE" : "Add the first article!",
+        "NO_ARTICLE" : "There is no article yet!"    
+    },
+
+    "LIST2" : 
+    {
+        "LOGOUT" : "Log Out",
+        "ALL_ARTICLES2" : "All Articles",
+        "MY_ARTICLE" : "My Articles",
+        "ART2": "Art",
+        "MUSIC2" : "Music",
+        "FOOD2" : "Food",
+        "SCIENCE2" : "Science",
+        "TECHNOLOGY2" : "Technology",
+        "IONIC2" : "Ionic",
+        "FLUTTER2" : "Flutter",
+        "FIRST_ARTICLE2" : "Add the first article!",
+        "NO_ARTICLE2" : "There is no article yet!"    
+    },
+
+    "ADD" :
+    {
+        "TITLE" : "Title",
+        "TITLE_" : "Please enter the title of article",
+        "SUBTITLE" : "Subtitle",
+        "SUBTITLE_" : "Please enter the Subtitle of article",
+        "PHOTO_URL" : "Photo URL",
+        "PHOTO_URL_" :"Please enter the photo url of article",
+        "CATEGORY" : "Category",
+        "CATEGORY_" : "Please select the category",
+        "ART": "Art",
+        "MUSIC" : "Music",
+        "FOOD" : "Food",
+        "SCIENCE" : "Science",
+        "TECHNOLOGY" : "Technology",
+        "IONIC" : "Ionic",
+        "FLUTTER" : "Flutter",
+        "CONTENT" : "Content",
+        "ARTICLE_CONTENT" : "Please enter the content of the article",
+        "ADD_ARTICLE" : "Add Article"
+    },
+
+    "USER_EDIT" :
+    {
+        "INFO" : "User Informations",
+        "CLOSE" : "Close",
+        "USERNAME" : "Username",
+        "PASSWORD" : "Password",
+        "GENDER" : "Gender",
+        "GENDER_MALE" : "Male",
+        "GENDER_FEMALE" : "Female",
+        "SAVE" : "Save"
+    },
+
+    "UPDATE" : 
+    {
+        "EDIT_TITLE" : "Edit the article",
+        "CLOSE" :  "Close",
+        "TITLE" : "Title",
+        "SUBTITLE" : "Subtitle",
+        "PHOTO_URL" : "Photo URL",
+        "CATEGORY" : "Category",
+        "ART": "Art",
+        "MUSIC" : "Music",
+        "FOOD" : "Food",
+        "SCIENCE" : "Science",
+        "TECHNOLOGY" : "Technology",
+        "IONIC" : "Ionic",
+        "FLUTTER" : "Flutter",
+        "CONTENT" : "Content",
+        "EDIT" : "Edit"
+    },
+
+    "SIGNUP" : 
+    {
+        "H_2" : "Welcome to",
+        "H_1" : "Sign Up Screen",
+        "USERNAME" : "Username",
+        "PASSWORD" :"Password",
+        "GENDER" : "Gender",
+        "GENDER_MALE" : "Male",
+        "GENDER_FEMALE" : "Female",
+        "SAVE" : "Save",
+        "SIGN_UP" : "Sign Up"
+
+    }, 
+
+    "LOGIN" :
+    {
+        "TEXT" : "Please log in to your account",
+        "H_2" : "Welcome to",
+        "H_1" : "Log In Screen",
+        "USERNAME" : "Username",
+        "PASSWORD" :"Password",
+        "LOG_IN" : "Log In",
+        "S" : "Aren't you a member yet?",
+        "SIGN_UP" :"Sign Up"    
+    },
+
+    "INTEREST" : 
+    {
+        "CATEGORY": "Category",
+        "ART": "Art",
+        "MUSIC": "Music",
+        "FOOD": "Food",
+        "SCIENCE": "Science",
+        "TECHNOLOGY": "Technology",
+        "IONIC": "Ionic",
+        "FLUTTER": "Flutter",
+        "SELECT_INTERESTS": "Please select the areas you're interested in.",
+        "SAVE": "Save"
+    },
+    
+    "FAVORITES": 
+    {
+        "HEADER": "Favorites",
+        "NO_ARTICLES": {
+            "TITLE": "You don't have any favorite articles yet.",
+            "SUBTITLE": "Start liking articles and they will appear here!"
+        }
+    }
+
+
 }

@@ -1,3 +1,146 @@
 {
-  "greeting": "Merhaba"
+    "MENU": 
+    {
+        "TITLE": "Menü",
+        "USER_INFO": "Kullanıcı Bilgileri",
+        "FAVORITES": "Favorilerim",
+        "THEME_SETTINGS": "Tema Ayarları",
+        "LANGUAGE": "Dil Seçenekleri",
+        "CURRENT_THEME" : "Aftif Tema" 
+    },
+    
+    "LIST" : 
+    {
+        "LOGIN" : "Giriş Yap",
+        "ALL_ARTICLES" : "Tüm Yazılar",
+        "ART": "Sanat",
+        "MUSIC" : "Müzik",
+        "FOOD" : "Yemek",
+        "SCIENCE" : "Bilim",
+        "TECHNOLOGY" : "Teknoloji",
+        "IONIC" : "Ionic",
+        "FLUTTER" : "Flutter",
+        "FIRST_ARTICLE" : "İlk Makaleyi Ekle",
+        "NO_ARTICLE" : "Henüz makale bulunmuyor!"    
+    },
+
+    "LIST2" : 
+    {
+        "LOGOUT" : "Çıkış Yap",
+        "ALL_ARTICLES2" : "Tüm Yazılar",
+        "MY_ARTICLE" : "Yazılarım",
+        "ART2": "Sanat",
+        "MUSIC2" : "Müzik",
+        "FOOD2" : "Yemek",
+        "SCIENCE2" : "Bilim",
+        "TECHNOLOGY2" : "Teknoloji",
+        "IONIC2" : "Ionic",
+        "FLUTTER2" : "Flutter",
+        "FIRST_ARTICLE2" : "İlk Makaleyi Ekle",
+        "NO_ARTICLE2" : "Henüz makale bulunmuyor."    
+    },
+
+    "ADD" :
+    {
+        "TITLE" : "Başlık",
+        "TITLE_" : "Lütfen başlığı girin",
+        "SUBTITLE" : "Alt başlık",
+        "SUBTITLE_" : "Lütfen alt başlığı girin",
+        "PHOTO_URL" : "Görsel  URL'si",
+        "PHOTO_URL_" :"Lütfen görselin URL'sini girin",
+        "CATEGORY" : "Kategori",
+        "CATEGORY_" : "Lütfen kategoriyi seçin",
+        "ART": "Sanat",
+        "MUSIC" : "Müzik",
+        "FOOD" : "Yemek",
+        "SCIENCE" : "Bilim",
+        "TECHNOLOGY" : "Teknoloji",
+        "IONIC" : "Ionic",
+        "FLUTTER" : "Flutter",
+        "CONTENT" : "İçerik",
+        "ARTICLE_CONTENT" : "Lütfen içeriği girin",
+        "ADD_ARTICLE" : "Makale Ekle"
+    },
+
+    "USER_EDIT" :
+    {
+        "INFO" : "Kullanıcı Bilgileri",
+        "CLOSE" : "Kapat",
+        "USERNAME" : "Kullanıcı Adı",
+        "PASSWORD" : "Şifre",
+        "GENDER" : "Cinsiyet",
+        "GENDER_MALE" : "Erkek",
+        "GENDER_FEMALE" : "Kadın",
+        "SAVE" : "Kaydet"
+    },
+
+    "UPDATE" : 
+    {
+        "EDIT_TITLE" : "Makaleyi Düzenle",
+        "CLOSE" :  "Kapat",
+        "TITLE" : "Başlık",
+        "SUBTITLE" : "Alt başlık",
+        "PHOTO_URL" : "Görsel  URL'si",
+        "CATEGORY" : "Kategori",
+        "ART": "Sanat",
+        "MUSIC" : "Müzik",
+        "FOOD" : "Yemek",
+        "SCIENCE" : "Bilim",
+        "TECHNOLOGY" : "Teknoloji",
+        "IONIC" : "Ionic",
+        "FLUTTER" : "Flutter",
+        "CONTENT" : "İçerik",
+        "EDIT" : "Güncelle"
+    },
+
+    "SIGNUP" : 
+    {
+        "H_2" : "Kayıt Ekranına",
+        "H_1" : "Hoş Geldiniz",
+        "USERNAME" : "Kullanıcı Adı",
+        "PASSWORD" :"Şifre",
+        "GENDER" : "Cinsiyet",
+        "GENDER_MALE" : "Erkek",
+        "GENDER_FEMALE" : "Kadın",
+        "SAVE" : "Kaydet",
+        "SIGN_UP" : "Kayıt Ol"
+
+    }, 
+
+    "LOGIN" :
+    {
+        "TEXT" : "Hesabınıza Giriş Yapın",
+        "H_2" : "Giriş Ekranına",
+        "H_1" : "Hoş Geldiniz",
+        "USERNAME" : "Kullanıcı Adı",
+        "PASSWORD" :"Şifre",
+        "LOG_IN" : "Giriş Yap",
+        "S" : "Hesabınız yok mu?",
+        "SIGN_UP" :"Kayıt Ol"    
+    },
+
+    "INTEREST" : 
+    {
+        "ART": "Sanat",
+        "MUSIC" : "Müzik",
+        "FOOD" : "Yemek",
+        "SCIENCE" : "Bilim",
+        "TECHNOLOGY" : "Teknoloji",
+        "IONIC" : "Ionic",
+        "FLUTTER" : "Flutter",
+        "CONTENT" : "İçerik",
+        "SELECT_INTERESTS": "Lütfen ilgilendiğiniz kategorileri seçiniz. (En fazla 3 tane)",
+        "SAVE": "Kaydet"
+    },
+    
+    "FAVORITES": 
+    {
+        "HEADER": "Favorilerim",
+        "NO_ARTICLES": {
+            "TITLE": "Henüz favori makaleniz bulunmuyor.",
+            "SUBTITLE": "Makaleleri beğenmeye başlayın ve burada görün!"
+        }
+    }
+
+
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { ThemeService } from './pages/services/theme/theme.service';
 import { MenuComponent } from './pages/menu.bilesen/menu.bilesen';
+import { LanguageService } from './pages/services/language/language.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +11,16 @@ import { MenuComponent } from './pages/menu.bilesen/menu.bilesen';
   imports: [IonApp, IonRouterOutlet, MenuComponent],
 })
 export class AppComponent implements OnInit {
-  constructor(private themeService: ThemeService) {}
+  constructor(
+    private themeService: ThemeService,
+    private languageService: LanguageService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
     // Tema servisini başlat
     this.themeService.setTheme(this.themeService.getCurrentTheme());
+    // Dil servisini başlat
+    this.languageService.setInitialAppLanguage();
   }
 }
