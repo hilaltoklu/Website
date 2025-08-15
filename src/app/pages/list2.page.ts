@@ -35,6 +35,7 @@ import { addIcons } from 'ionicons';
 import { UpdatePage } from 'src/app/pages/updates/update.page';
 import { MenuComponent } from './menu.bilesen/menu.bilesen';
 import { ThemeService } from './services/theme/theme.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-list2',
@@ -67,7 +68,8 @@ import { ThemeService } from './services/theme/theme.service';
     IonMenuButton,
     IonRouterOutlet,
     RouterModule,
-    MenuComponent
+    MenuComponent,
+    TranslateModule
   ]
 })
 export class List2Page {

@@ -32,6 +32,7 @@ import { add, heart, documentOutline, addCircleOutline, personCircleOutline, lan
 import { addIcons } from 'ionicons';
 import { MenuComponent } from './menu.bilesen/menu.bilesen';
 import { ThemeService } from './services/theme/theme.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-list',
@@ -66,7 +67,8 @@ import { ThemeService } from './services/theme/theme.service';
     IonRouterOutlet,
     RouterModule,
     MenuComponent,
-    IonRouterOutlet
+    IonRouterOutlet,
+    TranslateModule
   ]
 })
 export class ListPage {

@@ -11,33 +11,33 @@
       </ion-buttons>
 
       <ion-buttons slot="end">
-        <ion-button fill="outline" (click)="login()" *ngIf="!(isLoggedIn$ | async)">Giriş Yap</ion-button>
+        <ion-button fill="outline" (click)="login()" *ngIf="!(isLoggedIn$ | async)">{{'LIST.LOGIN'|translate}}</ion-button>
       </ion-buttons>
 
       <ion-segment [(ngModel)]="category">
         <ion-segment-button value="all">
-          <ion-label>Tüm Yazılar</ion-label>
+          <ion-label>{{'LIST.ALL_ARTICLES' |translate}}</ion-label>
         </ion-segment-button>
         <ion-segment-button value="art">
-          <ion-label>Sanat</ion-label>
+          <ion-label>{{'LIST.ART' |translate}}</ion-label>
         </ion-segment-button>
         <ion-segment-button value="music">
-          <ion-label>Müzik</ion-label>
+          <ion-label>{{'LIST.MUSIC' |translate}}</ion-label>
         </ion-segment-button>
         <ion-segment-button value="food">
-          <ion-label>Yemek</ion-label>
+          <ion-label>{{'LIST.FOOD' |translate}}</ion-label>
         </ion-segment-button>
         <ion-segment-button value="science">
-          <ion-label>Bilim</ion-label>
+          <ion-label>{{'LIST.SCIENCE' |translate}}</ion-label>
         </ion-segment-button>
         <ion-segment-button value="ion">
-          <ion-label>İonic</ion-label>
+          <ion-label>{{'LIST.IONIC' |translate}}</ion-label>
         </ion-segment-button>
         <ion-segment-button value="flutter">
-          <ion-label>Flutter</ion-label>
+          <ion-label>{{'LIST.FLUTTER' |translate}}</ion-label>
         </ion-segment-button>
         <ion-segment-button value="tek">
-          <ion-label>Teknoloji</ion-label>
+          <ion-label>{{'LIST.TECHNOLOGY' |translate}}</ion-label>
         </ion-segment-button>
       </ion-segment>
     </ion-toolbar>
@@ -86,8 +86,8 @@
       <!-- Makale henüz yoksa gösterilecek mesaj -->
       <div *ngIf="filteredArticles.length === 0" class="no-articles">
         <ion-icon name="document-outline" class="no-articles-icon"></ion-icon>
-        <p>Henüz makale bulunmuyor.</p>
-        <ion-button (click)="login()" color="primary">İlk Makaleyi Ekle</ion-button>
+        <p>{{'LIST.NO_ARTICLE' |translate}}</p>
+        <ion-button (click)="login()" color="primary">{{'LIST.FIRST_ARTICLE' |translate}}</ion-button>
       </div>
     </div>
   </ion-content>

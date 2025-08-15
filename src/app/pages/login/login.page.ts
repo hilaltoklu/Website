@@ -6,13 +6,14 @@ import { addIcons } from 'ionicons';
 import { rocketOutline } from 'ionicons/icons';
 import confetti from 'canvas-confetti';
 import { AuthService } from '../services/auth/auth.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule],
+  imports: [IonicModule, FormsModule,TranslateModule],
 })
 export class LoginPage {
 
@@ -23,9 +24,12 @@ export class LoginPage {
     private alertController: AlertController,
     private toastController: ToastController,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private translate : TranslateService
   ) {
     addIcons({ rocketOutline });
+    this.translate.setDefaultLang('tr');
+    this.translate.use('tr');
   }
 
   ngOnInit() {
@@ -173,5 +177,10 @@ if (userDataString) {
 
   kayitOl() {
     this.router.navigate(['/kayitol']);
+  }
+
+
+   switchLanguage(language: string) {
+    this.translate.use(language);
   }
 }

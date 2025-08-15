@@ -2,6 +2,12 @@ import { Routes } from '@angular/router';
 import { LoadingResolver } from 'src/app/pages/services/loading/loading.resolver';
 
 export const routes: Routes = [
+    {
+    path: '', // Direkt olarak list sayfasına yönlendir
+    redirectTo: 'list', 
+    pathMatch: 'full',
+  },
+
   {
     path: 'add',
     loadComponent: () => import('./pages/add.page').then((m) => m.AddPage),
@@ -15,11 +21,6 @@ export const routes: Routes = [
      resolve: {
       data: LoadingResolver
     }
-  },
-  {
-    path: '',
-    redirectTo: 'list', // Direkt olarak list sayfasına yönlendir
-    pathMatch: 'full',
   },
 
   {

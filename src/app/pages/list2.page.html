@@ -11,8 +11,8 @@
       </ion-buttons>
 
       <ion-buttons slot="end">
-        <ion-button fill="outline" (click)="logout()" *ngIf="isLoggedIn$ | async">Çıkış Yap</ion-button>
-        <ion-button fill="outline" (click)="login()" *ngIf="!(isLoggedIn$ | async)">Giriş Yap</ion-button>
+        <ion-button fill="outline" (click)="logout()" *ngIf="isLoggedIn$ | async">{{'LIST2.LOGOUT' | translate}}</ion-button>
+        <ion-button fill="outline" (click)="login()" *ngIf="!(isLoggedIn$ | async)">{{'LIST.LOGIN'}}</ion-button>
       </ion-buttons>
       
       <ion-segment [(ngModel)]="category">
@@ -79,8 +79,8 @@
     <!-- Makale henüz yoksa gösterilecek mesaj -->
     <div *ngIf="filteredArticles.length === 0" class="no-articles">
       <ion-icon name="document-outline" class="no-articles-icon"></ion-icon>
-      <p>Henüz makale bulunmuyor.</p>
-      <ion-button (click)="goToAdd()" color="primary">İlk Makaleyi Ekle</ion-button>
+      <p>{{'LIST2.NO_ARTICLE2' | translate}}</p>
+      <ion-button (click)="goToAdd()" color="primary">{{'LIST2.FIRST_ARTICLE2' | translate}}</ion-button>
     </div>
     </div>
 

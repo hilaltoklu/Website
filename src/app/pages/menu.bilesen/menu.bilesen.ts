@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 import { 
   IonMenu,
   IonHeader,
@@ -55,7 +57,9 @@ import { AuthService } from '../services/auth/auth.service';
     IonNote,
     IonButtons,
     IonButton,
-    UserInfoEditModalPage
+    UserInfoEditModalPage,
+    TranslateModule
+
   ]
 })
 export class MenuComponent implements OnInit, OnDestroy {

@@ -7,20 +7,17 @@ import { TranslateService } from '@ngx-translate/core';
 export class LanguageService {
   constructor(private translate: TranslateService) {}
 
+  // Uygulamanın başlangıç dilini ayarlama
   setInitialAppLanguage() {
-    let language = localStorage.getItem('language');
-    if (language) {
-      this.translate.setDefaultLang(language);
-      this.translate.use(language);
-    } else {
-      this.translate.setDefaultLang('en');
-      this.translate.use('en');
-      localStorage.setItem('language', 'en');
-    }
+    const language = localStorage.getItem('language') || 'en'; // Eğer dil yoksa varsayılan 'en' olsun
+    this.translate.setDefaultLang(language);
+    this.translate.use(language); // Kullanıcı dilini uygula
+    localStorage.setItem('language', language); // Dil seçimi yerel depolamaya kaydedilsin
   }
 
+  // Dil değiştirme fonksiyonu
   changeLanguage(lang: string) {
     this.translate.use(lang);
-    localStorage.setItem('language', lang);
+    localStorage.setItem('language', lang); // Yeni dil yerel depolamaya kaydedilsin
   }
 }

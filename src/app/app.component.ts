@@ -3,18 +3,16 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { ThemeService } from './pages/services/theme/theme.service';
 import { MenuComponent } from './pages/menu.bilesen/menu.bilesen';
 import { LanguageService } from './pages/services/language/language.service';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet, MenuComponent],
+  imports: [IonApp, IonRouterOutlet, MenuComponent], // Standalone componentler burada belirtilmiş
 })
 export class AppComponent implements OnInit {
   constructor(
     private themeService: ThemeService,
-    private languageService: LanguageService,
-    private translate: TranslateService
+    private languageService: LanguageService
   ) {}
 
   ngOnInit() {

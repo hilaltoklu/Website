@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 import {
   IonHeader,
   IonToolbar,
@@ -43,14 +45,15 @@ import { AuthService } from '../services/auth/auth.service';
     IonAvatar,
     IonButtons,
     IonBackButton,
-    IonIcon
+    IonIcon,
+    TranslateModule
   ],
 })
 export class FavoritesPage implements OnInit {
   favoritedArticles: any[] = [];
   currentUser: string | null = null;
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private translate: TranslateService) { }
 
   ngOnInit() {
     this.currentUser = this.authService.getCurrentUserValue();

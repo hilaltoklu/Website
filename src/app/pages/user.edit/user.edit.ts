@@ -3,7 +3,9 @@ import { ModalController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import  {IonIcon} from '@ionic/angular/standalone'
+import  {IonIcon} from '@ionic/angular/standalone';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 import { 
  saveOutline
 } from 'ionicons/icons';
@@ -12,7 +14,7 @@ import {
   templateUrl: './user.edit.html',
   styleUrls: ['./user.edit.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule,IonIcon]
+  imports: [IonicModule, CommonModule, FormsModule,IonIcon,TranslateModule]
 })
 export class UserInfoEditModalPage implements OnInit {
   @Input() userData: any;
