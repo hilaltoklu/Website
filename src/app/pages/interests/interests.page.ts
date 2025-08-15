@@ -7,7 +7,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AlertController, IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonButton, IonText } from '@ionic/angular/standalone';
 
 interface Interest {
-  name: string;
+  key: string;
   emoji: string;
   selected: boolean;
 }
@@ -21,18 +21,18 @@ interface Interest {
 })
 export class InterestsPage {
 
+  
   interests: Interest[] = [
-    { name: 'Sanat', emoji: '🎨', selected: false },
-    { name: 'Teknoloji', emoji: '💻', selected: false },
-    { name: 'Müzik', emoji: '🎵', selected: false },
-    { name: 'Flutter', emoji: '📱', selected: false },
-    { name: 'Yemek', emoji: '🍔', selected: false },
-    { name: 'Ionic', emoji: '🌐', selected: false },
-    { name: 'Bilim', emoji: '🔬', selected: false },
+     { key: 'CATEGORIES.ART', emoji: '🎨', selected: false },
+    { key: 'CATEGORIES.TECHNOLOGY', emoji: '💻', selected: false },
+    { key: 'CATEGORIES.MUSIC', emoji: '🎵', selected: false },
+    { key: 'CATEGORIES.FLUTTER', emoji: '📱', selected: false },
+    { key: 'CATEGORIES.FOOD', emoji: '🍔', selected: false },
+    { key: 'CATEGORIES.IONIC', emoji: '🌐', selected: false },
+    { key: 'CATEGORIES.SCIENCE', emoji: '🔬', selected: false },
   ];
 
   constructor(private router: Router, private alertController: AlertController,private translate: TranslateService) { }
-
   toggleInterest(interest: Interest) {
     if (!interest.selected && this.selectedInterestsCount() === 3) {
       this.presentAlert();
@@ -67,7 +67,7 @@ export class InterestsPage {
       this.router.navigate(['/login']);
       return;
     }
-    const selectedInterests = this.interests.filter(i => i.selected).map(i => i.name.toLowerCase());
+    const selectedInterests = this.interests.filter(i => i.selected).map(i => i.key.toLowerCase());
     sessionStorage.setItem(`interests_${currentUser}`, JSON.stringify(selectedInterests));
     this.router.navigate(['/list2']);
   }  

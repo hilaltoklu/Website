@@ -13,13 +13,6 @@
     {
         "LOGIN" : "Log In",
         "ALL_ARTICLES" : "All Articles",
-        "ART": "Art",
-        "MUSIC" : "Music",
-        "FOOD" : "Food",
-        "SCIENCE" : "Science",
-        "TECHNOLOGY" : "Technology",
-        "IONIC" : "Ionic",
-        "FLUTTER" : "Flutter",
         "FIRST_ARTICLE" : "Add the first article!",
         "NO_ARTICLE" : "There is no article yet!"    
     },
@@ -29,13 +22,6 @@
         "LOGOUT" : "Log Out",
         "ALL_ARTICLES2" : "All Articles",
         "MY_ARTICLE" : "My Articles",
-        "ART2": "Art",
-        "MUSIC2" : "Music",
-        "FOOD2" : "Food",
-        "SCIENCE2" : "Science",
-        "TECHNOLOGY2" : "Technology",
-        "IONIC2" : "Ionic",
-        "FLUTTER2" : "Flutter",
         "FIRST_ARTICLE2" : "Add the first article!",
         "NO_ARTICLE2" : "There is no article yet!"    
     },
@@ -50,13 +36,6 @@
         "PHOTO_URL_" :"Please enter the photo url of article",
         "CATEGORY" : "Category",
         "CATEGORY_" : "Please select the category",
-        "ART": "Art",
-        "MUSIC" : "Music",
-        "FOOD" : "Food",
-        "SCIENCE" : "Science",
-        "TECHNOLOGY" : "Technology",
-        "IONIC" : "Ionic",
-        "FLUTTER" : "Flutter",
         "CONTENT" : "Content",
         "ARTICLE_CONTENT" : "Please enter the content of the article",
         "ADD_ARTICLE" : "Add Article"
@@ -122,13 +101,6 @@
     "INTEREST" : 
     {
         "CATEGORY": "Category",
-        "ART": "Art",
-        "MUSIC": "Music",
-        "FOOD": "Food",
-        "SCIENCE": "Science",
-        "TECHNOLOGY": "Technology",
-        "IONIC": "Ionic",
-        "FLUTTER": "Flutter",
         "SELECT_INTERESTS": "Please select the areas you're interested in.",
         "SAVE": "Save"
     },
@@ -177,8 +149,18 @@
         "LOGIN_REQUIRED_HEADER": "Login Required",
         "LOGIN_REQUIRED_MESSAGE": "You need to log in first to {{action}}. You are now being redirected to the login page.",
         "LOGIN_BUTTON": "Log In"
-    }
+    },
 
+    "CATEGORIES" :
+    {
+        "ART": "Art",
+        "MUSIC" : "Music",
+        "FOOD" : "Food",
+        "SCIENCE" : "Science",
+        "TECHNOLOGY" : "Technology",
+        "IONIC" : "Ionic",
+        "FLUTTER" : "Flutter"
+    }
 
 
 

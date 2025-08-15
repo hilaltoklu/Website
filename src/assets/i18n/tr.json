@@ -13,13 +13,6 @@
     {
         "LOGIN" : "Giriş Yap",
         "ALL_ARTICLES" : "Tüm Yazılar",
-        "ART": "Sanat",
-        "MUSIC" : "Müzik",
-        "FOOD" : "Yemek",
-        "SCIENCE" : "Bilim",
-        "TECHNOLOGY" : "Teknoloji",
-        "IONIC" : "Ionic",
-        "FLUTTER" : "Flutter",
         "FIRST_ARTICLE" : "İlk Makaleyi Ekle",
         "NO_ARTICLE" : "Henüz makale bulunmuyor!"    
     },
@@ -29,13 +22,6 @@
         "LOGOUT" : "Çıkış Yap",
         "ALL_ARTICLES2" : "Tüm Yazılar",
         "MY_ARTICLE" : "Yazılarım",
-        "ART2": "Sanat",
-        "MUSIC2" : "Müzik",
-        "FOOD2" : "Yemek",
-        "SCIENCE2" : "Bilim",
-        "TECHNOLOGY2" : "Teknoloji",
-        "IONIC2" : "Ionic",
-        "FLUTTER2" : "Flutter",
         "FIRST_ARTICLE2" : "İlk Makaleyi Ekle",
         "NO_ARTICLE2" : "Henüz makale bulunmuyor."    
     },
@@ -50,13 +36,6 @@
         "PHOTO_URL_" :"Lütfen görselin URL'sini girin",
         "CATEGORY" : "Kategori",
         "CATEGORY_" : "Lütfen kategoriyi seçin",
-        "ART": "Sanat",
-        "MUSIC" : "Müzik",
-        "FOOD" : "Yemek",
-        "SCIENCE" : "Bilim",
-        "TECHNOLOGY" : "Teknoloji",
-        "IONIC" : "Ionic",
-        "FLUTTER" : "Flutter",
         "CONTENT" : "İçerik",
         "ARTICLE_CONTENT" : "Lütfen içeriği girin",
         "ADD_ARTICLE" : "Makale Ekle"
@@ -82,13 +61,6 @@
         "SUBTITLE" : "Alt başlık",
         "PHOTO_URL" : "Görsel  URL'si",
         "CATEGORY" : "Kategori",
-        "ART": "Sanat",
-        "MUSIC" : "Müzik",
-        "FOOD" : "Yemek",
-        "SCIENCE" : "Bilim",
-        "TECHNOLOGY" : "Teknoloji",
-        "IONIC" : "Ionic",
-        "FLUTTER" : "Flutter",
         "CONTENT" : "İçerik",
         "EDIT" : "Güncelle"
     },
@@ -121,13 +93,6 @@
 
     "INTEREST" : 
     {
-        "ART": "Sanat",
-        "MUSIC" : "Müzik",
-        "FOOD" : "Yemek",
-        "SCIENCE" : "Bilim",
-        "TECHNOLOGY" : "Teknoloji",
-        "IONIC" : "Ionic",
-        "FLUTTER" : "Flutter",
         "CONTENT" : "İçerik",
         "SELECT_INTERESTS": "Lütfen ilgilendiğiniz kategorileri seçiniz. (En fazla 3 tane)",
         "SAVE": "Kaydet"
@@ -178,6 +143,17 @@
         "LOGIN_REQUIRED_HEADER": "Giriş Gerekli",
         "LOGIN_REQUIRED_MESSAGE": "{{action}} için önce giriş yapmanız gerekiyor. Şu an giriş sayfasına yönlendiriliyorsunuz.",
         "LOGIN_BUTTON": "Giriş Yap"
+    },
+
+    "CATEGORIES" : 
+    {
+        "ART": "Sanat",
+        "MUSIC" : "Müzik",
+        "FOOD" : "Yemek",
+        "SCIENCE" : "Bilim",
+        "TECHNOLOGY" : "Teknoloji",
+        "IONIC" : "Ionic",
+        "FLUTTER" : "Flutter"
     }
 
 

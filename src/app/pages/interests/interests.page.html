@@ -12,7 +12,7 @@
           [fill]="interest.selected ? 'solid' : 'outline'"
           (click)="toggleInterest(interest)"
         >
-          {{ interest.emoji }} {{ interest.name }}
+          {{ interest.emoji }} {{  interest.key | translate }}
         </ion-button>
       </ion-col>
     </ion-row>

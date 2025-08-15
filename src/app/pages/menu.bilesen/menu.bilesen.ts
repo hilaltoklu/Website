@@ -32,7 +32,9 @@ import {
   contrast,
   sunny,
   moon,
-  phonePortrait
+  phonePortrait,
+  languageOutline, // Bunu ekleyin
+
 } from 'ionicons/icons';
 import { ThemeService, ThemeType } from '../services/theme/theme.service';
 import { Subscription, Observable, combineLatest } from 'rxjs';
@@ -60,7 +62,8 @@ import { LanguageService } from '../services/language/language.service';
     IonButtons,
     IonButton,
     UserInfoEditModalPage,
-    TranslateModule
+    TranslateModule,
+  
   ]
 })
 export class MenuComponent implements OnInit, OnDestroy {
@@ -91,7 +94,9 @@ export class MenuComponent implements OnInit, OnDestroy {
       contrast,
       sunny,
       moon,
-      phonePortrait
+      phonePortrait,
+      languageOutline // Bunu ekleyin
+
     });
   }
 

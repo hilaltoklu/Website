@@ -102,6 +102,7 @@ export class List2Page {
 
   ionViewWillEnter() {
     this.migrateArticleCategories();
+    this.migrateUserInterests();
     this.loadUserInterests();
     this.loadArticles();
   }
@@ -142,44 +143,79 @@ export class List2Page {
     }
   }
 
-  loadUserInterests() {
-    const defaultSegments = [
-      { value: 'all', label: 'Tüm Yazılar' },
-      { value: 'ionic', label: 'İonic' },
-      { value: 'flutter', label: 'Flutter' },
-      { value: 'teknoloji', label: 'Teknoloji' },
-      { value: 'sanat', label: 'Sanat' },
-      { value: 'yemek', label: 'Yemek' },
-      { value: 'bilim', label: 'Bilim' }, 
-      { value: 'müzik', label: 'Müzik' },
-      { value: 'yazilarim', label: 'Yazılarım' }
-
-    ];
-
+  migrateUserInterests() {
     const currentUser = sessionStorage.getItem('currentUser');
     if (currentUser) {
       const interestsJson = sessionStorage.getItem(`interests_${currentUser}`);
       if (interestsJson) {
-        const interests = JSON.parse(interestsJson);
-        if (interests.length > 0) {
-          const interestSegments = interests.map((interest: string) => ({
-            value: interest,
-            label: interest.charAt(0).toUpperCase() + interest.slice(1)
-          }));
-          this.segments = [
-            { value: 'all', label: 'Tüm Yazılar' },
-            { value: 'yazilarim', label: 'Yazılarım' },
-            ...interestSegments
-          ];
+        let interests = JSON.parse(interestsJson);
+        const interestMap: { [key: string]: string } = {
+          'sanat': 'ART',
+          'teknoloji': 'TECHNOLOGY',
+          'müzik': 'MUSIC',
+          'flutter': 'FLUTTER',
+          'yemek': 'FOOD',
+          'ionic': 'IONIC',
+          'bilim': 'SCIENCE'
+        };
+
+        const needsMigration = interests.some((interest: string) => interestMap[interest]);
+        if (needsMigration) {
+          const migratedInterests = interests.map((interest: string) => interestMap[interest] || interest);
+          sessionStorage.setItem(`interests_${currentUser}`, JSON.stringify(migratedInterests));
+        }
+      }
+    }
+  }
+
+  loadUserInterests() {
+    const currentUser = sessionStorage.getItem('currentUser');
+    const categoryKeys = ['ART', 'TECHNOLOGY', 'MUSIC', 'FLUTTER', 'FOOD', 'IONIC', 'SCIENCE'];
+  
+    const defaultSegments = categoryKeys.map(key => ({
+      value: `CATEGORIES.${key}`,
+      label: this.translate.instant(`CATEGORIES.${key}`)
+    }));
+  
+    this.translate.get(['LIST2.ALL_ARTICLES2', 'LIST2.MY_ARTICLE']).subscribe(translations => {
+      const allArticlesLabel = translations['LIST2.ALL_ARTICLES2'];
+      const myArticlesLabel = translations['LIST2.MY_ARTICLE'];
+  
+      if (currentUser) {
+        const interestsJson = sessionStorage.getItem(`interests_${currentUser}`);
+        if (interestsJson) {
+          const interests = JSON.parse(interestsJson);
+          if (interests.length > 0) {
+            const interestSegments = interests.map((interestKey: string) => ({
+              value: interestKey,
+              label: this.translate.instant(interestKey)
+            }));
+            this.segments = [
+              { value: 'all', label: allArticlesLabel },
+              { value: 'yazilarim', label: myArticlesLabel },
+              ...interestSegments
+            ];
+          } else {
+            this.segments = [
+              { value: 'all', label: allArticlesLabel },
+              { value: 'yazilarim', label: myArticlesLabel },
+              ...defaultSegments
+            ];
+          }
         } else {
-          this.segments = defaultSegments;
+          this.segments = [
+            { value: 'all', label: allArticlesLabel },
+            { value: 'yazilarim', label: myArticlesLabel },
+            ...defaultSegments
+          ];
         }
       } else {
-        this.segments = defaultSegments;
+        this.segments = [
+          { value: 'all', label: allArticlesLabel },
+          ...defaultSegments
+        ];
       }
-    } else {
-      this.segments = defaultSegments;
-    }
+    });
   }
 
   loadArticles() {
