@@ -78,17 +78,6 @@ export class List2Page {
   segments: { value: string, label: string }[] = [];
   isLoggedIn$: Observable<string | null>;
 
-  // Kategori eşleştirmeleri - düzeltildi
-  private categoryMappings = [
-    { key: 'ART', value: 'sanat', dbValue: 'sanat' },
-    { key: 'TECHNOLOGY', value: 'teknoloji', dbValue: 'teknoloji' },
-    { key: 'MUSIC', value: 'müzik', dbValue: 'müzik' },
-    { key: 'FLUTTER', value: 'flutter', dbValue: 'flutter' },
-    { key: 'FOOD', value: 'yemek', dbValue: 'yemek' },
-    { key: 'IONIC', value: 'ionic', dbValue: 'ionic' },
-    { key: 'SCIENCE', value: 'bilim', dbValue: 'bilim' }
-  ];
-
   constructor(
     private router: Router,
     private popoverController: PopoverController,
@@ -158,48 +147,21 @@ export class List2Page {
     const currentUser = sessionStorage.getItem('currentUser');
     if (currentUser) {
       const interestsJson = sessionStorage.getItem(`interests_${currentUser}`);
-      console.log('Migration - Raw interests:', interestsJson);
-      
       if (interestsJson) {
         let interests = JSON.parse(interestsJson);
-        console.log('Migration - Parsed interests:', interests);
-        
         const interestMap: { [key: string]: string } = {
-          'sanat': 'ART',
-          'art': 'ART',
-          'teknoloji': 'TECHNOLOGY',
-          'technology': 'TECHNOLOGY',
-          'müzik': 'MUSIC',
-          'music': 'MUSIC',
-          'flutter': 'FLUTTER',
-          'yemek': 'FOOD',
-          'food': 'FOOD',
-          'ionic': 'IONIC',
-          'bilim': 'SCIENCE',
-          'science': 'SCIENCE'
+          'sanat': 'CATEGORIES.ART',
+          'teknoloji': 'CATEGORIES.TECHNOLOGY',
+          'müzik': 'CATEGORIES.MUSIC',
+          'flutter': 'CATEGORIES.FLUTTER',
+          'yemek': 'CATEGORIES.FOOD',
+          'ionic': 'CATEGORIES.IONIC',
+          'bilim': 'CATEGORIES.SCIENCE'
         };
 
-        // Eski format kontrolü ve dönüşümü
-        const needsMigration = interests.some((interest: string) => 
-          interest.startsWith('CATEGORIES.') || interestMap[interest.toLowerCase()]
-        );
-        
-        console.log('Migration needed:', needsMigration);
-        
+        const needsMigration = interests.some((interest: string) => interestMap[interest]);
         if (needsMigration) {
-          const migratedInterests = interests.map((interest: string) => {
-            // CATEGORIES. prefix'ini kaldır
-            let cleanKey = interest.replace('CATEGORIES.', '');
-            console.log('Migrating:', interest, '->', cleanKey);
-            
-            // Eğer lowercase mapping varsa kullan, yoksa uppercase yap
-            const mapped = interestMap[cleanKey.toLowerCase()];
-            const result = mapped || cleanKey.toUpperCase();
-            console.log('Final result:', result);
-            return result;
-          });
-          
-          console.log('Migrated interests:', migratedInterests);
+          const migratedInterests = interests.map((interest: string) => interestMap[interest] || interest);
           sessionStorage.setItem(`interests_${currentUser}`, JSON.stringify(migratedInterests));
         }
       }
@@ -208,71 +170,51 @@ export class List2Page {
 
   loadUserInterests() {
     const currentUser = sessionStorage.getItem('currentUser');
-    console.log('Current user:', currentUser); //debug için
-    
+    const categoryKeys = ['ART', 'TECHNOLOGY', 'MUSIC', 'FLUTTER', 'FOOD', 'IONIC', 'SCIENCE'];
+  
+    const defaultSegments = categoryKeys.map(key => ({
+      value: `CATEGORIES.${key}`,
+      label: this.translate.instant(`CATEGORIES.${key}`)
+    }));
+  
     this.translate.get(['LIST2.ALL_ARTICLES2', 'LIST2.MY_ARTICLE']).subscribe(translations => {
       const allArticlesLabel = translations['LIST2.ALL_ARTICLES2'];
       const myArticlesLabel = translations['LIST2.MY_ARTICLE'];
-
+  
       if (currentUser) {
         const interestsJson = sessionStorage.getItem(`interests_${currentUser}`);
-        console.log('Interests JSON:', interestsJson);
-        
         if (interestsJson) {
           const interests = JSON.parse(interestsJson);
-          console.log('Parsed interests:', interests);
-          
-          if (interests && interests.length > 0) {
-            // Kullanıcının seçtiği ilgi alanlarını segmentlere ekle
-            const interestSegments = interests
-              .map((interestKey: string) => {
-                console.log('Processing interest:', interestKey);
-                const category = this.categoryMappings.find(cat => cat.key === interestKey);
-                console.log('Found category:', category);
-                
-                return category ? {
-                  value: category.dbValue,
-                  label: this.translate.instant(`CATEGORIES.${category.key}`)
-                } : null;
-              })
-              .filter((segment: any) => segment !== null);
-
-            console.log('Interest segments:', interestSegments);
-
+          if (interests.length > 0) {
+            const interestSegments = interests.map((interestKey: string) => ({
+              value: interestKey,
+              label: this.translate.instant(interestKey)
+            }));
             this.segments = [
               { value: 'all', label: allArticlesLabel },
               { value: 'yazilarim', label: myArticlesLabel },
               ...interestSegments
             ];
           } else {
-            // Boş ilgi alanları listesi
             this.segments = [
               { value: 'all', label: allArticlesLabel },
-              //{ value: 'yazilarim', label: myArticlesLabel }
+              { value: 'yazilarim', label: myArticlesLabel },
+              ...defaultSegments
             ];
           }
         } else {
-          // İlgi alanı seçmemiş kullanıcılar için sadece temel segmentler
           this.segments = [
-            //{ value: 'all', label: allArticlesLabel },
-            { value: 'yazilarim', label: myArticlesLabel }
+            { value: 'all', label: allArticlesLabel },
+            { value: 'yazilarim', label: myArticlesLabel },
+            ...defaultSegments
           ];
         }
       } else {
-        // Giriş yapmamış kullanıcılar için sadece "Tüm Yazılar"
         this.segments = [
-          { value: 'all', label: allArticlesLabel }
+          { value: 'all', label: allArticlesLabel },
+          ...defaultSegments
         ];
       }
-
-      console.log('Final segments:', this.segments);
-
-      // Tekrar eden segmentleri filtrele
-      this.segments = this.segments.filter((segment, index, self) =>
-        index === self.findIndex((s) => (
-          s.value === segment.value && s.label === segment.label
-        ))
-      );
     });
   }
 
@@ -297,9 +239,9 @@ export class List2Page {
           image: 'https://miro.medium.com/v2/resize:fit:1200/1*nlhD6_U277a1s_VxSbH11g.jpeg',
           version: Date.now(),
           likes: 1,
-          isDeletable: true,
-          author: 'defaultUser' // Örnek için
-        }
+          isDeletable: true
+        },
+        
       ];
       localStorage.setItem('articles', JSON.stringify(this.articles));
     }
@@ -325,10 +267,11 @@ export class List2Page {
     return currentUser === article.author;
   }
 
-  // modal açma fonksiyonu
+  // Menü açma fonksiyonu
   async openMenu(event: Event, article: any) {
     event.stopPropagation();
     
+    // Basit  popover komponenti 
     const popover = await this.popoverController.create({
       component: MenuPopoverComponent,
       componentProps: {
@@ -383,7 +326,7 @@ export class List2Page {
     }
   }
 
-  // Makaleye detayın git
+  // Makaleye git
   goToArticle(id: number) {
     this.router.navigate(['/article', id]);
   }
@@ -400,27 +343,28 @@ export class List2Page {
   login() {
     this.router.navigate(['/login']);
   }
-
   switchLanguage(language: string) {
-    this.translate.use(language).subscribe(() => {
-      this.loadUserInterests(); // Dil değiştiğinde segmentleri yenile
-    });
+    this.translate.use(language);
   }
+  
 }
 
 // Menü için Popover Componenti
 @Component({
   template: `
     <ion-list class="custom-action-list">
-      <ion-item button class="edit-item" (click)="selectAction('edit')">
-        <ion-icon name="create-outline" slot="start"></ion-icon>
-        <ion-label>{{ 'UPDATE.EDIT' | translate }}</ion-label>
-      </ion-item>
-      <ion-item button class="delete-item" (click)="selectAction('delete')">
-        <ion-icon name="trash-outline" slot="start"></ion-icon>
-        <ion-label>Sil</ion-label>
-      </ion-item>
-    </ion-list>
+    
+  <ion-item button class="edit-item" (click)="selectAction('edit')">
+    <ion-icon name="create-outline" slot="start"></ion-icon>
+    <ion-label>Düzenle</ion-label>
+  </ion-item>
+  <ion-item button class="delete-item" (click)="selectAction('delete')">
+    <ion-icon name="trash-outline" slot="start"></ion-icon>
+    <ion-label>Sil</ion-label>
+  </ion-item>
+</ion-list>
+
+
   `,
   standalone: true,
   imports: [
@@ -429,8 +373,7 @@ export class List2Page {
     IonIcon,
     IonLabel,
     CommonModule,
-    IonItem,
-    TranslateModule
+    IonItem
   ]
 })
 export class MenuPopoverComponent {

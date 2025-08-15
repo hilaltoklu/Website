@@ -153,6 +153,7 @@
 
     "CATEGORIES" :
     {
+        "CATEGORIES" : "Categories",
         "ART": "Art",
         "MUSIC" : "Music",
         "FOOD" : "Food",

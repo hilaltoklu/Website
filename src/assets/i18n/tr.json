@@ -147,6 +147,7 @@
 
     "CATEGORIES" : 
     {
+        "CATEGORIES" : "Kategoriler",
         "ART": "Sanat",
         "MUSIC" : "Müzik",
         "FOOD" : "Yemek",
