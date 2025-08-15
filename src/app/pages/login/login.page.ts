@@ -28,8 +28,6 @@ export class LoginPage {
     private translate : TranslateService
   ) {
     addIcons({ rocketOutline });
-    this.translate.setDefaultLang('tr');
-    this.translate.use('tr');
   }
 
   ngOnInit() {
@@ -39,96 +37,102 @@ export class LoginPage {
 
   async girisYap() {
     if (!this.username || !this.password) {
-     this.triggerShakeAnimation();
-     const toast = await this.toastController.create({
-        header: 'Giriş Başarısız',
-        message: 'Kullanıcı adı ve şifre alanları boş bırakılamaz.',
-        duration: 0, // Manuel olarak kapatılacak
-        position: 'middle',
-        cssClass: 'fail-toast',
-        buttons: [
-          {
-            text: 'TAMAM',
-            role: 'cancel',
-            side: 'end',
-             handler: () => {
-              this.router.navigate(['/login']);
-            }
-          }
-        ]
-      });
-     await toast.present();
-      return;
-    }
-    const userDataString = localStorage.getItem(this.username);
-
-
-if (userDataString) {
-      const userData = JSON.parse(userDataString);
-      if (this.password === userData.password) {
-        this.authService.login(this.username);
-        
-        // Konfeti animasyonunu başlat
-        this.showConfetti();
-        
-        // Custom toast göster
+      this.triggerShakeAnimation();
+      this.translate.get([
+        'ALERTS.LOGIN_FAILED_HEADER',
+        'ALERTS.LOGIN_FAILED_BLANK_FIELDS',
+        'ALERTS.OK_BUTTON'
+      ]).subscribe(async (translations) => {
         const toast = await this.toastController.create({
-          header: 'Başarılı',
-          message: '🎉 Giriş Başarılı',
-          duration: 0, // Manuel olarak kapatılacak
-          position: 'middle',
-          cssClass: 'success-toast',
-          buttons: [
-            {
-              text: 'TAMAM',
-              role: 'cancel',
-              side: 'end',
-              handler: () => {
-                this.router.navigate(['/list2']);
-              }
-            }
-          ]
-        });
-        
-        await toast.present();
-      } else {
-        this.triggerShakeAnimation();
-        const toast = await this.toastController.create({
-          header: 'Giriş Başarısız',
-          message: 'Kullanıcı adı veya şifre hatalı.',
+          header: translations['ALERTS.LOGIN_FAILED_HEADER'],
+          message: translations['ALERTS.LOGIN_FAILED_BLANK_FIELDS'],
           duration: 0,
           position: 'middle',
           cssClass: 'fail-toast',
-          buttons: [{ text: 'TAMAM', role: 'cancel', handler: () => this.router.navigate(['/login']) }]
-        });
-        await toast.present();
-      }
-    }  else {
-
-      this.triggerShakeAnimation();
-
-      
-      const toast = await this.toastController.create({
-        header: 'Giriş Başarısız',
-        message: 'Kullanıcı adı veya şifre hatalı.',
-        duration: 0, // Manuel olarak kapatılacak
-        position: 'middle',
-        cssClass: 'fail-toast',
-        buttons: [
-          {
-            text: 'TAMAM',
+          buttons: [{
+            text: translations['ALERTS.OK_BUTTON'],
             role: 'cancel',
             side: 'end',
-            handler: () => {
-              this.router.navigate(['/login']);
-            }
-          }
-        ]
+            handler: () => { this.router.navigate(['/login']); }
+          }]
+        });
+        await toast.present();
       });
+      return;
+    }
 
+    const userDataString = localStorage.getItem(this.username);
 
+    if (userDataString) {
+      const userData = JSON.parse(userDataString);
+      if (this.password === userData.password) {
+        this.authService.login(this.username);
+        this.showConfetti();
 
-      await toast.present();
+        this.translate.get([
+          'ALERTS.SUCCESS_HEADER',
+          'ALERTS.LOGIN_SUCCESS_MESSAGE',
+          'ALERTS.OK_BUTTON'
+        ]).subscribe(async (translations) => {
+          const toast = await this.toastController.create({
+            header: translations['ALERTS.SUCCESS_HEADER'],
+            message: translations['ALERTS.LOGIN_SUCCESS_MESSAGE'],
+            duration: 0,
+            position: 'middle',
+            cssClass: 'success-toast',
+            buttons: [{
+              text: translations['ALERTS.OK_BUTTON'],
+              role: 'cancel',
+              side: 'end',
+              handler: () => { this.router.navigate(['/list2']); }
+            }]
+          });
+          await toast.present();
+        });
+      } else {
+        this.triggerShakeAnimation();
+        this.translate.get([
+          'ALERTS.LOGIN_FAILED_HEADER',
+          'ALERTS.LOGIN_FAILED_INVALID_CREDENTIALS',
+          'ALERTS.OK_BUTTON'
+        ]).subscribe(async (translations) => {
+          const toast = await this.toastController.create({
+            header: translations['ALERTS.LOGIN_FAILED_HEADER'],
+            message: translations['ALERTS.LOGIN_FAILED_INVALID_CREDENTIALS'],
+            duration: 0,
+            position: 'middle',
+            cssClass: 'fail-toast',
+            buttons: [{
+              text: translations['ALERTS.OK_BUTTON'],
+              role: 'cancel',
+              handler: () => { this.router.navigate(['/login']); }
+            }]
+          });
+          await toast.present();
+        });
+      }
+    } else {
+      this.triggerShakeAnimation();
+      this.translate.get([
+        'ALERTS.LOGIN_FAILED_HEADER',
+        'ALERTS.LOGIN_FAILED_INVALID_CREDENTIALS',
+        'ALERTS.OK_BUTTON'
+      ]).subscribe(async (translations) => {
+        const toast = await this.toastController.create({
+          header: translations['ALERTS.LOGIN_FAILED_HEADER'],
+          message: translations['ALERTS.LOGIN_FAILED_INVALID_CREDENTIALS'],
+          duration: 0,
+          position: 'middle',
+          cssClass: 'fail-toast',
+          buttons: [{
+            text: translations['ALERTS.OK_BUTTON'],
+            role: 'cancel',
+            side: 'end',
+            handler: () => { this.router.navigate(['/login']); }
+          }]
+        });
+        await toast.present();
+      });
     }
   }
 

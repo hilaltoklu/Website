@@ -24,59 +24,58 @@ export class SignupPage {
 
     private router: Router,
     private translate: TranslateService
-  ) { 
-    this.translate.setDefaultLang('tr');
-    this.translate.use('tr');}
+  ) { }
 
   async kayitOl() {
-
-
     if (!this.username || !this.password || !this.gender) {
       this.triggerShakeAnimation();
-      const toast = await this.toastController.create({
-        header: 'Kayıt Başarısız',
-        message: 'Tüm alanları doldurduğunuzdan emin olun.',
-        duration: 0, // Manuel olarak kapatılacak
-        position: 'middle',
-        cssClass: 'fail-toast',
-        buttons: [
-          {
-            text: 'TAMAM',
+      this.translate.get([
+        'ALERTS.SIGNUP_FAILED_HEADER',
+        'ALERTS.SIGNUP_FAILED_BLANK_FIELDS',
+        'ALERTS.OK_BUTTON'
+      ]).subscribe(async (translations) => {
+        const toast = await this.toastController.create({
+          header: translations['ALERTS.SIGNUP_FAILED_HEADER'],
+          message: translations['ALERTS.SIGNUP_FAILED_BLANK_FIELDS'],
+          duration: 0,
+          position: 'middle',
+          cssClass: 'fail-toast',
+          buttons: [{
+            text: translations['ALERTS.OK_BUTTON'],
             role: 'cancel',
             side: 'end',
-             handler: () => {
-              this.router.navigate(['/kayitol']);
-            }
-          }
-        ]
+            handler: () => { this.router.navigate(['/kayitol']); }
+          }]
+        });
+        await toast.present();
       });
-      await toast.present();
       return;
     }
 
     const existingUser = localStorage.getItem(this.username);
 
     if (existingUser) {
-
       this.triggerShakeAnimation();
-      const toast = await this.toastController.create({
-        header: 'Kayıt Başarısız',
-        message: 'Bu kullanıcı adı zaten kayıtlı.',
-        duration: 0, // Manuel olarak kapatılacak
-        position: 'middle',
-        cssClass: 'fail-toast',
-        buttons: [
-          {
-            text: 'TAMAM',
+      this.translate.get([
+        'ALERTS.SIGNUP_FAILED_HEADER',
+        'ALERTS.SIGNUP_FAILED_USER_EXISTS',
+        'ALERTS.OK_BUTTON'
+      ]).subscribe(async (translations) => {
+        const toast = await this.toastController.create({
+          header: translations['ALERTS.SIGNUP_FAILED_HEADER'],
+          message: translations['ALERTS.SIGNUP_FAILED_USER_EXISTS'],
+          duration: 0,
+          position: 'middle',
+          cssClass: 'fail-toast',
+          buttons: [{
+            text: translations['ALERTS.OK_BUTTON'],
             role: 'cancel',
             side: 'end',
-            handler: () => {
-              this.router.navigate(['/kayitol']);
-            }
-          }
-        ]
+            handler: () => { this.router.navigate(['/kayitol']); }
+          }]
+        });
+        await toast.present();
       });
-      await toast.present();
     } else {
       const userData = {
         password: this.password,
@@ -87,24 +86,26 @@ export class SignupPage {
       sessionStorage.setItem('currentUser', this.username);
       this.showConfetti();
 
-      const toast = await this.toastController.create({
-        header: 'Başarılı',
-        message: '🎉 Kayıt Başarılı',
-        duration: 0, // Manuel olarak kapatılacak
-        position: 'middle',
-        cssClass: 'success-toast',
-        buttons: [
-          {
-            text: 'TAMAM',
+      this.translate.get([
+        'ALERTS.SUCCESS_HEADER',
+        'ALERTS.SIGNUP_SUCCESS_MESSAGE',
+        'ALERTS.OK_BUTTON'
+      ]).subscribe(async (translations) => {
+        const toast = await this.toastController.create({
+          header: translations['ALERTS.SUCCESS_HEADER'],
+          message: translations['ALERTS.SIGNUP_SUCCESS_MESSAGE'],
+          duration: 0,
+          position: 'middle',
+          cssClass: 'success-toast',
+          buttons: [{
+            text: translations['ALERTS.OK_BUTTON'],
             role: 'cancel',
             side: 'end',
-            handler: () => {
-              this.router.navigate(['/interests']);
-            }
-          }
-        ]
+            handler: () => { this.router.navigate(['/interests']); }
+          }]
+        });
+        await toast.present();
       });
-      await toast.present();
     }
   }
 

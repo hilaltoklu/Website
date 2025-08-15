@@ -140,7 +140,46 @@
             "TITLE": "You don't have any favorite articles yet.",
             "SUBTITLE": "Start liking articles and they will appear here!"
         }
+    },
+     "ALERTS": {
+        "LOGIN_FAILED_HEADER": "Login Failed",
+        "LOGIN_FAILED_BLANK_FIELDS": "Username and password fields cannot be empty.",
+        "LOGIN_SUCCESS_MESSAGE": "🎉 Login Successful",
+        "LOGIN_FAILED_INVALID_CREDENTIALS": "Incorrect username or password.",
+        "SIGNUP_FAILED_HEADER": "Signup Failed",
+        "SIGNUP_FAILED_BLANK_FIELDS": "Please make sure to fill all fields.",
+        "SIGNUP_FAILED_USER_EXISTS": "This username is already registered.",
+        "SIGNUP_SUCCESS_MESSAGE": "🎉 Signup Successful",
+        "INTERESTS_LIMIT_HEADER": "Limit Exceeded",
+        "INTERESTS_LIMIT_MESSAGE": "You can select a maximum of 3 interests.",
+        "OK_BUTTON": "OK",
+        "SUCCESS_HEADER": "Success",
+        "ERROR_HEADER": "Error",
+        "ERROR_USER_DATA_NOT_FOUND": "User data not found.",
+        "ACTION_EDIT_USER_INFO": "to edit user information",
+        "ACTION_VIEW_FAVORITES": "to see your favorite articles",
+        "LANGUAGE_OPTIONS_HEADER": "Language Options",
+        "LANGUAGE_TURKISH": "Türkçe",
+        "LANGUAGE_ENGLISH": "English",
+        "CANCEL_BUTTON": "Cancel",
+        "SELECT_BUTTON": "Select",
+        "THEME_OPTIONS_HEADER": "Theme Options",
+        "THEME_OPTIONS_MESSAGE": "Change the appearance of the application:",
+        "THEME_LIGHT": "Light Theme",
+        "THEME_DARK": "Dark Theme",
+        "APPLY_BUTTON": "Apply",
+        "THEME_APPLIED_HEADER": "Theme Applied",
+        "THEME_APPLIED_MESSAGE": "{{themeName}} has been applied successfully!",
+        "AWESOME_BUTTON": "Awesome!",
+        "THEME_NAME_LIGHT": "Light",
+        "THEME_NAME_DARK": "Dark",
+        "THEME_NAME_UNKNOWN": "Unknown",
+        "LOGIN_REQUIRED_HEADER": "Login Required",
+        "LOGIN_REQUIRED_MESSAGE": "You need to log in first to {{action}}. You are now being redirected to the login page.",
+        "LOGIN_BUTTON": "Log In"
     }
+
+
 
 
 }

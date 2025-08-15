@@ -31,9 +31,7 @@ export class InterestsPage {
     { name: 'Bilim', emoji: '🔬', selected: false },
   ];
 
-  constructor(private router: Router, private alertController: AlertController,private translate: TranslateService) {
-    this.translate.setDefaultLang('tr');
-    this.translate.use('tr'); }
+  constructor(private router: Router, private alertController: AlertController,private translate: TranslateService) { }
 
   toggleInterest(interest: Interest) {
     if (!interest.selected && this.selectedInterestsCount() === 3) {
@@ -48,12 +46,18 @@ export class InterestsPage {
   }
 
   async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Limit Aşıldı',
-      message: 'En fazla 3 ilgi alanı seçebilirsiniz.',
-      buttons: ['Tamam']
+    this.translate.get([
+      'ALERTS.INTERESTS_LIMIT_HEADER',
+      'ALERTS.INTERESTS_LIMIT_MESSAGE',
+      'ALERTS.OK_BUTTON'
+    ]).subscribe(async (translations) => {
+      const alert = await this.alertController.create({
+        header: translations['ALERTS.INTERESTS_LIMIT_HEADER'],
+        message: translations['ALERTS.INTERESTS_LIMIT_MESSAGE'],
+        buttons: [translations['ALERTS.OK_BUTTON']]
+      });
+      await alert.present();
     });
-    await alert.present();
   }
 
   saveInterests() {

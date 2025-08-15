@@ -12,7 +12,7 @@
 
       <ion-buttons slot="end">
         <ion-button fill="outline" (click)="logout()" *ngIf="isLoggedIn$ | async">{{'LIST2.LOGOUT' | translate}}</ion-button>
-        <ion-button fill="outline" (click)="login()" *ngIf="!(isLoggedIn$ | async)">{{'LIST.LOGIN'}}</ion-button>
+        <ion-button fill="outline" (click)="login()" *ngIf="!(isLoggedIn$ | async)">{{'LIST.LOGIN' | translate}}</ion-button>
       </ion-buttons>
       
       <ion-segment [(ngModel)]="category">

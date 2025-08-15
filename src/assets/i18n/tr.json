@@ -140,6 +140,44 @@
             "TITLE": "Henüz favori makaleniz bulunmuyor.",
             "SUBTITLE": "Makaleleri beğenmeye başlayın ve burada görün!"
         }
+    },
+    
+    "ALERTS": {
+        "LOGIN_FAILED_HEADER": "Giriş Başarısız",
+        "LOGIN_FAILED_BLANK_FIELDS": "Kullanıcı adı ve şifre alanları boş bırakılamaz.",
+        "LOGIN_SUCCESS_MESSAGE": "🎉 Giriş Başarılı",
+        "LOGIN_FAILED_INVALID_CREDENTIALS": "Kullanıcı adı veya şifre hatalı.",
+        "SIGNUP_FAILED_HEADER": "Kayıt Başarısız",
+        "SIGNUP_FAILED_BLANK_FIELDS": "Tüm alanları doldurduğunuzdan emin olun.",
+        "SIGNUP_FAILED_USER_EXISTS": "Bu kullanıcı adı zaten kayıtlı.",
+        "SIGNUP_SUCCESS_MESSAGE": "🎉 Kayıt Başarılı",
+        "INTERESTS_LIMIT_HEADER": "Limit Aşıldı",
+        "INTERESTS_LIMIT_MESSAGE": "En fazla 3 ilgi alanı seçebilirsiniz.",
+        "OK_BUTTON": "TAMAM",
+        "SUCCESS_HEADER": "Başarılı",
+        "ERROR_HEADER": "Hata",
+        "ERROR_USER_DATA_NOT_FOUND": "Kullanıcı verileri bulunamadı.",
+        "ACTION_EDIT_USER_INFO": "kullanıcı bilgilerini düzenlemek",
+        "ACTION_VIEW_FAVORITES": "favori yazılarınızı görmek",
+        "LANGUAGE_OPTIONS_HEADER": "Dil Seçenekleri",
+        "LANGUAGE_TURKISH": "Türkçe",
+        "LANGUAGE_ENGLISH": "English",
+        "CANCEL_BUTTON": "İptal",
+        "SELECT_BUTTON": "Seç",
+        "THEME_OPTIONS_HEADER": "Tema Seçenekleri",
+        "THEME_OPTIONS_MESSAGE": "Uygulamanın görünümünü değiştirin:",
+        "THEME_LIGHT": "Aydınlık Tema",
+        "THEME_DARK": "Karanlık Tema",
+        "APPLY_BUTTON": "Uygula",
+        "THEME_APPLIED_HEADER": "Tema Uygulandı",
+        "THEME_APPLIED_MESSAGE": "{{themeName}} başarıyla uygulandı!",
+        "AWESOME_BUTTON": "Harika!",
+        "THEME_NAME_LIGHT": "Aydınlık",
+        "THEME_NAME_DARK": "Karanlık",
+        "THEME_NAME_UNKNOWN": "Bilinmiyor",
+        "LOGIN_REQUIRED_HEADER": "Giriş Gerekli",
+        "LOGIN_REQUIRED_MESSAGE": "{{action}} için önce giriş yapmanız gerekiyor. Şu an giriş sayfasına yönlendiriliyorsunuz.",
+        "LOGIN_BUTTON": "Giriş Yap"
     }
 
 

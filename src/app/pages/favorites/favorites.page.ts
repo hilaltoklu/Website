@@ -53,9 +53,7 @@ export class FavoritesPage implements OnInit {
   favoritedArticles: any[] = [];
   currentUser: string | null = null;
 
-  constructor(private router: Router, private authService: AuthService, private translate: TranslateService) { 
-    this.translate.setDefaultLang('tr');
-    this.translate.use('tr');}
+  constructor(private router: Router, private authService: AuthService, private translate: TranslateService) { }
 
   ngOnInit() {
     this.currentUser = this.authService.getCurrentUserValue();

@@ -21,7 +21,7 @@
             <ion-input 
               type="text" 
               name="username"
-              placeholder="Kullanıcı Adınız" 
+              placeholder="{{'LOGIN.USERNAME'| translate}}" 
               [(ngModel)]="username">
             </ion-input>
           </div>
@@ -29,7 +29,7 @@
           <div class="input-group">
             <ion-input 
               type="password" 
-              placeholder="Şifreniz" 
+              placeholder="{{'LOGIN.PASSWORD'| translate}}" 
               [(ngModel)]="password"
               name="password">
             </ion-input>

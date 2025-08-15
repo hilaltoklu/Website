@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LanguageService {
   private readonly STORAGE_KEY = 'selected-language';
-  private readonly DEFAULT_LANGUAGE = 'en';
+  private readonly DEFAULT_LANGUAGE = 'tr';
   private readonly AVAILABLE_LANGUAGES = ['en', 'tr']; // Desteklenen diller
 
   constructor(private translate: TranslateService) {}

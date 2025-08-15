@@ -82,8 +82,6 @@ export class ListPage {
     private authService: AuthService,
     private translate: TranslateService
   ) {
-    this.translate.setDefaultLang('tr');
-    this.translate.use('tr');
     this.isLoggedIn$ = this.authService.currentUserObservable$;
     addIcons({ 
       add, 

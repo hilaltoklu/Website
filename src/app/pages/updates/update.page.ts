@@ -15,9 +15,7 @@ export class UpdatePage implements OnInit {
   @Input() article: any;
 
   constructor(private modalController: ModalController,
-    private translate: TranslateService) {
-    this.translate.setDefaultLang('tr');
-    this.translate.use('tr');}
+    private translate: TranslateService) {}
 
   ngOnInit() {}
 

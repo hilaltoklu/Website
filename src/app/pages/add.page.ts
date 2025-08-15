@@ -19,9 +19,7 @@ export class AddPage {
   image:    string = '';
 
   constructor(private router: Router,
-    private translate: TranslateService) {
-    this.translate.setDefaultLang('tr');
-    this.translate.use('tr');}
+    private translate: TranslateService) {}
 
   addArticle() {
    

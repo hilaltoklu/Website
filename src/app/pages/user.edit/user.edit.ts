@@ -21,9 +21,7 @@ export class UserInfoEditModalPage implements OnInit {
   showPassword : boolean = false;
 
   constructor(private modalController: ModalController,
-    private translate: TranslateService) { 
-    this.translate.setDefaultLang('tr');
-    this.translate.use('tr');}
+    private translate: TranslateService) { }
 
   ngOnInit() {
   }

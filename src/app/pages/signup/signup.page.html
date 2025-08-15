@@ -20,7 +20,7 @@
             <ion-input 
               type="text" 
               name="username"
-              placeholder="Kullanıcı Adınız" 
+              placeholder="{{'SIGNUP.USERNAME' | translate}}" 
               [(ngModel)]="username"
               class="custom-input">
             </ion-input>
@@ -29,7 +29,7 @@
           <div class="input-group">
             <ion-input 
               type="password" 
-              placeholder="Şifreniz" 
+              placeholder="{{'SIGNUP.PASSWORD' | translate}}" 
               [(ngModel)]="password"
               name="password"
               class="custom-input">
@@ -42,7 +42,7 @@
   <ion-select 
     [(ngModel)]="gender" 
     name="gender" 
-    placeholder="Cinsiyet Seçiniz"
+    placeholder="{{'SIGNUP.GENDER' | translate}}"
     interface="popover"
     class="gender-select custom-select-input"
     style="--placeholder-color: #666; --color: #404040;">
