@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { LoadingService } from '../services/loading.service';
+import { LoadingService } from 'src/app/pages/services/loading/loading.service';
 
 @Injectable({
   providedIn: 'root'

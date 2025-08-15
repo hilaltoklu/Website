@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { LoadingResolver } from 'src/app/pages/services/loading.resolver';
+import { LoadingResolver } from 'src/app/pages/services/loading/loading.resolver';
 
 export const routes: Routes = [
   {

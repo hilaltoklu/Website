@@ -19,7 +19,7 @@ import {
   IonBackButton,
   IonIcon
 } from '@ionic/angular/standalone';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-favorites',

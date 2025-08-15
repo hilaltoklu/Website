@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth/auth.service';
 import { Observable } from 'rxjs';
 import { 
   IonContent, 
@@ -34,7 +34,7 @@ import { add, heart, ellipsisVertical, createOutline, trashOutline, documentOutl
 import { addIcons } from 'ionicons';
 import { UpdatePage } from 'src/app/pages/updates/update.page';
 import { MenuComponent } from './menu.bilesen/menu.bilesen';
-import { ThemeService } from './services/theme.service';
+import { ThemeService } from './services/theme/theme.service';
 
 @Component({
   selector: 'app-list2',

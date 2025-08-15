@@ -31,18 +31,22 @@
         <ion-icon name="contrast" slot="start"></ion-icon>
         <ion-label>Tema Ayarları</ion-label>
         <ion-note slot="end" style="color: var(--text-tertiary); font-size: 12px;">
-          {{ getThemeDisplayName() }}
         </ion-note>
       </ion-item>
 
-    
+      <ion-item button (click)="showLanguageOptions()">
+        <ion-icon name="language-outline"></ion-icon>
+        <ion-label>Dil Seçenekleri</ion-label>
+        <ion-note slot="end" style="color: var(--text-tertiary); font-size: 12px;">
+        </ion-note>
+      </ion-item>
+
       <!-- Theme indicator -->
       <ion-item lines="none" style="opacity: 0.7; pointer-events: none;">
         <ion-icon [name]="isDarkMode ? 'moon' : 'sunny'" slot="start" 
                   [style.color]="isDarkMode ? '#4c8dff' : '#f39c12'"></ion-icon>
         <ion-label>
           <h3>Aktif Tema</h3>
-          <p>{{ isDarkMode ? 'Koyu Mod' : 'Açık Mod' }}</p>
         </ion-label>
       </ion-item>
       

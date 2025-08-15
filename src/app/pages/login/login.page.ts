@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { rocketOutline } from 'ionicons/icons';
 import confetti from 'canvas-confetti';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',

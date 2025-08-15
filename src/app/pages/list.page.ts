@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from 'src/app/pages/services/auth.service';
+import { AuthService } from 'src/app/pages/services/auth/auth.service';
 import { Observable } from 'rxjs';
 import { 
   IonContent, 
@@ -31,7 +31,7 @@ import { Router, RouterModule } from '@angular/router';
 import { add, heart, documentOutline, addCircleOutline, personCircleOutline, languageOutline, moonOutline, informationCircleOutline, logOutOutline, home, contrast, sunny } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { MenuComponent } from './menu.bilesen/menu.bilesen';
-import { ThemeService } from './services/theme.service';
+import { ThemeService } from './services/theme/theme.service';
 
 @Component({
   selector: 'app-list',

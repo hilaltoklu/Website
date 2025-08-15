@@ -3,13 +3,16 @@ import { ModalController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-
+import  {IonIcon} from '@ionic/angular/standalone'
+import { 
+ saveOutline
+} from 'ionicons/icons';
 @Component({
   selector: 'app-user.edit',
   templateUrl: './user.edit.html',
   styleUrls: ['./user.edit.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule,IonIcon]
 })
 export class UserInfoEditModalPage implements OnInit {
   @Input() userData: any;

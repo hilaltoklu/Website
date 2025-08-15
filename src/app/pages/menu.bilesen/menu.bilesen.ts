@@ -32,9 +32,9 @@ import {
   moon,
   phonePortrait
 } from 'ionicons/icons';
-import { ThemeService, ThemeType } from '../services/theme.service';
+import { ThemeService, ThemeType } from '../services/theme/theme.service';
 import { Subscription, Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -161,7 +161,9 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   async showLanguageOptions() {
     this.menuController.close();
-    
+
+ //   const currentTheme = this.Lan.getCurrentTheme();
+
     const alert = await this.alertController.create({
       header: 'Dil Seçenekleri',
       inputs: [
@@ -178,12 +180,7 @@ export class MenuComponent implements OnInit, OnDestroy {
           label: 'English',
           value: 'en'
         },
-        {
-          name: 'language',
-          type: 'radio',
-          label: 'Deutsch',
-          value: 'de'
-        }
+        
       ],
       buttons: [
         {
@@ -193,7 +190,8 @@ export class MenuComponent implements OnInit, OnDestroy {
         {
           text: 'Seç',
           handler: (data) => {
-            this.showLanguageChangeAlert(data);
+
+            // this.showLanguageChangeAlert(data);
           }
         }
       ]
@@ -205,15 +203,8 @@ export class MenuComponent implements OnInit, OnDestroy {
     const languageNames: { [key: string]: string } = {
       'tr': 'Türkçe',
       'en': 'English',
-      'de': 'Deutsch'
     };
-
-    const alert = await this.alertController.create({
-      header: 'Dil Değiştirildi',
-      message: `Dil ${languageNames[selectedLanguage]} olarak ayarlandı. Bu özellik yakında aktif olacak.`,
-      buttons: ['Tamam']
-    });
-    await alert.present();
+    localStorage.getItem(selectedLanguage)
   }
 
   async showThemeOptions() {
@@ -230,14 +221,14 @@ export class MenuComponent implements OnInit, OnDestroy {
         {
           name: 'theme',
           type: 'radio',
-          label: 'Açık Tema',
+          label: 'Aydınlık Tema',
           value: 'light',
           checked: currentTheme === 'light'
         },
         {
           name: 'theme',
           type: 'radio',
-          label: 'Koyu Tema',
+          label: 'Karanlık Tema',
           value: 'dark',
           checked: currentTheme === 'dark'
         },
@@ -261,9 +252,8 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   async applyTheme(theme: ThemeType) {
     const themeNames: { [key: string]: string } = {
-      'light': 'Açık Tema',
-      'dark': 'Koyu Tema',
-      'auto': 'Sistem Ayarı'
+      'light': 'Aydınlık Tema',
+      'dark': 'Karanlık Tema',
     };
 
     this.themeService.setTheme(theme);
@@ -282,9 +272,8 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   getThemeDisplayName(): string {
     const themeNames: { [key: string]: string } = {
-      'light': 'Açık',
-      'dark': 'Koyu', 
-      'auto': 'Sistem'
+      'light': 'Aydınlık',
+      'dark': 'Karanlık', 
     };
     return themeNames[this.currentTheme] || 'Bilinmiyor';
   }
