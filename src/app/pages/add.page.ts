@@ -18,7 +18,10 @@ export class AddPage {
   category: string = '';
   image:    string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+    private translate: TranslateService) {
+    this.translate.setDefaultLang('tr');
+    this.translate.use('tr');}
 
   addArticle() {
    
@@ -70,4 +73,8 @@ export class AddPage {
       this.router.navigate(['/list2']);
     
   }
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+  
 }

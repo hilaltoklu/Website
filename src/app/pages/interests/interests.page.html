@@ -1,7 +1,7 @@
 
 <ion-content class="ion-padding">
   <ion-text >
-    <p style="color: #333;">Lütfen ilgilendiğiniz alanları seçin.</p>
+    <p style="color: #333;">{{'INTEREST.SELECT_INTERESTS'| translate}}</p>
   </ion-text>
 
   <ion-grid>
@@ -24,6 +24,6 @@
     (click)="saveInterests()"
     [disabled]="selectedInterestsCount() === 0"
   >
-    Kaydet
+    {{'INTEREST.SAVE'| translate}}
   </ion-button>
 </ion-content>

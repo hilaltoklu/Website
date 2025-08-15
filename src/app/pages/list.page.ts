@@ -79,8 +79,11 @@ export class ListPage {
   constructor(
     private router: Router,
     private themeService: ThemeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private translate: TranslateService
   ) {
+    this.translate.setDefaultLang('tr');
+    this.translate.use('tr');
     this.isLoggedIn$ = this.authService.currentUserObservable$;
     addIcons({ 
       add, 
@@ -267,4 +270,8 @@ export class ListPage {
   login() {
     this.router.navigate(['/login']);
   }
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+  
 }

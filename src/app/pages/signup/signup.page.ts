@@ -22,8 +22,11 @@ export class SignupPage {
   constructor(
     private toastController: ToastController,
 
-    private router: Router
-  ) { }
+    private router: Router,
+    private translate: TranslateService
+  ) { 
+    this.translate.setDefaultLang('tr');
+    this.translate.use('tr');}
 
   async kayitOl() {
 
@@ -133,4 +136,8 @@ private triggerShakeAnimation() {
 }
 
 
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+  
 }

@@ -1,42 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Makaleyi Düzenle</ion-title>
+    <ion-title>{{'UPDATE.EDIT_TITLE'| translate}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()">Kapat</ion-button>
+      <ion-button (click)="dismissModal()">{{'UPDATE.CLOSE'| translate}}</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-item>
-    <ion-label position="floating">Başlık</ion-label>
+    <ion-label position="floating">{{'UPDATE.TITLE'| translate}}</ion-label>
     <ion-input [(ngModel)]="article.title"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Alt Başlık</ion-label>
+    <ion-label position="floating">{{'UPDATE.SUBTITLE'| translate}}</ion-label>
     <ion-input [(ngModel)]="article.subtitle"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">İçerik</ion-label>
+    <ion-label position="floating">{{'UPDATE.CONTENT'| translate}}</ion-label>
     <ion-textarea [(ngModel)]="article.content" rows="6"></ion-textarea>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Görsel URL'si</ion-label>
+    <ion-label position="floating">{{'UPDATE.PHOTO_URL'| translate}}</ion-label>
     <ion-input [(ngModel)]="article.image"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Kategori</ion-label>
+    <ion-label>{{'UPDATE.CATEGORY'| translate}}</ion-label>
     <ion-select [(ngModel)]="article.category" placeholder="Kategori Seçin">
-      <ion-select-option value="ionic">Ionic</ion-select-option>
-      <ion-select-option value="flutter">Flutter</ion-select-option>
-      <ion-select-option value="teknoloji">Teknoloji</ion-select-option>
-      <ion-select-option value="sanat">Sanat</ion-select-option>
-      <ion-select-option value="yemek">Yemek</ion-select-option>
-      <ion-select-option value="bilim">Bilim</ion-select-option>
-      <ion-select-option value="müzik">Müzik</ion-select-option>
+      <ion-select-option value="ionic">{{'UPDATE.IONIC'| translate}}</ion-select-option>
+      <ion-select-option value="flutter">{{'UPDATE.FLUTTER'| translate}}</ion-select-option>
+      <ion-select-option value="teknoloji">{{'UPDATE.TECHNOLOGY'| translate}}</ion-select-option>
+      <ion-select-option value="sanat">{{'UPDATE.ART'| translate}}</ion-select-option>
+      <ion-select-option value="yemek">{{'UPDATE.FOOD'| translate}}</ion-select-option>
+      <ion-select-option value="bilim">{{'UPDATE.SCIENCE'| translate}}</ion-select-option>
+      <ion-select-option value="müzik">{{'UPDATE.MUSIC'| translate}}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-button expand="block" (click)="updateArticle()" class="ion-margin-top">
-    Güncelle
-  </ion-button>
+{{'UPDATE.EDIT'| translate}}  </ion-button>
 </ion-content>

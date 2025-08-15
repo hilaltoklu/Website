@@ -31,7 +31,9 @@ export class InterestsPage {
     { name: 'Bilim', emoji: '🔬', selected: false },
   ];
 
-  constructor(private router: Router, private alertController: AlertController) { }
+  constructor(private router: Router, private alertController: AlertController,private translate: TranslateService) {
+    this.translate.setDefaultLang('tr');
+    this.translate.use('tr'); }
 
   toggleInterest(interest: Interest) {
     if (!interest.selected && this.selectedInterestsCount() === 3) {
@@ -65,4 +67,8 @@ export class InterestsPage {
     sessionStorage.setItem(`interests_${currentUser}`, JSON.stringify(selectedInterests));
     this.router.navigate(['/list2']);
   }  
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+  
 }

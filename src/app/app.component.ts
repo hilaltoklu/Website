@@ -3,7 +3,10 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { ThemeService } from './pages/services/theme/theme.service';
 import { MenuComponent } from './pages/menu.bilesen/menu.bilesen';
 import { LanguageService } from './pages/services/language/language.service';
-
+import { Injectable } from '@angular/core';
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -13,7 +16,8 @@ export class AppComponent implements OnInit {
   constructor(
     private themeService: ThemeService,
     private languageService: LanguageService
-  ) {}
+  ) {  this.languageService.setInitialAppLanguage();
+}
 
   ngOnInit() {
     // Tema servisini başlat

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/list2"></ion-back-button>
     </ion-buttons>
-    <ion-title>Favorilerim</ion-title>
+    <ion-title>{{'FAVORITES.HEADER' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -52,8 +52,8 @@
     <!-- Makale henüz yoksa gösterilecek mesaj -->
     <div *ngIf="favoritedArticles.length === 0" class="no-articles">
       <ion-icon name="heart-dislike-outline" class="no-articles-icon"></ion-icon>
-      <p>Henüz favori makaleniz bulunmuyor.</p>
-      <p class="subtitle">Makaleleri beğenmeye başlayın ve burada görün!</p>
+      <p>{{'FAVORITES.NO_ARTICLES.TITLE' | translate}}</p>
+      <p class="subtitle">{{'FAVORITES.NO_ARTICLES.SUBTITLE' | translate}}</p>
     </div>
   </div>
 </ion-content>

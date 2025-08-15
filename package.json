@@ -28,7 +28,7 @@
     "@capacitor/status-bar": "7.0.1",
     "@ionic/angular": "^8.7.2",
     "@ngx-translate/core": "^17.0.0",
-    "@ngx-translate/http-loader": "^8.0.0",
+    "@ngx-translate/http-loader": "^17.0.0",
     "canvas-confetti": "^1.9.3",
     "ionicons": "^7.0.0",
     "karma-puppeteer-launcher": "^1.0.4",

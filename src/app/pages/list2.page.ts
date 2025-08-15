@@ -83,8 +83,11 @@ export class List2Page {
     private popoverController: PopoverController,
     private modalController: ModalController,
     private themeService: ThemeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private translate: TranslateService
   ) {
+    this.translate.setDefaultLang('tr');
+    this.translate.use('tr');
     this.isLoggedIn$ = this.authService.currentUserObservable$;
     addIcons({ 
       add, 
@@ -306,6 +309,10 @@ export class List2Page {
   login() {
     this.router.navigate(['/login']);
   }
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+  
 }
 
 // Menü için Popover Componenti

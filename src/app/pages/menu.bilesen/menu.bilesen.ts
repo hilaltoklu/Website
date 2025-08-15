@@ -37,6 +37,7 @@ import {
 import { ThemeService, ThemeType } from '../services/theme/theme.service';
 import { Subscription, Observable } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
+import { LanguageService } from '../services/language/language.service';
 
 @Component({
   selector: 'app-menu',
@@ -74,7 +75,8 @@ export class MenuComponent implements OnInit, OnDestroy {
     private menuController: MenuController,
     private themeService: ThemeService,
     private authService: AuthService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private languageService: LanguageService
   ) {
     this.isLoggedIn$ = this.authService.currentUserObservable$;
     addIcons({ 
@@ -165,8 +167,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   async showLanguageOptions() {
     this.menuController.close();
-
- //   const currentTheme = this.Lan.getCurrentTheme();
+    const currentLang = localStorage.getItem('language') || 'en';
 
     const alert = await this.alertController.create({
       header: 'Dil Seçenekleri',
@@ -176,39 +177,32 @@ export class MenuComponent implements OnInit, OnDestroy {
           type: 'radio',
           label: 'Türkçe',
           value: 'tr',
-          checked: true
+          checked: currentLang === 'tr',
         },
         {
           name: 'language',
           type: 'radio',
           label: 'English',
-          value: 'en'
+          value: 'en',
+          checked: currentLang === 'en',
         },
-        
       ],
       buttons: [
         {
           text: 'İptal',
-          role: 'cancel'
+          role: 'cancel',
         },
         {
           text: 'Seç',
           handler: (data) => {
-
-            // this.showLanguageChangeAlert(data);
-          }
-        }
-      ]
+            if (data) {
+              this.languageService.changeLanguage(data);
+            }
+          },
+        },
+      ],
     });
     await alert.present();
-  }
-
-  async showLanguageChangeAlert(selectedLanguage: string) {
-    const languageNames: { [key: string]: string } = {
-      'tr': 'Türkçe',
-      'en': 'English',
-    };
-    localStorage.getItem(selectedLanguage)
   }
 
   async showThemeOptions() {

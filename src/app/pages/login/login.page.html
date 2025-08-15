@@ -7,14 +7,14 @@
           <ion-icon name="rocket-outline" size="large"></ion-icon>
         </div>
          <h2>{{'LOGIN.H_2'| translate }}</h2>
-        <h1>Hoş Geldiniz</h1>
+        <h1>{{'LOGIN.H_1'| translate}}</h1>
       </div>
     </div>
 
     <!-- Sağ taraf - Beyaz zemin -->
     <div class="right-section">
       <div class="login-form">
-        <h2>Hesabınıza Giriş Yapın</h2>
+        <h2>{{'LOGIN.TEXT'| translate}}</h2>
 
         <form>
           <div class="input-group">
@@ -35,13 +35,11 @@
             </ion-input>
           </div>
 
-          <button type="button" class="login-btn" (click)="girisYap()">
-            Giriş Yap
-          </button>
+          <button type="button" class="login-btn" (click)="girisYap()">{{'LOGIN.LOG_IN'| translate}}</button>
 
           <div class="signup-link">
-            <span>Hesabınız yok mu? </span>
-            <a (click)="kayitOl()">Kayıt Ol</a>
+            <span>{{'LOGIN.S'| translate}}</span>
+            <a (click)="kayitOl()">{{'LOGIN.SIGN_UP'| translate}}</a>
           </div>
 
 

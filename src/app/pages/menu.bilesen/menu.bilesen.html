@@ -1,7 +1,7 @@
 <ion-menu menuId="main-menu" contentId="main-content" side="start" type="overlay">
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title style="color: #ffffff !important;">Menü</ion-title>
+      <ion-title style="color: #ffffff !important;">{{'MENU.TITLE'| translate}}</ion-title>
       <!-- Quick theme toggle button in header -->
       <ion-buttons slot="end">
         <ion-button (click)="toggleTheme()" fill="clear">
@@ -10,7 +10,7 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  
+
   <ion-content>
     <ion-list>
       
@@ -18,25 +18,25 @@
       
         <ion-item button (click)="showUserInfo()">
           <ion-icon name="person" slot="start"></ion-icon>
-         <ion-label>Kullanıcı Bilgileri</ion-label>
+         <ion-label>  {{'MENU.USER_INFO'| translate}}</ion-label>
        </ion-item>
 
         <ion-item button (click)="showFavorites()">
           <ion-icon name="heart" slot="start"></ion-icon>
-          <ion-label>Favorilerim</ion-label>
+          <ion-label>  {{'MENU.FAVORITES'| translate}}</ion-label>
         </ion-item>
       </ng-container>
 
       <ion-item button (click)="showThemeOptions()">
         <ion-icon name="contrast" slot="start"></ion-icon>
-        <ion-label>Tema Ayarları</ion-label>
+        <ion-label>  {{'MENU.THEME_SETTINGS'| translate}}</ion-label>
         <ion-note slot="end" style="color: var(--text-tertiary); font-size: 12px;">
         </ion-note>
       </ion-item>
 
       <ion-item button (click)="showLanguageOptions()">
         <ion-icon name="language-outline"></ion-icon>
-        <ion-label>Dil Seçenekleri</ion-label>
+        <ion-label>  {{'MENU.LANGUAGE'| translate}}</ion-label>
         <ion-note slot="end" style="color: var(--text-tertiary); font-size: 12px;">
         </ion-note>
       </ion-item>
@@ -46,7 +46,7 @@
         <ion-icon [name]="isDarkMode ? 'moon' : 'sunny'" slot="start" 
                   [style.color]="isDarkMode ? '#4c8dff' : '#f39c12'"></ion-icon>
         <ion-label>
-          <h3>Aktif Tema</h3>
+          <h3>  {{'MENU.CURRENT_THEME'| translate}}</h3>
         </ion-label>
       </ion-item>
       

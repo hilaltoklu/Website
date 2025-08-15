@@ -20,7 +20,10 @@ export class UserInfoEditModalPage implements OnInit {
   @Input() userData: any;
   showPassword : boolean = false;
 
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController,
+    private translate: TranslateService) { 
+    this.translate.setDefaultLang('tr');
+    this.translate.use('tr');}
 
   ngOnInit() {
   }
@@ -36,4 +39,8 @@ export class UserInfoEditModalPage implements OnInit {
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+  
 }

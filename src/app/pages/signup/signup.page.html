@@ -6,8 +6,8 @@
         <div class="logo">
           <ion-icon name="rocket-outline" size="large"></ion-icon>
         </div>
-        <h2>Kayıt Ekranına</h2>
-        <h1>Hoş Geldiniz</h1>
+        <h2>  {{'SIGNUP.H_2'| translate}}</h2>
+        <h1>{{'SIGNUP.H_1'| translate}}</h1>
       </div>
     </div>
 
@@ -46,16 +46,14 @@
     interface="popover"
     class="gender-select custom-select-input"
     style="--placeholder-color: #666; --color: #404040;">
-    <ion-select-option value="female" style="color: #404040;">Kadın</ion-select-option>
-    <ion-select-option value="male" style="color: #404040;">Erkek</ion-select-option>
+    <ion-select-option value="female" style="color: #404040;">{{'SIGNUP.GENDER_FEMALE'| translate}}</ion-select-option>
+    <ion-select-option value="male" style="color: #404040;">{{'SIGNUP.GENDER_MALE'| translate}}</ion-select-option>
   </ion-select>
 </div>
           
 
 
-<button type="button" class="login-btn" (click)="kayitOl()">
-            Kayıt Ol
-          </button>
+<button type="button" class="login-btn" (click)="kayitOl()">{{'SIGNUP.SIGN_UP'| translate}}</button>
 
 
 

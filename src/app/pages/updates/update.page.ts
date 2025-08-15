@@ -14,7 +14,10 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class UpdatePage implements OnInit {
   @Input() article: any;
 
-  constructor(private modalController: ModalController) {}
+  constructor(private modalController: ModalController,
+    private translate: TranslateService) {
+    this.translate.setDefaultLang('tr');
+    this.translate.use('tr');}
 
   ngOnInit() {}
 
@@ -27,4 +30,8 @@ export class UpdatePage implements OnInit {
   dismissModal() {
     this.modalController.dismiss();
   }
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+  
 }

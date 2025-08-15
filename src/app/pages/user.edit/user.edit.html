@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Kullanıcı Bilgileri</ion-title>
+    <ion-title>{{'USER_EDIT.INFO'| translate}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()">Kapat</ion-button>
+      <ion-button (click)="dismissModal()">{{'USER_EDIT.CLOSE'| translate}}</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -10,12 +10,12 @@
 <ion-content class="ion-padding">
   <form (ngSubmit)="saveChanges()">
     <ion-item>
-      <ion-label position="floating">Kullanıcı Adı</ion-label>
+      <ion-label position="floating">{{'USER_EDIT.USERNAME'| translate}}</ion-label>
       <ion-input [(ngModel)]="userData.username" name="username"></ion-input>
     </ion-item>
     
     <ion-item>
-      <ion-label position="floating">Şifre</ion-label>
+      <ion-label position="floating">{{'USER_EDIT.PASSWORD'| translate}}</ion-label>
       <ion-input 
         [type]="showPassword ? 'text' : 'password'" 
         [(ngModel)]="userData.password" 
@@ -38,10 +38,10 @@
     <ion-item>
       <ion-label>Cinsiyet</ion-label>
       <ion-select [(ngModel)]="userData.gender" name="gender">
-        <ion-select-option value="male">Erkek</ion-select-option>
-        <ion-select-option value="female">Kadın</ion-select-option>
+        <ion-select-option value="male">{{'USER_EDIT.GENDER_MALE'| translate}}</ion-select-option>
+        <ion-select-option value="female">{{'USER_EDIT.GENDER_FEMALE'| translate}}</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button expand="full" type="submit">Kaydet</ion-button>
+    <ion-button expand="full" type="submit">{{'USER_EDIT.SAVE'| translate}}</ion-button>
   </form>
 </ion-content>
